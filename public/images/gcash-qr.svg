@@ -1,0 +1,89 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 520" width="400" height="520">
+  <defs>
+    <linearGradient id="gcashGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#005CE6"/>
+      <stop offset="100%" stop-color="#003B99"/>
+    </linearGradient>
+  </defs>
+  <!-- Card Background -->
+  <rect x="0" y="0" width="400" height="520" rx="24" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="2"/>
+  
+  <!-- Top Banner -->
+  <rect x="0" y="0" width="400" height="90" rx="24" fill="url(#gcashGrad)"/>
+  <rect x="0" y="70" width="400" height="20" fill="url(#gcashGrad)"/>
+  
+  <text x="200" y="42" font-family="'Inter', sans-serif" font-weight="900" font-size="28" fill="#FFFFFF" text-anchor="middle" letter-spacing="1">GCash</text>
+  <text x="200" y="68" font-family="'Inter', sans-serif" font-weight="500" font-size="13" fill="#93C5FD" text-anchor="middle">OFFICIAL PAYMENT QR</text>
+  
+  <!-- Merchant Title -->
+  <text x="200" y="125" font-family="'Inter', sans-serif" font-weight="800" font-size="16" fill="#1E293B" text-anchor="middle">NATIONAL FOOD SHOWDOWN 2026</text>
+  <text x="200" y="145" font-family="'Inter', sans-serif" font-weight="600" font-size="12" fill="#005CE6" text-anchor="middle">Account Name: NFS COMMITTEE</text>
+  <text x="200" y="163" font-family="'Inter', sans-serif" font-weight="600" font-size="12" fill="#64748B" text-anchor="middle">Account No: 0917 123 4567</text>
+
+  <!-- QR Frame -->
+  <rect x="65" y="180" width="270" height="270" rx="16" fill="#F8FAFC" stroke="#CBD5E1" stroke-width="2"/>
+  
+  <!-- QR Corner Markers Top-Left -->
+  <rect x="85" y="200" width="60" height="60" rx="8" fill="#005CE6"/>
+  <rect x="95" y="210" width="40" height="40" rx="4" fill="#FFFFFF"/>
+  <rect x="105" y="220" width="20" height="20" rx="2" fill="#005CE6"/>
+  
+  <!-- QR Corner Markers Top-Right -->
+  <rect x="255" y="200" width="60" height="60" rx="8" fill="#005CE6"/>
+  <rect x="265" y="210" width="40" height="40" rx="4" fill="#FFFFFF"/>
+  <rect x="275" y="220" width="20" height="20" rx="2" fill="#005CE6"/>
+  
+  <!-- QR Corner Markers Bottom-Left -->
+  <rect x="85" y="370" width="60" height="60" rx="8" fill="#005CE6"/>
+  <rect x="95" y="380" width="40" height="40" rx="4" fill="#FFFFFF"/>
+  <rect x="105" y="390" width="20" height="20" rx="2" fill="#005CE6"/>
+
+  <!-- Simulated QR Pattern Data Pixels -->
+  <g fill="#1E293B">
+    <rect x="160" y="200" width="15" height="15" rx="2"/>
+    <rect x="190" y="200" width="15" height="15" rx="2"/>
+    <rect x="220" y="200" width="15" height="15" rx="2"/>
+    
+    <rect x="160" y="230" width="15" height="15" rx="2"/>
+    <rect x="175" y="245" width="15" height="15" rx="2"/>
+    <rect x="205" y="230" width="30" height="15" rx="2"/>
+
+    <rect x="85" y="275" width="15" height="15" rx="2"/>
+    <rect x="115" y="275" width="15" height="30" rx="2"/>
+    <rect x="145" y="275" width="30" height="15" rx="2"/>
+    <rect x="190" y="275" width="15" height="15" rx="2"/>
+    <rect x="220" y="275" width="30" height="15" rx="2"/>
+    <rect x="265" y="275" width="15" height="30" rx="2"/>
+    <rect x="295" y="275" width="20" height="15" rx="2"/>
+
+    <rect x="85" y="310" width="30" height="15" rx="2"/>
+    <rect x="130" y="305" width="15" height="30" rx="2"/>
+    <rect x="160" y="310" width="45" height="15" rx="2"/>
+    <rect x="220" y="305" width="15" height="30" rx="2"/>
+    <rect x="250" y="310" width="30" height="15" rx="2"/>
+
+    <rect x="100" y="340" width="15" height="15" rx="2"/>
+    <rect x="130" y="340" width="30" height="15" rx="2"/>
+    <rect x="175" y="340" width="15" height="15" rx="2"/>
+    <rect x="205" y="340" width="30" height="15" rx="2"/>
+    <rect x="250" y="340" width="15" height="15" rx="2"/>
+    <rect x="280" y="340" width="35" height="15" rx="2"/>
+
+    <rect x="160" y="370" width="15" height="15" rx="2"/>
+    <rect x="190" y="370" width="30" height="15" rx="2"/>
+    <rect x="235" y="370" width="15" height="30" rx="2"/>
+    <rect x="265" y="370" width="30" height="15" rx="2"/>
+
+    <rect x="160" y="400" width="30" height="15" rx="2"/>
+    <rect x="205" y="400" width="15" height="30" rx="2"/>
+    <rect x="280" y="400" width="20" height="30" rx="2"/>
+  </g>
+
+  <!-- Center GCash Logo Badge inside QR -->
+  <rect x="175" y="290" width="50" height="50" rx="10" fill="#005CE6" stroke="#FFFFFF" stroke-width="3"/>
+  <text x="200" y="322" font-family="'Inter', sans-serif" font-weight="900" font-size="20" fill="#FFFFFF" text-anchor="middle">G</text>
+
+  <!-- Instructions Footer -->
+  <text x="200" y="475" font-family="'Inter', sans-serif" font-weight="700" font-size="13" fill="#0F172A" text-anchor="middle">SCAN OR SAVE QR TO PAY</text>
+  <text x="200" y="495" font-family="'Inter', sans-serif" font-weight="500" font-size="11" fill="#64748B" text-anchor="middle">Save your transaction screenshot &amp; copy Reference No.</text>
+</svg>

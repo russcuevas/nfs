@@ -1,0 +1,103 @@
+gagawa ako ng website laravel simpleng registration form website lang ito ang database ko ay 
+
+nfs_db
+
+gusto ko gawa ka ng controller views na may seperation of concern like ganto sa structure ng folder gusto ko kasi MVC para mas maganda tignan
+
+admin/
+guest/
+
+tapos gamit ka ng migration sa table models din
+then sa admin set mo ang account na 
+
+seeder
+nfs@gmail.com
+123456789
+
+National Food Showdown
+
+meron itong admin at guest accounts
+
+so sa guest features muna tayo
+
+Guest
+
+features
+Register Page
+sa register page dapat ano mas maganda dropdown or option na select?
+gusto ko kasi 2 siya kapag sa register may pag pipilian kung
+
+Contestant or Guest/Watcher
+so kapag contestant ang form na lalabas sa kanila ay
+
+Step 1 Details
+Contestant
+Name
+School dito merong parang checkbox kapag taga UB ka nakalagay sa checkbox From UBLC? kapag or kung san ito maganda ilagay based sa pag gawa mo? sa step 2 ba or step 1
+Kung anong contest ang sasalihan (INPUT TEXT)
+
+CHOOSE A TICKET
+
+Step 2 Choosing of ticket
+Day 1 - 80 pesos kapag outside University of Batangas Lipa City nag aaral kapag inside UB 70 pesos
+Day 2 - 80 pesos kapag outside University of Batangas Lipa City nag aaral kapag inside UB 70 pesos
+Both Day 1 and Day 2 - 120 kapag outside University of Batangas Lipa City nag aaral kapag inside 100 pesos lang 
+
+PROCEED TO PAYMENT
+
+
+Step 3 Payment
+then pag ka submit proceed next step may naka show and display na qr ng gcash tapos merong 
+email (required)
+gcash name input (required)
+gcash number input (required)
+reference number input (required)
+payment screenshot file tapos dapat nakikita or na ciclick nilang x tapos mawawala (required)
+
+after mag submit may mag eemail ang nakalagay ay please wait for the approval of 
+the admin and you can check the status of your ticket by clicking here link ng pwede nila ilagay yung reference number para matrack
+tapos nakalagay don yung breakdown ng binili niyang ticket at price tapos yung link na kung san pwede nila iview yung sinend na unique 
+#NFS_2026_01 number nila basically para makita kung ano na process kung pending pa ba or approve na
+
+tapos gusto ko mabibigyan sila ng #NFS_2026_01 etc .... tapos gagamitin 
+
+kapag Guest/Watcher naman lalabas
+ang lalabas sa form niya ay
+step 1
+name
+School dito merong parang checkbox kapag taga UB ka nakalagay sa checkbox From UBLC? kapag or kung san ito maganda ilagay based sa pag gawa mo? sa step 2 ba or step 1
+tapos contact_number
+
+Choose a TICKET
+
+Day 1 - 80 pesos kapag outside University of Batangas Lipa City nag aaral kapag inside UB 70 pesos
+Day 2 - 80 pesos kapag outside University of Batangas Lipa City nag aaral kapag inside UB 70 pesos
+Both Day 1 and Day 2 - 120 kapag outside University of Batangas Lipa City nag aaral kapag inside 100 pesos lang 
+
+PROCEED TO PAYMENT
+
+step 3
+email (required)
+gcash name input (required)
+gcash number input (required)
+reference number input (required)
+payment screenshot file tapos dapat nakikita or na ciclick nilang x tapos mawawala (required)
+
+after mag submit may mag eemail ang nakalagay ay please wait for the approval of 
+the admin and you can check the status of your ticket by clicking here link ng pwede nila ilagay yung reference number para matrack
+tapos nakalagay don yung breakdown ng binili niyang ticket at price tapos yung link na kung san pwede nila iview yung sinend na unique 
+#NFS_2026_01 number nila basically para makita kung ano na process kung pending pa ba or approve na
+
+so ang gagawin mo ay mag create ka ng landing page ng website for the National Food Showdown this year 
+gusto ko maganda pagkakagawa mo yung modern parang ginagawa niyo sa tiktok kapag magagandang web 
+
+basically yun lang tapos gusto ko sa pallete ng website ay based dun sa logo nfs-logo.png check mo nalang combination ng color
+tapos gusto ko minimalist lang para mas maganda pati sa dashboard also i need accessable sa all devices responsive tapos gusto ko 
+lahat ng images ma sstore sa public/ not sa stogarge. para no need na i storage link 
+
+
+STMP Credentials
+MAIL_HOST=smtp.gmail.com
+MAIL_PORT=587
+MAIL_USERNAME=russelcuevas0@gmail.com
+MAIL_PASSWORD="nhhm tzwe anvu ipsu"
