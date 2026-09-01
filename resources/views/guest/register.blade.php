@@ -121,10 +121,67 @@
                     <p class="text-[11px] text-slate-400">Check the box above if you are a student or staff at University of Batangas Lipa City.</p>
                 </div>
 
-                <!-- Contest Category (Contestant Only) -->
-                <div id="field-contestant-category" class="sm:col-span-2">
-                    <label for="contest_category" class="block text-xs font-bold uppercase tracking-wider text-slate-300 mb-2">Contest to Join (Anong contest ang sasalihan) *</label>
-                    <input type="text" id="contest_category" name="contest_category" value="{{ old('contest_category') }}" placeholder="e.g. Culinary Arts Showdown / Table Setup / Barista Challenge" class="w-full bg-slate-900/90 border border-slate-700 rounded-xl px-4 py-3.5 text-sm text-white placeholder-slate-500 focus:outline-none focus:border-brand-orange transition-all">
+                <!-- Contest Category & Division (Contestant Only) -->
+                <div id="field-contestant-category" class="sm:col-span-2 space-y-4">
+                    <div>
+                        <label for="contest_category" class="block text-xs font-bold uppercase tracking-wider text-slate-300 mb-2">Select Competition Category *</label>
+                        <select id="contest_category" name="contest_category" onchange="onContestCategoryChange()" class="w-full bg-slate-900/90 border border-slate-700 rounded-xl px-4 py-3.5 text-sm text-white focus:outline-none focus:border-brand-orange transition-all">
+                            <option value="">-- Choose Competition Category --</option>
+                            <optgroup label="CATEGORY A: KULINARYA & COOKING SHOWDOWNS">
+                                <option value="A.1">KLASIKA MODERNA KULINARYA</option>
+                                <option value="A.2">BEST REGIONAL INGREDIENT</option>
+                                <option value="A.3">BEST TRADITIONAL / MODERN RECIPE AND COOKING TECHNIQUE</option>
+                                <option value="A.4">REGIONAL PICA-PICA</option>
+                            </optgroup>
+                            <optgroup label="CATEGORY B: BEVERAGE & BARTENDING">
+                                <option value="B.1">REGIONAL BARTENDING / FLAIRTENDING COMPETITION</option>
+                                <option value="B.2">REGIONAL COFFEE CONCOCTION</option>
+                            </optgroup>
+                            <optgroup label="CATEGORY C: JAMS, PRESERVES & FLAMBÉ">
+                                <option value="C.1">REGIONAL JAMS AND PRESERVES</option>
+                                <option value="C.2">REGIONAL FRUIT FLAMBÉ</option>
+                            </optgroup>
+                            <optgroup label="CATEGORY D: PASTRY, CAKES & TABLE PRESENTATION">
+                                <option value="D.1">REGIONAL DESSERT/KAKANIN</option>
+                                <option value="D.2">REGIONAL TABLE SETTING WITH CENTERPIECE</option>
+                                <option value="D.3">WEDDING CAKE</option>
+                                <option value="D.4">REGIONAL CREATIVE CAKE DISPLAY</option>
+                            </optgroup>
+                            <optgroup label="CATEGORY F: HOSPITALITY & MOCKTAILS">
+                                <option value="F.1">NAPKIN FOLDING</option>
+                                <option value="F.2">MOCKTAIL CONCOCTIONS</option>
+                            </optgroup>
+                            <optgroup label="CATEGORY I: ACADEMIC">
+                                <option value="I.1">QUIZ-BEE</option>
+                            </optgroup>
+                            <optgroup label="CATEGORY T: TOURISM & SPECIALTY">
+                                <option value="T.1">INFLIGHT SAFETY DEMONSTRATION AND EMERGENCY RESPONSE</option>
+                                <option value="T.2">KASUOTANG REHIYONES</option>
+                                <option value="T.3">TOURISM POSTER MAKING</option>
+                            </optgroup>
+                        </select>
+                    </div>
+
+                    <!-- Division Level Selector (Professional vs Student) -->
+                    <div id="field-contestant-division" class="hidden">
+                        <label for="contest_division" class="block text-xs font-bold uppercase tracking-wider text-slate-300 mb-2">Select Division Level *</label>
+                        <select id="contest_division" name="contest_division" onchange="onContestDivisionChange()" class="w-full bg-slate-900/90 border border-slate-700 rounded-xl px-4 py-3.5 text-sm text-white focus:outline-none focus:border-brand-orange transition-all">
+                            <option value="professional">Professional Division</option>
+                            <option value="student" selected>Student / College / SHS Division</option>
+                        </select>
+                    </div>
+
+                    <!-- Highlighted Contestant Fee Callout -->
+                    <div id="contestant-price-callout" class="hidden p-4 rounded-2xl bg-brand-orange/15 border-2 border-brand-orange/50 flex items-center justify-between shadow-lg">
+                        <div>
+                            <span class="text-xs text-brand-orange font-extrabold uppercase tracking-wider block">Official Competition Entry Fee</span>
+                            <span id="contestant-price-detail" class="text-xs text-slate-200 block mt-0.5 font-medium">Select category to view price</span>
+                        </div>
+                        <div class="text-right">
+                            <span id="contestant-fee-display" class="font-heading text-3xl font-black text-white">₱0.00</span>
+                            <span class="text-[10px] text-slate-400 block font-semibold">fixed rate</span>
+                        </div>
+                    </div>
                 </div>
 
                 <!-- Contact Number (Guest Only) -->
@@ -158,8 +215,21 @@
                 <span id="ublc-status-text" class="font-extrabold text-brand-cyan uppercase">Outside UB Lipa City Rate</span>
             </div>
 
-            <!-- Ticket Options List -->
-            <div class="space-y-4">
+            <!-- Contestant Pass Card (Visible when registration_type is contestant) -->
+            <div id="contestant-ticket-card" class="glass-card rounded-3xl p-6 sm:p-8 border-2 border-brand-orange bg-brand-orange/10 flex items-center justify-between">
+                <div>
+                    <div class="text-xs font-extrabold text-brand-orange uppercase tracking-wider mb-1">Official Contestant Access Pass</div>
+                    <h3 id="contestant-summary-title" class="font-heading text-xl font-extrabold text-white">Competition Entry</h3>
+                    <p id="contestant-summary-subtitle" class="text-xs text-slate-300 mt-1">Official contest registration fee from competition guidelines.</p>
+                </div>
+                <div class="text-right shrink-0">
+                    <span id="contestant-summary-price" class="font-heading text-3xl font-black text-brand-orange">₱0.00</span>
+                    <span class="text-[10px] text-slate-400 block font-semibold">fixed fee</span>
+                </div>
+            </div>
+
+            <!-- Guest Ticket Options List (Visible when registration_type is guest) -->
+            <div id="guest-ticket-options" class="space-y-4">
                 <!-- Day 1 Option -->
                 <label id="ticket-card-day1" class="cursor-pointer border-2 border-slate-700 bg-slate-900/50 hover:border-slate-500 rounded-2xl p-5 flex items-center justify-between transition-all">
                     <div class="flex items-center gap-4">
@@ -170,7 +240,7 @@
                         </div>
                     </div>
                     <div class="text-right">
-                        <span id="price-display-day1" class="font-heading text-2xl font-black text-brand-orange">₱80</span>
+                        <span id="price-display-day1" class="font-heading text-2xl font-black text-brand-orange">₱120</span>
                         <span class="text-[10px] text-slate-400 block font-semibold">per ticket</span>
                     </div>
                 </label>
@@ -185,7 +255,7 @@
                         </div>
                     </div>
                     <div class="text-right">
-                        <span id="price-display-day2" class="font-heading text-2xl font-black text-brand-cyan">₱80</span>
+                        <span id="price-display-day2" class="font-heading text-2xl font-black text-brand-cyan">₱120</span>
                         <span class="text-[10px] text-slate-400 block font-semibold">per ticket</span>
                     </div>
                 </label>
@@ -201,7 +271,7 @@
                         </div>
                     </div>
                     <div class="text-right">
-                        <span id="price-display-both" class="font-heading text-3xl font-black text-emerald-400">₱120</span>
+                        <span id="price-display-both" class="font-heading text-3xl font-black text-emerald-400">₱170</span>
                         <span class="text-[10px] text-slate-300 block font-semibold">total 2 days</span>
                     </div>
                 </label>
@@ -254,7 +324,7 @@
                     <!-- Selected Ticket Summary -->
                     <div class="mt-4 pt-4 border-t border-slate-800 flex items-center justify-between">
                         <span class="text-slate-400">Total Payable Amount:</span>
-                        <span id="final-payable-price" class="font-heading text-2xl font-black text-emerald-400">₱80.00</span>
+                        <span id="final-payable-price" class="font-heading text-2xl font-black text-emerald-400">₱120.00</span>
                     </div>
                 </div>
             </div>
@@ -399,6 +469,101 @@
 <script>
     let currentStep = 1;
 
+    const COMPETITION_DATA = {
+        'A.1': { name: 'KLASIKA MODERNA KULINARYA', has_div: true, fees: { professional: 1500, student: 1000 } },
+        'A.2': { name: 'BEST REGIONAL INGREDIENT', has_div: true, fees: { professional: 1000, student: 700 } },
+        'A.3': { name: 'BEST TRADITIONAL / MODERN RECIPE AND COOKING TECHNIQUE', has_div: true, fees: { professional: 1000, student: 700 } },
+        'A.4': { name: 'REGIONAL PICA-PICA', has_div: true, fees: { professional: 1000, student: 700 } },
+        'B.1': { name: 'REGIONAL BARTENDING / FLAIRTENDING COMPETITION', has_div: true, fees: { professional: 1000, student: 700 } },
+        'B.2': { name: 'REGIONAL COFFEE CONCOCTION', has_div: true, fees: { professional: 1000, student: 700 } },
+        'C.1': { name: 'REGIONAL JAMS AND PRESERVES', has_div: true, fees: { professional: 1000, student: 700 } },
+        'C.2': { name: 'REGIONAL FRUIT FLAMBÉ', has_div: true, fees: { professional: 1000, student: 700 } },
+        'D.1': { name: 'REGIONAL DESSERT/KAKANIN', has_div: true, fees: { professional: 1000, student: 700 } },
+        'D.2': { name: 'REGIONAL TABLE SETTING WITH CENTERPIECE', has_div: false, fee: 500 },
+        'D.3': { name: 'WEDDING CAKE', has_div: true, fees: { professional: 700, student: 500 } },
+        'D.4': { name: 'REGIONAL CREATIVE CAKE DISPLAY', has_div: true, fees: { professional: 1000, student: 700 } },
+        'F.1': { name: 'NAPKIN FOLDING', has_div: false, fee: 500 },
+        'F.2': { name: 'MOCKTAIL CONCOCTIONS', has_div: false, fee: 700 },
+        'I.1': { name: 'QUIZ-BEE', has_div: false, fee: 500 },
+        'T.1': { name: 'INFLIGHT SAFETY DEMONSTRATION AND EMERGENCY RESPONSE', has_div: false, fee: 700 },
+        'T.2': { name: 'KASUOTANG REHIYONES', has_div: false, fee: 700 },
+        'T.3': { name: 'TOURISM POSTER MAKING', has_div: false, fee: 700 }
+    };
+
+    function onContestCategoryChange() {
+        const catSelect = document.getElementById('contest_category');
+        const divContainer = document.getElementById('field-contestant-division');
+        const divSelect = document.getElementById('contest_division');
+        const priceCallout = document.getElementById('contestant-price-callout');
+        const catCode = catSelect.value;
+
+        if (!catCode || !COMPETITION_DATA[catCode]) {
+            divContainer.classList.add('hidden');
+            priceCallout.classList.add('hidden');
+            updateTicketPrices();
+            return;
+        }
+
+        const data = COMPETITION_DATA[catCode];
+        if (data.has_div) {
+            divContainer.classList.remove('hidden');
+            if (!divSelect.value) {
+                divSelect.value = 'student';
+            }
+        } else {
+            divContainer.classList.add('hidden');
+            divSelect.value = '';
+        }
+
+        updateContestantFeeDisplay();
+        updateTicketPrices();
+    }
+
+    function onContestDivisionChange() {
+        updateContestantFeeDisplay();
+        updateTicketPrices();
+    }
+
+    function updateContestantFeeDisplay() {
+        const catSelect = document.getElementById('contest_category');
+        const divSelect = document.getElementById('contest_division');
+        const priceCallout = document.getElementById('contestant-price-callout');
+        const feeDisplay = document.getElementById('contestant-fee-display');
+        const detailDisplay = document.getElementById('contestant-price-detail');
+        const catCode = catSelect.value;
+
+        if (!catCode || !COMPETITION_DATA[catCode]) {
+            priceCallout.classList.add('hidden');
+            return;
+        }
+
+        const data = COMPETITION_DATA[catCode];
+        let price = 0;
+        let detailText = "";
+
+        if (data.has_div) {
+            const divValue = divSelect.value || 'student';
+            price = data.fees[divValue] || data.fees.student;
+            const divLabel = divValue === 'professional' ? 'Professional' : 'Student / College / SHS';
+            detailText = `${data.name} • ${divLabel} Division`;
+        } else {
+            price = data.fee;
+            detailText = `${data.name} • Fixed Entry Fee`;
+        }
+
+        feeDisplay.textContent = `₱${price.toLocaleString('en-US')}.00`;
+        detailDisplay.textContent = detailText;
+        priceCallout.classList.remove('hidden');
+
+        // Update contestant summary in step 2
+        const summaryTitle = document.getElementById('contestant-summary-title');
+        const summarySub = document.getElementById('contestant-summary-subtitle');
+        const summaryPrice = document.getElementById('contestant-summary-price');
+        if (summaryTitle) summaryTitle.textContent = data.name;
+        if (summarySub) summarySub.textContent = detailText;
+        if (summaryPrice) summaryPrice.textContent = `₱${price.toLocaleString('en-US')}`;
+    }
+
     function goToStep(step) {
         // Simple front-end validation check when moving forward
         if (step > currentStep) {
@@ -406,16 +571,25 @@
                 const name = document.getElementById('name').value.trim();
                 const school = document.getElementById('school').value.trim();
                 const type = document.querySelector('input[name="registration_type"]:checked').value;
-                const contest = document.getElementById('contest_category').value.trim();
+                const contestCat = document.getElementById('contest_category').value;
                 const contact = document.getElementById('contact_number').value.trim();
 
                 if (!name || !school) {
                     alert('Please fill in your Full Name and School before proceeding.');
                     return;
                 }
-                if (type === 'contestant' && !contest) {
-                    alert('Please enter the contest you are joining.');
-                    return;
+                if (type === 'contestant') {
+                    if (!contestCat) {
+                        alert('Please select a competition category.');
+                        return;
+                    }
+                    if (COMPETITION_DATA[contestCat] && COMPETITION_DATA[contestCat].has_div) {
+                        const divVal = document.getElementById('contest_division').value;
+                        if (!divVal) {
+                            alert('Please select a division level (Professional or Student).');
+                            return;
+                        }
+                    }
                 }
                 if (type === 'guest' && !contact) {
                     alert('Please enter your contact number.');
@@ -455,18 +629,29 @@
         const guestCard = document.getElementById('card-type-guest');
         const contestantField = document.getElementById('field-contestant-category');
         const guestField = document.getElementById('field-guest-contact');
+        const contestantTicketCard = document.getElementById('contestant-ticket-card');
+        const guestTicketOptions = document.getElementById('guest-ticket-options');
+        const ublcStatusBanner = document.getElementById('ublc-status-banner');
 
         if (type === 'contestant') {
             contestantCard.className = "cursor-pointer border-2 border-brand-orange bg-brand-orange/10 rounded-2xl p-5 flex items-start gap-4 transition-all";
             guestCard.className = "cursor-pointer border-2 border-slate-700 bg-slate-900/50 rounded-2xl p-5 flex items-start gap-4 transition-all";
             contestantField.classList.remove('hidden');
             guestField.classList.add('hidden');
+            if (contestantTicketCard) contestantTicketCard.classList.remove('hidden');
+            if (guestTicketOptions) guestTicketOptions.classList.add('hidden');
+            if (ublcStatusBanner) ublcStatusBanner.classList.add('hidden');
         } else {
             guestCard.className = "cursor-pointer border-2 border-brand-orange bg-brand-orange/10 rounded-2xl p-5 flex items-start gap-4 transition-all";
             contestantCard.className = "cursor-pointer border-2 border-slate-700 bg-slate-900/50 rounded-2xl p-5 flex items-start gap-4 transition-all";
             guestField.classList.remove('hidden');
             contestantField.classList.add('hidden');
+            if (contestantTicketCard) contestantTicketCard.classList.add('hidden');
+            if (guestTicketOptions) guestTicketOptions.classList.remove('hidden');
+            if (ublcStatusBanner) ublcStatusBanner.classList.remove('hidden');
         }
+
+        updateTicketPrices();
     }
 
     const UBLC_SCHOOL_NAME = "University of Batangas Lipa City";
@@ -496,34 +681,70 @@
     function updateTicketPrices() {
         const isUblc = document.getElementById('is_ublc').checked;
         const bannerText = document.getElementById('ublc-status-text');
+        const regTypeRadio = document.querySelector('input[name="registration_type"]:checked');
+        const regType = regTypeRadio ? regTypeRadio.value : 'contestant';
 
         if (isUblc) {
-            bannerText.textContent = "University of Batangas Lipa City (UBLC) Rate";
-            bannerText.className = "font-extrabold text-emerald-400 uppercase";
-            document.getElementById('price-display-day1').textContent = "₱70";
-            document.getElementById('price-display-day2').textContent = "₱70";
-            document.getElementById('price-display-both').textContent = "₱100";
+            if (bannerText) bannerText.textContent = "University of Batangas Lipa City (UBLC) Rate";
+            if (bannerText) bannerText.className = "font-extrabold text-emerald-400 uppercase";
+            document.getElementById('price-display-day1').textContent = "₱100";
+            document.getElementById('price-display-day2').textContent = "₱100";
+            document.getElementById('price-display-both').textContent = "₱150";
         } else {
-            bannerText.textContent = "Standard Rate";
-            bannerText.className = "font-extrabold text-brand-cyan uppercase";
-            document.getElementById('price-display-day1').textContent = "₱80";
-            document.getElementById('price-display-day2').textContent = "₱80";
-            document.getElementById('price-display-both').textContent = "₱120";
+            if (bannerText) bannerText.textContent = "Standard Rate";
+            if (bannerText) bannerText.className = "font-extrabold text-brand-cyan uppercase";
+            document.getElementById('price-display-day1').textContent = "₱120";
+            document.getElementById('price-display-day2').textContent = "₱120";
+            document.getElementById('price-display-both').textContent = "₱170";
         }
 
-        // Recalculate Payable
-        const selectedTicket = document.querySelector('input[name="ticket_type"]:checked').value;
-        selectTicketOption(selectedTicket);
+        if (regType === 'contestant') {
+            updateContestantFeeDisplay();
+            const catCode = document.getElementById('contest_category').value;
+            let price = 0;
+            if (catCode && COMPETITION_DATA[catCode]) {
+                const data = COMPETITION_DATA[catCode];
+                if (data.has_div) {
+                    const divVal = document.getElementById('contest_division').value || 'student';
+                    price = data.fees[divVal] || data.fees.student;
+                } else {
+                    price = data.fee;
+                }
+            }
+            document.getElementById('final-payable-price').textContent = price > 0 ? `₱${price.toLocaleString('en-US')}.00` : '₱0.00';
+        } else {
+            const selectedTicketRadio = document.querySelector('input[name="ticket_type"]:checked');
+            const selectedTicket = selectedTicketRadio ? selectedTicketRadio.value : 'day1';
+            selectTicketOption(selectedTicket);
+        }
     }
 
     function selectTicketOption(ticketType) {
         const isUblc = document.getElementById('is_ublc').checked;
-        let price = 80;
+        const regTypeRadio = document.querySelector('input[name="registration_type"]:checked');
+        const regType = regTypeRadio ? regTypeRadio.value : 'guest';
 
+        if (regType === 'contestant') {
+            const catCode = document.getElementById('contest_category').value;
+            let price = 0;
+            if (catCode && COMPETITION_DATA[catCode]) {
+                const data = COMPETITION_DATA[catCode];
+                if (data.has_div) {
+                    const divVal = document.getElementById('contest_division').value || 'student';
+                    price = data.fees[divVal] || data.fees.student;
+                } else {
+                    price = data.fee;
+                }
+            }
+            document.getElementById('final-payable-price').textContent = price > 0 ? `₱${price.toLocaleString('en-US')}.00` : '₱0.00';
+            return;
+        }
+
+        let price = 120;
         if (ticketType === 'day1' || ticketType === 'day2') {
-            price = isUblc ? 70 : 80;
-        } else if (ticketType === 'both') {
             price = isUblc ? 100 : 120;
+        } else if (ticketType === 'both') {
+            price = isUblc ? 150 : 170;
         }
 
         document.getElementById('final-payable-price').textContent = `₱${price}.00`;
@@ -591,8 +812,7 @@
         const loadingOverlay = document.getElementById('submission-loading-overlay');
 
         if (submitBtn) {
-            submitBtn.disabled = true;
-            submitBtn.classList.add('opacity-75', 'cursor-not-allowed');
+            submitBtn.classList.add('opacity-75', 'pointer-events-none');
             if (checkIcon) checkIcon.classList.add('hidden');
             if (spinnerIcon) spinnerIcon.classList.remove('hidden');
             if (submitText) submitText.textContent = 'SUBMITTING...';
@@ -601,12 +821,6 @@
         if (loadingOverlay) {
             loadingOverlay.classList.remove('hidden');
         }
-
-        // Prevent closing or refreshing tab during submission
-        window.addEventListener('beforeunload', function (event) {
-            event.preventDefault();
-            event.returnValue = 'Registration is currently being submitted. Please do not close or refresh this tab.';
-        });
     });
 
     // Initialize state on load

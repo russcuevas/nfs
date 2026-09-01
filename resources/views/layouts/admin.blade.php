@@ -50,6 +50,8 @@
             border: 1px solid rgba(255, 255, 255, 0.08);
         }
     </style>
+    <!-- SweetAlert2 -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     @yield('styles')
 </head>
 

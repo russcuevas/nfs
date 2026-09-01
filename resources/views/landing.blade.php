@@ -102,7 +102,7 @@
         <!-- TICKET PRICING SECTION -->
         <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-12">
-                <h2 class="font-heading text-3xl sm:text-4xl font-extrabold text-white">Event Ticket Pricing</h2>
+                <h2 class="font-heading text-3xl sm:text-4xl font-extrabold text-white">Event Guest Ticket Pricing</h2>
                 <p class="text-sm text-slate-400 mt-2">Affordable ticket rates for all attendees, guests, and contestants.
                 </p>
             </div>
@@ -121,7 +121,7 @@
                         <div class="my-6 py-6 border-y border-white/10 text-center">
                             <span class="text-xs font-semibold text-slate-400 block mb-1 uppercase tracking-wider">Ticket
                                 Price Range</span>
-                            <span class="font-heading text-3xl font-extrabold text-brand-orange">₱70 – ₱80</span>
+                            <span class="font-heading text-3xl font-extrabold text-brand-orange">₱100 – ₱120</span>
                         </div>
                     </div>
 
@@ -148,7 +148,7 @@
                         <div class="my-6 py-6 border-y border-white/10 text-center">
                             <span class="text-xs font-semibold text-slate-300 block mb-1 uppercase tracking-wider">Ticket
                                 Price Range</span>
-                            <span class="font-heading text-4xl font-black text-emerald-400">₱100 – ₱120</span>
+                            <span class="font-heading text-4xl font-black text-emerald-400">₱150 – ₱170</span>
                         </div>
                     </div>
 
@@ -171,7 +171,7 @@
                         <div class="my-6 py-6 border-y border-white/10 text-center">
                             <span class="text-xs font-semibold text-slate-400 block mb-1 uppercase tracking-wider">Ticket
                                 Price Range</span>
-                            <span class="font-heading text-3xl font-extrabold text-brand-cyan">₱70 – ₱80</span>
+                            <span class="font-heading text-3xl font-extrabold text-brand-cyan">₱100 – ₱120</span>
                         </div>
                     </div>
 

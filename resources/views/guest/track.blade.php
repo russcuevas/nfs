@@ -75,8 +75,8 @@
                     </div>
 
                     <div class="bg-slate-900/60 p-4 rounded-xl border border-slate-800 space-y-1">
-                        <span class="text-slate-400 uppercase text-[10px] font-bold block">Selected Event Ticket</span>
-                        <span class="text-sm font-bold text-brand-cyan block">{{ $registration->ticket_type_label }}</span>
+                        <span class="text-slate-400 uppercase text-[10px] font-bold block">{{ $registration->registration_type === 'contestant' ? 'Registration Type' : 'Selected Event Ticket' }}</span>
+                        <span class="text-sm font-bold {{ $registration->registration_type === 'contestant' ? 'text-brand-orange' : 'text-brand-cyan' }} block">{{ $registration->ticket_type_label }}</span>
                     </div>
 
                     <div class="bg-slate-900/60 p-4 rounded-xl border border-slate-800 space-y-1">

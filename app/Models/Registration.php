@@ -47,11 +47,15 @@ class Registration extends Model
      */
     public function getTicketTypeLabelAttribute(): string
     {
+        if ($this->registration_type === 'contestant') {
+            return 'Contestant Pass';
+        }
+
         return match ($this->ticket_type) {
             'day1' => 'Day 1 Ticket',
             'day2' => 'Day 2 Ticket',
-            'both' => 'Both Days (Day 1 & Day 2) Ticket',
-            default => 'Standard Ticket',
+            'both' => 'Both Days (Day 1 & Day 2) Pass',
+            default => 'Standard Pass',
         };
     }
 
@@ -61,5 +65,16 @@ class Registration extends Model
     public function getFormattedPriceAttribute(): string
     {
         return '₱' . number_format($this->ticket_price, 2);
+    }
+
+    /**
+     * Availed Pass / Competition Summary Attribute
+     */
+    public function getAvailedSummaryAttribute(): string
+    {
+        if ($this->registration_type === 'contestant') {
+            return $this->contest_category ?? 'Contestant Competition Entry';
+        }
+        return $this->ticket_type_label;
     }
 }

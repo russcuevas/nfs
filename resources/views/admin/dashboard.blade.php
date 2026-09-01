@@ -218,7 +218,7 @@
                             <td class="py-4 px-5 text-right whitespace-nowrap">
                                 <div class="flex items-center justify-end gap-2">
                                     @if($reg->status !== 'approved')
-                                        <form action="{{ route('admin.registrations.status', $reg) }}" method="POST" onsubmit="return handleStatusSubmit(this, 'approved')">
+                                        <form action="{{ route('admin.registrations.status', $reg) }}" method="POST" onsubmit="return confirmApprove(this, '{{ $reg->ticket_number }}', '{{ addslashes($reg->name) }}')">
                                             @csrf
                                             @method('PATCH')
                                             <input type="hidden" name="status" value="approved">
@@ -229,7 +229,7 @@
                                     @endif
 
                                     @if($reg->status !== 'rejected')
-                                        <form action="{{ route('admin.registrations.status', $reg) }}" method="POST" onsubmit="return handleStatusSubmit(this, 'rejected')">
+                                        <form action="{{ route('admin.registrations.status', $reg) }}" method="POST" onsubmit="return confirmReject(this, '{{ $reg->ticket_number }}', '{{ addslashes($reg->name) }}')">
                                             @csrf
                                             @method('PATCH')
                                             <input type="hidden" name="status" value="rejected">
@@ -239,7 +239,7 @@
                                         </form>
                                     @endif
 
-                                    <form action="{{ route('admin.registrations.destroy', $reg) }}" method="POST" onsubmit="return confirm('Are you sure you want to delete this registration?')">
+                                    <form action="{{ route('admin.registrations.destroy', $reg) }}" method="POST" onsubmit="return confirmDelete(this, '{{ $reg->ticket_number }}')">
                                         @csrf
                                         @method('DELETE')
                                         <button type="submit" title="Delete Registration" class="p-1.5 text-slate-400 hover:text-rose-400 bg-slate-800 hover:bg-slate-700 rounded-xl transition-all">
@@ -443,11 +443,79 @@
         document.getElementById('proof-modal').classList.add('hidden');
     }
 
-    function handleStatusSubmit(form, status) {
+    function confirmApprove(form, ticketCode, name) {
+        Swal.fire({
+            title: 'Approve Ticket Registration?',
+            html: `Are you sure you want to approve ticket <strong style="color: #f97316;">${ticketCode}</strong> for <strong>${name}</strong>?`,
+            icon: 'question',
+            showCancelButton: true,
+            confirmButtonColor: '#10b981',
+            cancelButtonColor: '#64748b',
+            confirmButtonText: 'Yes, Approve Ticket',
+            cancelButtonText: 'Cancel',
+            background: '#0f172a',
+            color: '#f8fafc',
+            customClass: {
+                popup: 'border border-slate-700 rounded-2xl shadow-2xl'
+            }
+        }).then((result) => {
+            if (result.isConfirmed) {
+                executeFormSubmit(form, 'approved');
+            }
+        });
+        return false;
+    }
+
+    function confirmReject(form, ticketCode, name) {
+        Swal.fire({
+            title: 'Reject Ticket Registration?',
+            html: `Are you sure you want to reject ticket <strong style="color: #f43f5e;">${ticketCode}</strong> for <strong>${name}</strong>?`,
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#ef4444',
+            cancelButtonColor: '#64748b',
+            confirmButtonText: 'Yes, Reject Ticket',
+            cancelButtonText: 'Cancel',
+            background: '#0f172a',
+            color: '#f8fafc',
+            customClass: {
+                popup: 'border border-slate-700 rounded-2xl shadow-2xl'
+            }
+        }).then((result) => {
+            if (result.isConfirmed) {
+                executeFormSubmit(form, 'rejected');
+            }
+        });
+        return false;
+    }
+
+    function confirmDelete(form, ticketCode) {
+        Swal.fire({
+            title: 'Delete Registration Record?',
+            html: `Are you sure you want to delete record <strong style="color: #f43f5e;">${ticketCode}</strong>? This action cannot be undone.`,
+            icon: 'error',
+            showCancelButton: true,
+            confirmButtonColor: '#dc2626',
+            cancelButtonColor: '#64748b',
+            confirmButtonText: 'Yes, Delete Record',
+            cancelButtonText: 'Cancel',
+            background: '#0f172a',
+            color: '#f8fafc',
+            customClass: {
+                popup: 'border border-slate-700 rounded-2xl shadow-2xl'
+            }
+        }).then((result) => {
+            if (result.isConfirmed) {
+                form.submit();
+            }
+        });
+        return false;
+    }
+
+    function executeFormSubmit(form, status) {
         const btn = form.querySelector('button[type="submit"]');
         if (btn) {
-            btn.disabled = true;
-            btn.classList.add('opacity-75', 'cursor-not-allowed');
+            btn.classList.add('opacity-75', 'pointer-events-none');
             const textLabel = status === 'approved' ? 'Approving...' : 'Rejecting...';
             btn.innerHTML = `
                 <span class="inline-flex items-center gap-1.5">
@@ -463,18 +531,13 @@
         const overlay = document.getElementById('admin-action-loading-overlay');
         const title = document.getElementById('admin-loading-title');
         if (title) {
-            title.textContent = status === 'approved' ? 'Approving Ticket & Sending Email...' : 'Rejecting Ticket & Sending Email...';
+            title.textContent = status === 'approved' ? 'Approving Ticket...' : 'Rejecting Ticket...';
         }
         if (overlay) {
             overlay.classList.remove('hidden');
         }
 
-        window.addEventListener('beforeunload', function (event) {
-            event.preventDefault();
-            event.returnValue = 'Updating ticket status and sending email. Please do not close or refresh this page.';
-        });
-
-        return true;
+        form.submit();
     }
 </script>
 @endsection

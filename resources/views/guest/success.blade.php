@@ -69,8 +69,8 @@
                 </div>
 
                 <div class="flex justify-between py-1 border-b border-slate-800/50">
-                    <span class="text-slate-400">Selected Ticket:</span>
-                    <span class="font-bold text-brand-cyan">{{ $registration->ticket_type_label }}</span>
+                    <span class="text-slate-400">{{ $registration->registration_type === 'contestant' ? 'Registration Type:' : 'Selected Ticket:' }}</span>
+                    <span class="font-bold {{ $registration->registration_type === 'contestant' ? 'text-brand-orange' : 'text-brand-cyan' }}">{{ $registration->ticket_type_label }}</span>
                 </div>
 
                 <div class="flex justify-between py-1 border-b border-slate-800/50">
