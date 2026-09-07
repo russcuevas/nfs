@@ -7,10 +7,11 @@
 <body style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; background-color: #ffffff; color: #111827; margin: 0; padding: 20px; line-height: 1.5;">
     <div style="max-width: 560px; margin: 0 auto; font-size: 14px; color: #111827;">
         
-        <!-- Header -->
-        <div style="border-bottom: 2px solid #111827; padding-bottom: 12px; margin-bottom: 20px;">
-            <h2 style="margin: 0; font-size: 18px; font-weight: bold; color: #111827;">National Food Showdown 2026</h2>
-            <p style="margin: 2px 0 0 0; font-size: 12px; color: #4b5563;">Event Registration Confirmation</p>
+        <!-- Header Banner -->
+        <div style="text-align: center; margin-bottom: 24px; border-bottom: 1px solid #e5e7eb; padding-bottom: 16px;">
+            <img src="{{ isset($message) ? $message->embed(public_path('images/email-banner.jpg')) : asset('images/email-banner.jpg') }}" 
+                 alt="National Food Showdown 2026 Banner" 
+                 style="max-width: 420px; width: 100%; height: auto; border-radius: 8px; display: block; margin: 0 auto; box-shadow: 0 2px 8px rgba(0,0,0,0.06);">
         </div>
 
         <p style="margin-top: 0;">Hello <strong>{{ $registration->name }}</strong>,</p>
