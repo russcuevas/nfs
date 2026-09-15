@@ -25,13 +25,20 @@
                     },
                     colors: {
                         brand: {
-                            orange: '#FF6B00',
-                            amber: '#F59E0B',
-                            fire: '#E65100',
-                            cyan: '#00B4D8',
-                            blue: '#0284C7',
-                            dark: '#0B0F19',
-                            card: '#151C2C',
+                            maroon: '#752738',
+                            'maroon-dark': '#5A1E2C',
+                            'maroon-light': '#912B40',
+                            gold: '#FEC452',
+                            'gold-dark': '#D97706',
+                            'gold-light': '#FFE59E',
+                            // Mappings for UB Theme on White Background
+                            orange: '#752738', // UB Maroon for prominent badges, borders, and accents
+                            amber: '#D97706',  // Warm Gold/Amber
+                            fire: '#5A1E2C',   // Deep UB Maroon
+                            cyan: '#752738',   // Mapped to UB Maroon
+                            blue: '#752738',   // Mapped to UB Maroon
+                            dark: '#FFFFFF',   // Clean White Background
+                            card: '#FFFFFF',   // White Cards
                         }
                     }
                 }
@@ -40,13 +47,13 @@
     </script>
     <style>
         body {
-            background-color: #0B0F19;
-            color: #F8FAFC;
+            background-color: #FFFFFF;
+            color: #0F172A;
             font-family: 'Inter', sans-serif;
             overflow-x: hidden;
         }
 
-        /* Ambient Glow Background */
+        /* Ambient Glow Background - Subtle UB accents on White */
         .ambient-bg {
             position: fixed;
             top: 0;
@@ -58,25 +65,27 @@
             overflow: hidden;
         }
 
-        .glow-orange {
+        .glow-orange,
+        .glow-maroon {
             position: absolute;
             top: -10%;
             right: -10%;
-            width: 50vw;
-            height: 50vw;
-            background: radial-gradient(circle, rgba(255, 107, 0, 0.15) 0%, rgba(11, 15, 25, 0) 70%);
-            filter: blur(80px);
+            width: 55vw;
+            height: 55vw;
+            background: radial-gradient(circle, rgba(117, 39, 56, 0.05) 0%, rgba(255, 255, 255, 0) 70%);
+            filter: blur(90px);
             animation: pulseGlow 8s ease-in-out infinite alternate;
         }
 
-        .glow-cyan {
+        .glow-cyan,
+        .glow-gold {
             position: absolute;
             bottom: -10%;
             left: -10%;
-            width: 50vw;
-            height: 50vw;
-            background: radial-gradient(circle, rgba(0, 180, 216, 0.15) 0%, rgba(11, 15, 25, 0) 70%);
-            filter: blur(80px);
+            width: 55vw;
+            height: 55vw;
+            background: radial-gradient(circle, rgba(254, 196, 82, 0.08) 0%, rgba(255, 255, 255, 0) 70%);
+            filter: blur(90px);
             animation: pulseGlow 10s ease-in-out infinite alternate-reverse;
         }
 
@@ -85,78 +94,45 @@
             100% { transform: scale(1.1) translate(20px, 20px); opacity: 1; }
         }
 
-        /* Ambient Floating Embers */
-        .ember {
-            position: absolute;
-            border-radius: 50%;
-            background: radial-gradient(circle, rgba(255, 158, 0, 0.8) 0%, rgba(255, 107, 0, 0) 70%);
-            pointer-events: none;
-            animation: floatEmber linear infinite;
-        }
-
-        @keyframes floatEmber {
-            0% {
-                transform: translateY(100vh) translateX(0) scale(0.5);
-                opacity: 0;
-            }
-            20% {
-                opacity: 0.8;
-            }
-            80% {
-                opacity: 0.6;
-            }
-            100% {
-                transform: translateY(-20vh) translateX(40px) scale(1.2);
-                opacity: 0;
-            }
-        }
-
-        /* Glassmorphism Card & Spotlight */
+        /* Glassmorphism Card on White */
         .glass-card {
-            background: rgba(21, 28, 44, 0.75);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+            background: #FFFFFF;
+            border: 1px solid #E2E8F0;
+            box-shadow: 0 10px 30px -5px rgba(117, 39, 56, 0.06), 0 4px 6px -2px rgba(0, 0, 0, 0.02);
             position: relative;
         }
 
-        .glass-card::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            border-radius: inherit;
-            background: radial-gradient(450px circle at var(--mouse-x, -999px) var(--mouse-y, -999px), rgba(255, 107, 0, 0.12), transparent 70%);
-            opacity: 0;
-            transition: opacity 0.4s ease;
-            pointer-events: none;
-            z-index: 1;
-        }
-
-        .glass-card:hover::before {
-            opacity: 1;
+        .glass-card:hover {
+            border-color: rgba(117, 39, 56, 0.35);
+            box-shadow: 0 20px 40px -10px rgba(117, 39, 56, 0.12);
         }
 
         .glass-card-hover:hover {
-            border-color: rgba(255, 107, 0, 0.4);
-            box-shadow: 0 10px 30px rgba(255, 107, 0, 0.15);
+            border-color: rgba(117, 39, 56, 0.5);
+            box-shadow: 0 15px 35px -5px rgba(117, 39, 56, 0.12);
         }
 
         /* Text Gradients */
         .text-gradient-fire {
-            background: linear-gradient(135deg, #FF6B00 0%, #FF9E00 50%, #FFC107 100%);
+            background: linear-gradient(135deg, #752738 0%, #B91C1C 40%, #D97706 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
 
         .text-gradient-cyan {
-            background: linear-gradient(135deg, #38BDF8 0%, #00B4D8 50%, #0284C7 100%);
+            background: linear-gradient(135deg, #752738 0%, #912B40 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
 
         .text-gradient-gold {
-            background: linear-gradient(135deg, #FDE047 0%, #EAB308 50%, #CA8A04 100%);
+            background: linear-gradient(135deg, #B45309 0%, #D97706 50%, #752738 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .text-gradient-maroon {
+            background: linear-gradient(135deg, #752738 0%, #912B40 50%, #B91C1C 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
@@ -167,16 +143,16 @@
         }
 
         ::-webkit-scrollbar-track {
-            background: #0B0F19;
+            background: #F1F5F9;
         }
 
         ::-webkit-scrollbar-thumb {
-            background: #1E293B;
+            background: #752738;
             border-radius: 4px;
         }
 
         ::-webkit-scrollbar-thumb:hover {
-            background: #FF6B00;
+            background: #5A1E2C;
         }
 
         /* =========================================
@@ -186,7 +162,7 @@
             position: fixed;
             inset: 0;
             z-index: 99999;
-            background: #030712;
+            background: #FFFFFF;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -202,48 +178,58 @@
             visibility: hidden;
         }
 
-        /* Socia Float Animation for Logo (Exact 3s easeInOut) */
-        .socia-logo-float {
-            animation: sociaFloat 3s ease-in-out infinite;
-        }
+        /* 4-Logo Float Animations (Gentle Wave) */
+        .socia-logo-float-1 { animation: sociaFloat 2.8s ease-in-out infinite 0s; }
+        .socia-logo-float-2 { animation: sociaFloat 2.8s ease-in-out infinite 0.15s; }
+        .socia-logo-float-3 { animation: sociaFloat 2.8s ease-in-out infinite 0.3s; }
+        .socia-logo-float-4 { animation: sociaFloat 2.8s ease-in-out infinite 0.45s; }
 
         @keyframes sociaFloat {
             0%, 100% {
                 transform: translateY(0px);
             }
             50% {
-                transform: translateY(-20px);
+                transform: translateY(-14px);
             }
         }
 
-        /* Socia Pulsing Ground Shadow (Exact scaleX 1->0.6, scaleY 1->0.4, opacity 0.15->0.05) */
+        /* Pulsing Ground Shadow */
         .socia-shadow-pulse {
-            animation: sociaShadow 3s ease-in-out infinite;
+            animation: sociaShadow 2.8s ease-in-out infinite;
         }
 
         @keyframes sociaShadow {
             0%, 100% {
                 transform: scaleX(1) scaleY(1);
-                opacity: 0.15;
+                opacity: 0.25;
             }
             50% {
-                transform: scaleX(0.6) scaleY(0.4);
-                opacity: 0.05;
+                transform: scaleX(0.7) scaleY(0.45);
+                opacity: 0.08;
             }
         }
 
-        /* Pulsing Text like Socia.ph (Exact 2s easeInOut, opacity 0.3->0.6) */
-        .socia-pulse-text {
-            animation: sociaTextPulse 2s ease-in-out infinite;
+        /* Animated Loading Bar */
+        .preloader-bar-anim {
+            width: 40%;
+            animation: preloaderBarSlide 1.4s ease-in-out infinite;
         }
 
-        @keyframes sociaTextPulse {
-            0%, 100% {
-                opacity: 0.3;
-            }
-            50% {
-                opacity: 0.6;
-            }
+        @keyframes preloaderBarSlide {
+            0% { transform: translateX(-100%); width: 25%; }
+            50% { transform: translateX(100%); width: 55%; }
+            100% { transform: translateX(280%); width: 25%; }
+        }
+
+        /* Loading Dots Animation */
+        @keyframes dotsPulse {
+            0%, 20% { opacity: 0; }
+            40% { opacity: 0.5; }
+            60%, 100% { opacity: 1; }
+        }
+        .loading-dots {
+            display: inline-block;
+            animation: dotsPulse 1.4s infinite;
         }
 
         /* =========================================
@@ -283,57 +269,104 @@
     @yield('styles')
 </head>
 
-<body class="min-h-screen flex flex-col relative antialiased selection:bg-brand-orange selection:text-white">
-    <!-- Top Scroll Progress Indicator Bar -->
+<body class="min-h-screen flex flex-col relative antialiased selection:bg-[#752738] selection:text-[#FEC452]">
+    <!-- Top Scroll Progress Indicator Bar in UB Maroon & Gold -->
     <div id="scroll-progress-bar"
-        class="fixed top-0 left-0 h-[3.5px] bg-gradient-to-r from-brand-orange via-brand-amber to-brand-cyan z-[99990] transition-all duration-150 shadow-[0_0_12px_rgba(255,107,0,0.8)]"
+        class="fixed top-0 left-0 h-[3.5px] bg-gradient-to-r from-[#752738] via-[#FEC452] to-[#752738] z-[99990] transition-all duration-150 shadow-[0_0_12px_rgba(254,196,82,0.6)]"
         style="width: 0%;"></div>
 
-    <!-- EXACT SOCIA.PH FLOATING DALUYAB LOGO PRELOADER -->
+    <!-- 4-LOGO INSTITUTIONAL DALUYAB PRELOADER -->
     <div id="site-preloader">
-        <div class="flex flex-col items-center justify-center w-full h-full min-h-[300px] py-8">
-            <div class="relative flex flex-col items-center">
-                <!-- Floating Emblem (Exact Socia.ph duration & animation) -->
-                <div class="socia-logo-float relative z-10 flex items-center justify-center">
-                    <img src="{{ asset('images/nfs-logo-about.jpg') }}" alt="DALUYAB Logo"
-                        class="w-24 h-24 sm:w-28 sm:h-28 object-contain rounded-2xl drop-shadow-[0_12px_24px_rgba(255,107,0,0.3)] transition-all duration-300">
+        <div class="flex flex-col items-center justify-center w-full h-full min-h-[320px] px-4 py-8">
+            <div class="relative flex flex-col items-center max-w-xl w-full">
+                
+                <!-- 4 Partner Logos Row with Floating Animation Wave -->
+                <div class="relative z-10 flex items-center justify-center gap-2.5 sm:gap-4 md:gap-5 mb-3">
+                    <!-- Logo 1: UB 80th Anniversary -->
+                    <div class="socia-logo-float-1 flex flex-col items-center">
+                        <div class="w-14 h-14 sm:w-20 sm:h-20 md:w-24 md:h-24 rounded-2xl sm:rounded-3xl bg-white p-1 border-2 border-slate-200 shadow-xl shadow-[#752738]/10 overflow-hidden flex items-center justify-center">
+                            <img src="{{ asset('images/ub-2-logo.jpg') }}" alt="UB 80th Anniversary"
+                                class="w-full h-full object-cover rounded-xl sm:rounded-2xl">
+                        </div>
+                    </div>
+
+                    <!-- Logo 2: University of Batangas Official -->
+                    <div class="socia-logo-float-2 flex flex-col items-center">
+                        <div class="w-14 h-14 sm:w-20 sm:h-20 md:w-24 md:h-24 rounded-2xl sm:rounded-3xl bg-white p-1 border-2 border-slate-200 shadow-xl shadow-[#752738]/10 overflow-hidden flex items-center justify-center">
+                            <img src="{{ asset('images/ub-logo.jpg') }}" alt="University of Batangas"
+                                class="w-full h-full object-cover rounded-xl sm:rounded-2xl">
+                        </div>
+                    </div>
+
+                    <!-- Logo 3: College of Management and Tourism (CMT) -->
+                    <div class="socia-logo-float-3 flex flex-col items-center">
+                        <div class="w-14 h-14 sm:w-20 sm:h-20 md:w-24 md:h-24 rounded-2xl sm:rounded-3xl bg-white p-1 border-2 border-slate-200 shadow-xl shadow-[#752738]/10 overflow-hidden flex items-center justify-center">
+                            <img src="{{ asset('images/cmt-logo-about.jpg') }}" alt="UBLC CMT"
+                                class="w-full h-full object-cover rounded-xl sm:rounded-2xl">
+                        </div>
+                    </div>
+
+                    <!-- Logo 4: Daluyab / 17th NFS -->
+                    <div class="socia-logo-float-4 flex flex-col items-center">
+                        <div class="w-14 h-14 sm:w-20 sm:h-20 md:w-24 md:h-24 rounded-2xl sm:rounded-3xl bg-white p-1 border-2 border-[#752738]/60 shadow-xl shadow-[#752738]/20 overflow-hidden flex items-center justify-center">
+                            <img src="{{ asset('images/nfs-logo-about.jpg') }}" alt="DALUYAB NFS"
+                                class="w-full h-full object-cover rounded-xl sm:rounded-2xl">
+                        </div>
+                    </div>
                 </div>
 
-                <!-- Ground Shadow positioned directly underneath (Exact Socia.ph) -->
-                <div class="absolute bottom-[-25px] flex items-center justify-center">
-                    <div class="socia-shadow-pulse h-4 w-16 sm:w-20 rounded-[100%] blur-sm bg-white"></div>
+                <!-- Ground Shadow Pulse underneath the 4 logos -->
+                <div class="socia-shadow-pulse h-4 w-60 sm:w-80 md:w-96 rounded-[100%] blur-md bg-[#752738]/20 mb-6"></div>
+
+                <!-- Title & Event Branding -->
+                <div class="text-center space-y-1 mb-5">
+                    <div class="font-heading font-extrabold text-xs sm:text-sm md:text-base tracking-wider text-slate-900 uppercase">
+                        17th National Food Showdown
+                    </div>
+                    <div class="text-[10px] sm:text-xs font-bold text-[#752738] tracking-widest uppercase">
+                        DALUYAB 2026 • UNIVERSITY OF BATANGAS LIPA CITY
+                    </div>
                 </div>
 
-                <!-- Monospace Tracking Text (Exact Socia.ph) -->
-                <div class="absolute bottom-[-60px] whitespace-nowrap">
-                    <span class="socia-pulse-text text-[10px] sm:text-xs font-medium tracking-[0.2em] uppercase text-white/40 font-mono">
-                        loading...
-                    </span>
+                <!-- High-Contrast Highly Visible Loading Text & Bar -->
+                <div class="flex flex-col items-center gap-2.5">
+                    <div class="flex items-center gap-2">
+                        <span class="w-2.5 h-2.5 rounded-full bg-[#752738] animate-ping"></span>
+                        <span class="text-xs sm:text-sm font-black tracking-[0.25em] uppercase text-[#752738] font-mono">
+                            LOADING<span class="loading-dots">...</span>
+                        </span>
+                    </div>
+
+                    <!-- Animated Loading Bar in UB Maroon & Gold -->
+                    <div class="w-44 sm:w-60 h-2 bg-slate-100 rounded-full overflow-hidden border border-slate-200 shadow-inner">
+                        <div class="h-full bg-gradient-to-r from-[#752738] via-[#FEC452] to-[#752738] rounded-full preloader-bar-anim"></div>
+                    </div>
                 </div>
+
             </div>
         </div>
     </div>
 
     <!-- Ambient Glow background -->
     <div class="ambient-bg" id="ambient-container">
-        <div class="glow-orange"></div>
-        <div class="glow-cyan"></div>
+        <div class="glow-maroon"></div>
+        <div class="glow-gold"></div>
     </div>
 
     <!-- Navigation Header -->
-    <header class="sticky top-0 z-50 bg-brand-dark/90 backdrop-blur-xl border-b border-white/10 shadow-xl">
+    <header class="sticky top-0 z-50 bg-white/95 backdrop-blur-xl border-b border-slate-200 shadow-sm">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex items-center justify-between h-20 gap-2 sm:gap-4">
                 <!-- Logo & Brand -->
                 <a href="{{ route('landing') }}" class="flex items-center gap-2.5 sm:gap-3 group shrink min-w-0">
                     <img src="{{ asset('images/logo-top-left.jpg') }}" alt="NFS 2026 Logo"
-                        class="h-10 sm:h-12 w-auto max-h-12 rounded-xl shadow-md border border-white/20 object-contain shrink-0 group-hover:scale-105 transition-transform duration-300">
+                        class="h-10 sm:h-12 w-auto max-h-12 rounded-xl shadow-sm border border-slate-200 object-contain shrink-0 group-hover:scale-105 transition-transform duration-300">
                     <div class="min-w-0 flex flex-col justify-center">
                         <span
-                            class="font-heading font-extrabold text-xs min-[400px]:text-sm sm:text-base md:text-lg tracking-wider text-white leading-tight truncate">17th
+                            class="font-heading font-extrabold text-xs min-[400px]:text-sm sm:text-base md:text-lg tracking-wider text-slate-900 leading-tight truncate">17th
                             NATIONAL FOOD SHOWDOWN</span>
                         <span
-                            class="text-[10px] sm:text-xs font-semibold text-brand-orange tracking-widest leading-none mt-0.5 truncate">DALUYAB
+                            class="text-[10px] sm:text-xs font-bold text-[#752738] tracking-widest leading-none mt-0.5 truncate">DALUYAB
                             2026 • UBLC</span>
                     </div>
                 </a>
@@ -342,22 +375,22 @@
                 <nav id="desktop-nav"
                     class="hidden lg:flex items-center gap-7 text-xs font-bold tracking-wider uppercase">
                     <a href="{{ route('landing') }}#hero" data-section="hero"
-                        class="nav-link text-slate-300 hover:text-brand-orange transition-all py-1.5 border-b-2 border-transparent">Home</a>
+                        class="nav-link text-slate-600 hover:text-[#752738] transition-all py-1.5 border-b-2 border-transparent">Home</a>
                     <a href="{{ route('landing') }}#partners" data-section="partners"
-                        class="nav-link text-slate-300 hover:text-brand-orange transition-all py-1.5 border-b-2 border-transparent">Partners</a>
+                        class="nav-link text-slate-600 hover:text-[#752738] transition-all py-1.5 border-b-2 border-transparent">Partners</a>
                     <a href="{{ route('landing') }}#about" data-section="about"
-                        class="nav-link text-slate-300 hover:text-brand-orange transition-all py-1.5 border-b-2 border-transparent">About</a>
+                        class="nav-link text-slate-600 hover:text-[#752738] transition-all py-1.5 border-b-2 border-transparent">About</a>
                     <a href="{{ route('landing') }}#highlights" data-section="highlights"
-                        class="nav-link text-slate-300 hover:text-brand-orange transition-all py-1.5 border-b-2 border-transparent">Highlights</a>
+                        class="nav-link text-slate-600 hover:text-[#752738] transition-all py-1.5 border-b-2 border-transparent">Highlights</a>
                     <a href="{{ route('landing') }}#pricing" data-section="pricing"
-                        class="nav-link text-slate-300 hover:text-brand-orange transition-all py-1.5 border-b-2 border-transparent">Pricing</a>
+                        class="nav-link text-slate-600 hover:text-[#752738] transition-all py-1.5 border-b-2 border-transparent">Pricing</a>
                 </nav>
 
                 <!-- Action Buttons: Track Status & Get Ticket + Mobile Hamburger Button -->
                 <div class="flex items-center gap-2 sm:gap-3 shrink-0">
                     <a href="{{ route('track') }}"
-                        class="hidden sm:inline-flex items-center gap-1.5 px-2.5 py-2 sm:px-4 sm:py-2 text-[11px] sm:text-xs font-bold text-slate-200 bg-slate-800/80 hover:bg-slate-700 border border-slate-700 rounded-xl transition-all whitespace-nowrap">
-                        <svg class="w-3.5 h-3.5 text-brand-cyan shrink-0" fill="none" stroke="currentColor"
+                        class="hidden sm:inline-flex items-center gap-1.5 px-2.5 py-2 sm:px-4 sm:py-2 text-[11px] sm:text-xs font-bold text-slate-700 bg-slate-100 hover:bg-[#752738]/10 border border-slate-200 hover:border-[#752738]/40 rounded-xl transition-all whitespace-nowrap">
+                        <svg class="w-3.5 h-3.5 text-[#752738] shrink-0" fill="none" stroke="currentColor"
                             viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                 d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
@@ -365,13 +398,13 @@
                         <span>Track Status</span>
                     </a>
                     <a href="{{ route('register') }}"
-                        class="px-3 py-2 sm:px-5 sm:py-2 text-[11px] sm:text-xs font-extrabold uppercase tracking-wider text-white bg-gradient-to-r from-brand-orange to-brand-fire hover:from-amber-500 hover:to-brand-orange rounded-xl shadow-lg shadow-brand-orange/20 transition-all hover:scale-105 active:scale-95 whitespace-nowrap">
+                        class="px-3 py-2 sm:px-5 sm:py-2 text-[11px] sm:text-xs font-extrabold uppercase tracking-wider text-white bg-gradient-to-r from-[#752738] to-[#5A1E2C] hover:from-[#912B40] hover:to-[#752738] border border-[#FEC452]/40 rounded-xl shadow-md shadow-[#752738]/20 transition-all hover:scale-105 active:scale-95 whitespace-nowrap">
                         Get Ticket
                     </a>
 
                     <!-- Mobile Menu Toggle Button -->
                     <button id="mobile-menu-btn" type="button" aria-label="Toggle Navigation Menu"
-                        class="lg:hidden p-2 sm:p-2.5 rounded-xl bg-slate-800/90 border border-slate-700 text-slate-300 hover:text-white hover:border-brand-orange transition-all">
+                        class="lg:hidden p-2 sm:p-2.5 rounded-xl bg-slate-100 border border-slate-200 text-slate-700 hover:text-[#752738] hover:border-[#752738] transition-all">
                         <svg id="hamburger-icon" class="w-5 h-5 block" fill="none" stroke="currentColor"
                             viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -389,39 +422,39 @@
 
         <!-- Mobile Responsive Dropdown Menu -->
         <div id="mobile-menu"
-            class="hidden lg:hidden bg-brand-dark/95 border-t border-white/10 backdrop-blur-2xl shadow-2xl transition-all duration-300">
+            class="hidden lg:hidden bg-white/95 border-t border-slate-200 backdrop-blur-2xl shadow-xl transition-all duration-300">
             <div class="max-w-7xl mx-auto px-4 py-4 space-y-1.5">
                 <a href="{{ route('landing') }}#hero" data-section="hero"
-                    class="mobile-nav-link flex items-center justify-between px-4 py-3 rounded-2xl text-xs font-bold uppercase tracking-wider text-slate-300 hover:text-white hover:bg-slate-800/80 transition-all">
+                    class="mobile-nav-link flex items-center justify-between px-4 py-3 rounded-2xl text-xs font-bold uppercase tracking-wider text-slate-700 hover:text-[#752738] hover:bg-slate-50 transition-all">
                     <span>Home</span>
-                    <span class="active-dot w-2 h-2 rounded-full bg-brand-orange hidden"></span>
+                    <span class="active-dot w-2 h-2 rounded-full bg-[#752738] hidden"></span>
                 </a>
                 <a href="{{ route('landing') }}#partners" data-section="partners"
-                    class="mobile-nav-link flex items-center justify-between px-4 py-3 rounded-2xl text-xs font-bold uppercase tracking-wider text-slate-300 hover:text-white hover:bg-slate-800/80 transition-all">
+                    class="mobile-nav-link flex items-center justify-between px-4 py-3 rounded-2xl text-xs font-bold uppercase tracking-wider text-slate-700 hover:text-[#752738] hover:bg-slate-50 transition-all">
                     <span>Partners</span>
-                    <span class="active-dot w-2 h-2 rounded-full bg-brand-orange hidden"></span>
+                    <span class="active-dot w-2 h-2 rounded-full bg-[#752738] hidden"></span>
                 </a>
                 <a href="{{ route('landing') }}#about" data-section="about"
-                    class="mobile-nav-link flex items-center justify-between px-4 py-3 rounded-2xl text-xs font-bold uppercase tracking-wider text-slate-300 hover:text-white hover:bg-slate-800/80 transition-all">
+                    class="mobile-nav-link flex items-center justify-between px-4 py-3 rounded-2xl text-xs font-bold uppercase tracking-wider text-slate-700 hover:text-[#752738] hover:bg-slate-50 transition-all">
                     <span>About</span>
-                    <span class="active-dot w-2 h-2 rounded-full bg-brand-orange hidden"></span>
+                    <span class="active-dot w-2 h-2 rounded-full bg-[#752738] hidden"></span>
                 </a>
                 <a href="{{ route('landing') }}#highlights" data-section="highlights"
-                    class="mobile-nav-link flex items-center justify-between px-4 py-3 rounded-2xl text-xs font-bold uppercase tracking-wider text-slate-300 hover:text-white hover:bg-slate-800/80 transition-all">
+                    class="mobile-nav-link flex items-center justify-between px-4 py-3 rounded-2xl text-xs font-bold uppercase tracking-wider text-slate-700 hover:text-[#752738] hover:bg-slate-50 transition-all">
                     <span>Highlights</span>
-                    <span class="active-dot w-2 h-2 rounded-full bg-brand-orange hidden"></span>
+                    <span class="active-dot w-2 h-2 rounded-full bg-[#752738] hidden"></span>
                 </a>
                 <a href="{{ route('landing') }}#pricing" data-section="pricing"
-                    class="mobile-nav-link flex items-center justify-between px-4 py-3 rounded-2xl text-xs font-bold uppercase tracking-wider text-slate-300 hover:text-white hover:bg-slate-800/80 transition-all">
+                    class="mobile-nav-link flex items-center justify-between px-4 py-3 rounded-2xl text-xs font-bold uppercase tracking-wider text-slate-700 hover:text-[#752738] hover:bg-slate-50 transition-all">
                     <span>Pricing</span>
-                    <span class="active-dot w-2 h-2 rounded-full bg-brand-orange hidden"></span>
+                    <span class="active-dot w-2 h-2 rounded-full bg-[#752738] hidden"></span>
                 </a>
 
                 <!-- Mobile Action Links -->
-                <div class="pt-3 mt-3 border-t border-white/10 flex flex-col gap-2.5">
+                <div class="pt-3 mt-3 border-t border-slate-200 flex flex-col gap-2.5">
                     <a href="{{ route('track') }}"
-                        class="w-full flex items-center justify-center gap-2 py-3 px-4 text-xs font-bold text-slate-200 bg-slate-800/90 border border-slate-700 rounded-xl hover:bg-slate-700 transition-all">
-                        <svg class="w-3.5 h-3.5 text-brand-cyan" fill="none" stroke="currentColor"
+                        class="w-full flex items-center justify-center gap-2 py-3 px-4 text-xs font-bold text-slate-700 bg-slate-100 border border-slate-200 rounded-xl hover:bg-slate-200 transition-all">
+                        <svg class="w-3.5 h-3.5 text-[#752738]" fill="none" stroke="currentColor"
                             viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                 d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
@@ -438,68 +471,68 @@
         class="fixed top-5 right-5 z-[9999] flex flex-col gap-3 max-w-sm w-full pointer-events-none px-4 sm:px-0">
         @if (session('success'))
             <div
-                class="toast-item pointer-events-auto bg-slate-900/95 border-l-4 border-emerald-500 text-white p-4 rounded-2xl shadow-2xl backdrop-blur-xl border border-slate-700/80 transform transition-all duration-500 translate-x-0 flex items-start justify-between gap-3">
+                class="toast-item pointer-events-auto bg-white border-l-4 border-emerald-500 text-slate-800 p-4 rounded-2xl shadow-2xl backdrop-blur-xl border border-slate-200 transform transition-all duration-500 translate-x-0 flex items-start justify-between gap-3">
                 <div class="flex items-start gap-3">
                     <div
-                        class="w-8 h-8 rounded-full bg-emerald-500/20 text-emerald-400 flex items-center justify-center shrink-0 mt-0.5">
+                        class="w-8 h-8 rounded-full bg-emerald-50 text-emerald-600 flex items-center justify-center shrink-0 mt-0.5">
                         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"
                                 d="M5 13l4 4L19 7" />
                         </svg>
                     </div>
                     <div>
-                        <div class="text-xs font-bold text-emerald-400 uppercase tracking-wider">Success</div>
-                        <div class="text-xs text-slate-200 mt-0.5 leading-relaxed font-medium">
+                        <div class="text-xs font-bold text-emerald-600 uppercase tracking-wider">Success</div>
+                        <div class="text-xs text-slate-700 mt-0.5 leading-relaxed font-medium">
                             {{ session('success') }}
                         </div>
                     </div>
                 </div>
                 <button onclick="dismissToast(this.parentElement)"
-                    class="text-slate-400 hover:text-white text-lg font-bold shrink-0 leading-none">&times;</button>
+                    class="text-slate-400 hover:text-slate-700 text-lg font-bold shrink-0 leading-none">&times;</button>
             </div>
         @endif
 
         @if (session('error'))
             <div
-                class="toast-item pointer-events-auto bg-slate-900/95 border-l-4 border-rose-500 text-white p-4 rounded-2xl shadow-2xl backdrop-blur-xl border border-slate-700/80 transform transition-all duration-500 translate-x-0 flex items-start justify-between gap-3">
+                class="toast-item pointer-events-auto bg-white border-l-4 border-rose-500 text-slate-800 p-4 rounded-2xl shadow-2xl backdrop-blur-xl border border-slate-200 transform transition-all duration-500 translate-x-0 flex items-start justify-between gap-3">
                 <div class="flex items-start gap-3">
                     <div
-                        class="w-8 h-8 rounded-full bg-rose-500/20 text-rose-400 flex items-center justify-center shrink-0 mt-0.5">
+                        class="w-8 h-8 rounded-full bg-rose-50 text-rose-600 flex items-center justify-center shrink-0 mt-0.5">
                         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"
                                 d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                         </svg>
                     </div>
                     <div>
-                        <div class="text-xs font-bold text-rose-400 uppercase tracking-wider">Notice</div>
-                        <div class="text-xs text-slate-200 mt-0.5 leading-relaxed font-medium">{{ session('error') }}
+                        <div class="text-xs font-bold text-rose-600 uppercase tracking-wider">Notice</div>
+                        <div class="text-xs text-slate-700 mt-0.5 leading-relaxed font-medium">{{ session('error') }}
                         </div>
                     </div>
                 </div>
                 <button onclick="dismissToast(this.parentElement)"
-                    class="text-slate-400 hover:text-white text-lg font-bold shrink-0 leading-none">&times;</button>
+                    class="text-slate-400 hover:text-slate-700 text-lg font-bold shrink-0 leading-none">&times;</button>
             </div>
         @endif
 
         @if (session('info'))
             <div
-                class="toast-item pointer-events-auto bg-slate-900/95 border-l-4 border-brand-cyan text-white p-4 rounded-2xl shadow-2xl backdrop-blur-xl border border-slate-700/80 transform transition-all duration-500 translate-x-0 flex items-start justify-between gap-3">
+                class="toast-item pointer-events-auto bg-white border-l-4 border-[#752738] text-slate-800 p-4 rounded-2xl shadow-2xl backdrop-blur-xl border border-slate-200 transform transition-all duration-500 translate-x-0 flex items-start justify-between gap-3">
                 <div class="flex items-start gap-3">
                     <div
-                        class="w-8 h-8 rounded-full bg-brand-cyan/20 text-brand-cyan flex items-center justify-center shrink-0 mt-0.5">
+                        class="w-8 h-8 rounded-full bg-[#752738]/10 text-[#752738] flex items-center justify-center shrink-0 mt-0.5">
                         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"
                                 d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                         </svg>
                     </div>
                     <div>
-                        <div class="text-xs font-bold text-brand-cyan uppercase tracking-wider">Information</div>
-                        <div class="text-xs text-slate-200 mt-0.5 leading-relaxed font-medium">{{ session('info') }}
+                        <div class="text-xs font-bold text-[#752738] uppercase tracking-wider">Information</div>
+                        <div class="text-xs text-slate-700 mt-0.5 leading-relaxed font-medium">{{ session('info') }}
                         </div>
                     </div>
                 </div>
                 <button onclick="dismissToast(this.parentElement)"
-                    class="text-slate-400 hover:text-white text-lg font-bold shrink-0 leading-none">&times;</button>
+                    class="text-slate-400 hover:text-slate-700 text-lg font-bold shrink-0 leading-none">&times;</button>
             </div>
         @endif
     </div>
@@ -510,25 +543,25 @@
     </main>
 
     <!-- Footer -->
-    <footer class="relative z-10 border-t border-white/10 bg-brand-dark/95 mt-20">
+    <footer class="relative z-10 border-t border-slate-200 bg-slate-50 mt-20">
         <div class="max-w-7xl mx-auto px-4 py-12 sm:px-6 lg:px-8">
             <div class="flex flex-col md:flex-row items-center justify-between gap-8 text-center md:text-left">
                 <!-- Brand & Subtitle -->
                 <div class="flex flex-col sm:flex-row items-center justify-center md:justify-start gap-4">
                     <img src="{{ asset('images/logo-top-left.jpg') }}" alt="NFS Logo"
-                        class="h-12 w-auto max-h-12 rounded-xl border border-white/15 object-contain shadow-lg">
+                        class="h-12 w-auto max-h-12 rounded-xl border border-slate-200 object-contain shadow-sm">
                     <div>
-                        <div class="font-heading font-extrabold text-sm sm:text-base text-white tracking-wide">
+                        <div class="font-heading font-extrabold text-sm sm:text-base text-slate-900 tracking-wide">
                             17th NATIONAL FOOD SHOWDOWN 2026
                         </div>
-                        <div class="text-xs text-brand-orange font-semibold">
-                            DALUYAB
+                        <div class="text-xs text-[#752738] font-bold">
+                            DALUYAB • UNIVERSITY OF BATANGAS LIPA CITY
                         </div>
                     </div>
                 </div>
 
                 <!-- Copyright -->
-                <div class="text-center md:text-right text-xs text-slate-400">
+                <div class="text-center md:text-right text-xs text-slate-500">
                     &copy; 2026 National Food Showdown. All Rights Reserved.<br>
                 </div>
             </div>
@@ -552,14 +585,14 @@
             const borderColors = {
                 success: 'border-emerald-500',
                 error: 'border-rose-500',
-                info: 'border-brand-cyan',
+                info: 'border-[#FEC452]',
                 warning: 'border-amber-500'
             };
 
             const textColors = {
                 success: 'text-emerald-400',
                 error: 'text-rose-400',
-                info: 'text-brand-cyan',
+                info: 'text-[#FEC452]',
                 warning: 'text-amber-400'
             };
 
@@ -646,25 +679,31 @@
             }
 
             // =========================================
-            // SOCIA.PH PRELOADER CONTROLLER
+            // 4-LOGO PRELOADER CONTROLLER
             // =========================================
             const preloader = document.getElementById('site-preloader');
             if (preloader) {
-                const hidePreloader = () => {
+                const minDisplayTime = 1800; // Guaranteed minimum display time for smooth experience
+                const startTime = Date.now();
+
+                function hidePreloader() {
+                    const elapsed = Date.now() - startTime;
+                    const remaining = Math.max(0, minDisplayTime - elapsed);
+
                     setTimeout(() => {
                         preloader.classList.add('preloader-hidden');
                         setTimeout(() => {
                             if (preloader.parentNode) preloader.parentNode.removeChild(preloader);
                         }, 700);
-                    }, 900);
-                };
+                    }, remaining);
+                }
 
                 if (document.readyState === 'complete') {
                     hidePreloader();
                 } else {
                     window.addEventListener('load', hidePreloader);
                     // Guaranteed fallback timeout
-                    setTimeout(hidePreloader, 2200);
+                    setTimeout(hidePreloader, 3500);
                 }
             }
 

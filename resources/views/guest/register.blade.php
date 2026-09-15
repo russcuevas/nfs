@@ -7,46 +7,46 @@
 
     <!-- Page Header -->
     <div class="text-center mb-10">
-        <h1 class="font-heading text-3xl sm:text-5xl font-extrabold text-white mb-3">Event Registration</h1>
-        <p class="text-slate-300 text-sm max-w-xl mx-auto">Fill in your details below to register and secure your official ticket for National Food Showdown 2026.</p>
+        <h1 class="font-heading text-3xl sm:text-5xl font-extrabold text-slate-900 mb-3">Event Registration</h1>
+        <p class="text-slate-600 text-sm max-w-xl mx-auto">Fill in your details below to register and secure your official ticket for National Food Showdown 2026.</p>
     </div>
 
-    <!-- Stepper Indicator -->
+    <!-- Stepper Indicator in UB Maroon & Gold -->
     <div class="mb-10 max-w-2xl mx-auto">
         <div class="flex items-center justify-between relative">
-            <div class="w-full absolute top-1/2 left-0 h-1 bg-slate-800 -z-0"></div>
-            <div id="step-line-progress" class="absolute top-1/2 left-0 h-1 bg-gradient-to-r from-brand-orange to-brand-cyan transition-all duration-500" style="width: 0%;"></div>
+            <div class="w-full absolute top-1/2 left-0 h-1 bg-slate-200 -z-0"></div>
+            <div id="step-line-progress" class="absolute top-1/2 left-0 h-1 bg-gradient-to-r from-[#752738] via-[#FEC452] to-[#752738] transition-all duration-500" style="width: 0%;"></div>
 
             <!-- Step 1 Circle -->
-            <div id="step-badge-1" class="relative z-10 w-10 h-10 rounded-full bg-brand-orange text-white font-extrabold flex items-center justify-center text-sm shadow-lg ring-4 ring-brand-dark transition-all">
+            <div id="step-badge-1" class="relative z-10 w-10 h-10 rounded-full bg-[#752738] text-white border-2 border-[#FEC452] font-extrabold flex items-center justify-center text-sm shadow-md ring-4 ring-white transition-all">
                 1
             </div>
 
             <!-- Step 2 Circle -->
-            <div id="step-badge-2" class="relative z-10 w-10 h-10 rounded-full bg-slate-800 text-slate-400 font-extrabold flex items-center justify-center text-sm ring-4 ring-brand-dark transition-all">
+            <div id="step-badge-2" class="relative z-10 w-10 h-10 rounded-full bg-slate-200 text-slate-500 font-extrabold flex items-center justify-center text-sm ring-4 ring-white transition-all">
                 2
             </div>
 
             <!-- Step 3 Circle -->
-            <div id="step-badge-3" class="relative z-10 w-10 h-10 rounded-full bg-slate-800 text-slate-400 font-extrabold flex items-center justify-center text-sm ring-4 ring-brand-dark transition-all">
+            <div id="step-badge-3" class="relative z-10 w-10 h-10 rounded-full bg-slate-200 text-slate-500 font-extrabold flex items-center justify-center text-sm ring-4 ring-white transition-all">
                 3
             </div>
         </div>
         
-        <div class="flex justify-between text-[11px] font-bold uppercase tracking-wider text-slate-400 mt-3 px-1">
-            <span id="step-text-1" class="text-brand-orange">1. Details</span>
+        <div class="flex justify-between text-[11px] font-bold uppercase tracking-wider text-slate-500 mt-3 px-1">
+            <span id="step-text-1" class="text-[#752738] font-extrabold">1. Details</span>
             <span id="step-text-2">2. Ticket Selection</span>
             <span id="step-text-3">3. Payment</span>
         </div>
     </div>
 
     <!-- Main Form Container -->
-    <form id="registration-form" action="{{ route('register.store') }}" method="POST" enctype="multipart/form-data" class="glass-card rounded-3xl p-6 sm:p-10">
+    <form id="registration-form" action="{{ route('register.store') }}" method="POST" enctype="multipart/form-data" class="glass-card rounded-3xl p-6 sm:p-10 border border-slate-200 shadow-xl">
         @csrf
 
         @if ($errors->any())
-            <div class="mb-8 p-4 bg-rose-950/80 border border-rose-500/60 rounded-2xl text-rose-200 text-xs space-y-1">
-                <div class="font-bold text-rose-300">Please correct the following errors:</div>
+            <div class="mb-8 p-4 bg-rose-50 border border-rose-200 rounded-2xl text-rose-800 text-xs space-y-1">
+                <div class="font-bold text-rose-900">Please correct the following errors:</div>
                 <ul class="list-disc list-inside space-y-1">
                     @foreach ($errors->all() as $error)
                         <li>{{ $error }}</li>
@@ -57,33 +57,33 @@
 
         <!-- ==================== STEP 1: DETAILS ==================== -->
         <div id="step-1" class="step-container space-y-8">
-            <div class="border-b border-white/10 pb-4">
-                <h2 class="font-heading text-xl font-extrabold text-white flex items-center gap-2">
-                    <span class="w-2 h-6 bg-brand-orange rounded-full"></span>
+            <div class="border-b border-slate-200 pb-4">
+                <h2 class="font-heading text-xl font-extrabold text-slate-900 flex items-center gap-2">
+                    <span class="w-2 h-6 bg-[#752738] rounded-full"></span>
                     Step 1: Participant Details
                 </h2>
-                <p class="text-xs text-slate-400 mt-1">Select your registration category and provide basic information.</p>
+                <p class="text-xs text-slate-500 mt-1">Select your registration category and provide basic information.</p>
             </div>
 
             <!-- Registration Type Selector Card -->
             <div>
-                <label class="block text-xs font-bold uppercase tracking-wider text-slate-300 mb-3">Registration Category *</label>
+                <label class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-3">Registration Category *</label>
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <!-- Contestant Option -->
-                    <label id="card-type-contestant" class="cursor-pointer border-2 border-brand-orange bg-brand-orange/10 rounded-2xl p-5 flex items-start gap-4 transition-all">
-                        <input type="radio" name="registration_type" value="contestant" class="mt-1 accent-brand-orange" {{ old('registration_type', $type) === 'contestant' ? 'checked' : '' }} onchange="switchRegistrationType('contestant')">
+                    <label id="card-type-contestant" class="cursor-pointer border-2 border-[#752738] bg-[#752738]/5 rounded-2xl p-5 flex items-start gap-4 transition-all shadow-sm">
+                        <input type="radio" name="registration_type" value="contestant" class="mt-1 accent-[#752738]" {{ old('registration_type', $type) === 'contestant' ? 'checked' : '' }} onchange="switchRegistrationType('contestant')">
                         <div>
-                            <span class="font-heading font-extrabold text-base text-white block">Contestant</span>
-                            <span class="text-xs text-slate-300 leading-relaxed block mt-1">Participating in culinary competitions & judging rounds.</span>
+                            <span class="font-heading font-extrabold text-base text-slate-900 block">Contestant</span>
+                            <span class="text-xs text-slate-600 leading-relaxed block mt-1">Participating in culinary competitions & judging rounds.</span>
                         </div>
                     </label>
 
                     <!-- Guest/Watcher Option -->
-                    <label id="card-type-guest" class="cursor-pointer border-2 border-slate-700 bg-slate-900/50 rounded-2xl p-5 flex items-start gap-4 transition-all">
-                        <input type="radio" name="registration_type" value="guest" class="mt-1 accent-brand-orange" {{ old('registration_type', $type) === 'guest' ? 'checked' : '' }} onchange="switchRegistrationType('guest')">
+                    <label id="card-type-guest" class="cursor-pointer border-2 border-slate-200 bg-slate-50 hover:bg-slate-100 rounded-2xl p-5 flex items-start gap-4 transition-all">
+                        <input type="radio" name="registration_type" value="guest" class="mt-1 accent-[#752738]" {{ old('registration_type', $type) === 'guest' ? 'checked' : '' }} onchange="switchRegistrationType('guest')">
                         <div>
-                            <span class="font-heading font-extrabold text-base text-white block">Guest / Watcher</span>
-                            <span class="text-xs text-slate-300 leading-relaxed block mt-1">Attending as audience, spectator, or event visitor.</span>
+                            <span class="font-heading font-extrabold text-base text-slate-800 block">Guest / Watcher</span>
+                            <span class="text-xs text-slate-600 leading-relaxed block mt-1">Attending as audience, spectator, or event visitor.</span>
                         </div>
                     </label>
                 </div>
@@ -93,39 +93,39 @@
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
                 <!-- Full Name -->
                 <div class="sm:col-span-2">
-                    <label for="name" class="block text-xs font-bold uppercase tracking-wider text-slate-300 mb-2">Full Name *</label>
-                    <input type="text" id="name" name="name" value="{{ old('name') }}" placeholder="e.g. Juan Dela Cruz" required class="w-full bg-slate-900/90 border border-slate-700 rounded-xl px-4 py-3.5 text-sm text-white placeholder-slate-500 focus:outline-none focus:border-brand-orange transition-all">
+                    <label for="name" class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-2">Full Name *</label>
+                    <input type="text" id="name" name="name" value="{{ old('name') }}" placeholder="e.g. Juan Dela Cruz" required class="w-full bg-white border border-slate-300 rounded-xl px-4 py-3.5 text-sm text-slate-900 placeholder-slate-400 focus:outline-none focus:border-[#752738] focus:ring-2 focus:ring-[#752738]/10 transition-all">
                 </div>
 
                 <!-- School / University Field with Integrated UBLC Checkbox -->
                 <div class="sm:col-span-2 space-y-2">
                     <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
-                        <label for="school" class="block text-xs font-bold uppercase tracking-wider text-slate-300">
+                        <label for="school" class="block text-xs font-bold uppercase tracking-wider text-slate-700">
                             School / Institution *
                         </label>
 
                         <!-- UBLC Toggle Pill directly above field -->
-                        <label class="inline-flex items-center gap-2 cursor-pointer bg-slate-900/90 border border-slate-700/80 hover:border-brand-orange/50 px-3.5 py-1.5 rounded-xl transition-all select-none self-start sm:self-auto">
-                            <input type="checkbox" id="is_ublc" name="is_ublc" value="1" {{ old('is_ublc') ? 'checked' : '' }} onchange="onUblcCheckboxChange()" class="w-4 h-4 rounded accent-brand-orange">
-                            <span class="text-xs font-bold text-brand-orange">From UB Lipa City (UBLC)?</span>
+                        <label class="inline-flex items-center gap-2 cursor-pointer bg-slate-50 border border-slate-300 hover:border-[#752738] px-3.5 py-1.5 rounded-xl transition-all select-none self-start sm:self-auto shadow-sm">
+                            <input type="checkbox" id="is_ublc" name="is_ublc" value="1" {{ old('is_ublc') ? 'checked' : '' }} onchange="onUblcCheckboxChange()" class="w-4 h-4 rounded accent-[#752738]">
+                            <span class="text-xs font-bold text-[#752738]">From UB Lipa City (UBLC)?</span>
                         </label>
                     </div>
 
                     <div class="relative">
-                        <input type="text" id="school" name="school" value="{{ old('school') }}" placeholder="e.g. University of Batangas Lipa City" required class="w-full bg-slate-900/90 border border-slate-700 rounded-xl px-4 py-3.5 text-sm text-white placeholder-slate-500 focus:outline-none focus:border-brand-orange transition-all">
-                        <div id="ublc-badge" class="hidden absolute right-3 top-1/2 -translate-y-1/2 px-2.5 py-1 rounded-lg bg-emerald-500/20 text-emerald-400 border border-emerald-500/40 text-[11px] font-extrabold flex items-center gap-1.5 pointer-events-none">
-                            <svg class="w-3.5 h-3.5 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>
+                        <input type="text" id="school" name="school" value="{{ old('school') }}" placeholder="e.g. University of Batangas Lipa City" required class="w-full bg-white border border-slate-300 rounded-xl px-4 py-3.5 text-sm text-slate-900 placeholder-slate-400 focus:outline-none focus:border-[#752738] focus:ring-2 focus:ring-[#752738]/10 transition-all">
+                        <div id="ublc-badge" class="hidden absolute right-3 top-1/2 -translate-y-1/2 px-2.5 py-1 rounded-lg bg-emerald-50 text-emerald-700 border border-emerald-300 text-[11px] font-extrabold flex items-center gap-1.5 pointer-events-none">
+                            <svg class="w-3.5 h-3.5 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>
                             UBLC Auto-filled
                         </div>
                     </div>
-                    <p class="text-[11px] text-slate-400">Check the box above if you are a student or staff at University of Batangas Lipa City.</p>
+                    <p class="text-[11px] text-slate-500">Check the box above if you are a student or staff at University of Batangas Lipa City.</p>
                 </div>
 
                 <!-- Contest Category & Division (Contestant Only) -->
                 <div id="field-contestant-category" class="sm:col-span-2 space-y-4">
                     <div>
-                        <label for="contest_category" class="block text-xs font-bold uppercase tracking-wider text-slate-300 mb-2">Select Competition Category *</label>
-                        <select id="contest_category" name="contest_category" onchange="onContestCategoryChange()" class="w-full bg-slate-900/90 border border-slate-700 rounded-xl px-4 py-3.5 text-sm text-white focus:outline-none focus:border-brand-orange transition-all">
+                        <label for="contest_category" class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-2">Select Competition Category *</label>
+                        <select id="contest_category" name="contest_category" onchange="onContestCategoryChange()" class="w-full bg-white border border-slate-300 rounded-xl px-4 py-3.5 text-sm text-slate-900 focus:outline-none focus:border-[#752738] focus:ring-2 focus:ring-[#752738]/10 transition-all">
                             <option value="">-- Choose Competition Category --</option>
                             <optgroup label="CATEGORY A: KULINARYA & COOKING SHOWDOWNS">
                                 <option value="A.1">KLASIKA MODERNA KULINARYA</option>
@@ -164,35 +164,35 @@
 
                     <!-- Division Level Selector (Professional vs Student) -->
                     <div id="field-contestant-division" class="hidden">
-                        <label for="contest_division" class="block text-xs font-bold uppercase tracking-wider text-slate-300 mb-2">Select Division Level *</label>
-                        <select id="contest_division" name="contest_division" onchange="onContestDivisionChange()" class="w-full bg-slate-900/90 border border-slate-700 rounded-xl px-4 py-3.5 text-sm text-white focus:outline-none focus:border-brand-orange transition-all">
+                        <label for="contest_division" class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-2">Select Division Level *</label>
+                        <select id="contest_division" name="contest_division" onchange="onContestDivisionChange()" class="w-full bg-white border border-slate-300 rounded-xl px-4 py-3.5 text-sm text-slate-900 focus:outline-none focus:border-[#752738] focus:ring-2 focus:ring-[#752738]/10 transition-all">
                             <option value="professional">Professional Division</option>
                             <option value="student" selected>Student / College / SHS Division</option>
                         </select>
                     </div>
 
                     <!-- Highlighted Contestant Fee Callout -->
-                    <div id="contestant-price-callout" class="hidden p-4 rounded-2xl bg-brand-orange/15 border-2 border-brand-orange/50 flex items-center justify-between shadow-lg">
+                    <div id="contestant-price-callout" class="hidden p-4 rounded-2xl bg-[#752738]/5 border-2 border-[#752738]/30 flex items-center justify-between shadow-sm">
                         <div>
-                            <span class="text-xs text-brand-orange font-extrabold uppercase tracking-wider block">Official Competition Entry Fee</span>
-                            <span id="contestant-price-detail" class="text-xs text-slate-200 block mt-0.5 font-medium">Select category to view price</span>
+                            <span class="text-xs text-[#752738] font-extrabold uppercase tracking-wider block">Official Competition Entry Fee</span>
+                            <span id="contestant-price-detail" class="text-xs text-slate-600 block mt-0.5 font-medium">Select category to view price</span>
                         </div>
                         <div class="text-right">
-                            <span id="contestant-fee-display" class="font-heading text-3xl font-black text-white">₱0.00</span>
-                            <span class="text-[10px] text-slate-400 block font-semibold">fixed rate</span>
+                            <span id="contestant-fee-display" class="font-heading text-3xl font-black text-slate-900">₱0.00</span>
+                            <span class="text-[10px] text-slate-500 block font-semibold">fixed rate</span>
                         </div>
                     </div>
                 </div>
 
                 <!-- Contact Number (Guest Only) -->
                 <div id="field-guest-contact" class="sm:col-span-2 hidden">
-                    <label for="contact_number" class="block text-xs font-bold uppercase tracking-wider text-slate-300 mb-2">Contact Number *</label>
-                    <input type="text" id="contact_number" name="contact_number" value="{{ old('contact_number') }}" placeholder="e.g. 0917 123 4567" class="w-full bg-slate-900/90 border border-slate-700 rounded-xl px-4 py-3.5 text-sm text-white placeholder-slate-500 focus:outline-none focus:border-brand-orange transition-all">
+                    <label for="contact_number" class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-2">Contact Number *</label>
+                    <input type="text" id="contact_number" name="contact_number" value="{{ old('contact_number') }}" placeholder="e.g. 0917 123 4567" class="w-full bg-white border border-slate-300 rounded-xl px-4 py-3.5 text-sm text-slate-900 placeholder-slate-400 focus:outline-none focus:border-[#752738] focus:ring-2 focus:ring-[#752738]/10 transition-all">
                 </div>
             </div>
 
             <div class="flex justify-end pt-4">
-                <button type="button" onclick="goToStep(2)" class="px-8 py-3.5 text-xs font-extrabold uppercase tracking-wider text-white bg-gradient-to-r from-brand-orange to-brand-fire hover:from-amber-500 hover:to-brand-orange rounded-xl shadow-lg transition-all flex items-center gap-2">
+                <button type="button" onclick="goToStep(2)" class="px-8 py-3.5 text-xs font-extrabold uppercase tracking-wider text-white bg-gradient-to-r from-[#752738] to-[#5A1E2C] hover:from-[#912B40] hover:to-[#752738] border border-[#FEC452]/40 rounded-xl shadow-md shadow-[#752738]/20 transition-all flex items-center gap-2">
                     Proceed to Choose Ticket
                     <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
                 </button>
@@ -201,88 +201,88 @@
 
         <!-- ==================== STEP 2: TICKET SELECTION ==================== -->
         <div id="step-2" class="step-container space-y-8 hidden">
-            <div class="border-b border-white/10 pb-4">
-                <h2 class="font-heading text-xl font-extrabold text-white flex items-center gap-2">
-                    <span class="w-2 h-6 bg-brand-cyan rounded-full"></span>
+            <div class="border-b border-slate-200 pb-4">
+                <h2 class="font-heading text-xl font-extrabold text-slate-900 flex items-center gap-2">
+                    <span class="w-2 h-6 bg-[#752738] rounded-full"></span>
                     Step 2: Choose Your Ticket Option
                 </h2>
-                <p class="text-xs text-slate-400 mt-1">Ticket pricing automatically adjusts based on your UBLC status.</p>
+                <p class="text-xs text-slate-500 mt-1">Ticket pricing automatically adjusts based on your UBLC status.</p>
             </div>
 
             <!-- Price Callout Indicator -->
-            <div id="ublc-status-banner" class="p-4 rounded-2xl bg-slate-900/80 border border-slate-700 flex items-center justify-between text-xs">
-                <span class="text-slate-300">Selected Pricing Category:</span>
-                <span id="ublc-status-text" class="font-extrabold text-brand-cyan uppercase">Outside UB Lipa City Rate</span>
+            <div id="ublc-status-banner" class="p-4 rounded-2xl bg-slate-50 border border-slate-200 flex items-center justify-between text-xs">
+                <span class="text-slate-600">Selected Pricing Category:</span>
+                <span id="ublc-status-text" class="font-extrabold text-[#752738] uppercase">Outside UB Lipa City Rate</span>
             </div>
 
             <!-- Contestant Pass Card (Visible when registration_type is contestant) -->
-            <div id="contestant-ticket-card" class="glass-card rounded-3xl p-6 sm:p-8 border-2 border-brand-orange bg-brand-orange/10 flex items-center justify-between">
+            <div id="contestant-ticket-card" class="glass-card rounded-3xl p-6 sm:p-8 border-2 border-[#752738] bg-[#752738]/5 flex items-center justify-between shadow-sm">
                 <div>
-                    <div class="text-xs font-extrabold text-brand-orange uppercase tracking-wider mb-1">Official Contestant Access Pass</div>
-                    <h3 id="contestant-summary-title" class="font-heading text-xl font-extrabold text-white">Competition Entry</h3>
-                    <p id="contestant-summary-subtitle" class="text-xs text-slate-300 mt-1">Official contest registration fee from competition guidelines.</p>
+                    <div class="text-xs font-extrabold text-[#752738] uppercase tracking-wider mb-1">Official Contestant Access Pass</div>
+                    <h3 id="contestant-summary-title" class="font-heading text-xl font-extrabold text-slate-900">Competition Entry</h3>
+                    <p id="contestant-summary-subtitle" class="text-xs text-slate-600 mt-1">Official contest registration fee from competition guidelines.</p>
                 </div>
                 <div class="text-right shrink-0">
-                    <span id="contestant-summary-price" class="font-heading text-3xl font-black text-brand-orange">₱0.00</span>
-                    <span class="text-[10px] text-slate-400 block font-semibold">fixed fee</span>
+                    <span id="contestant-summary-price" class="font-heading text-3xl font-black text-[#752738]">₱0.00</span>
+                    <span class="text-[10px] text-slate-500 block font-semibold">fixed fee</span>
                 </div>
             </div>
 
             <!-- Guest Ticket Options List (Visible when registration_type is guest) -->
             <div id="guest-ticket-options" class="space-y-4">
                 <!-- Day 1 Option -->
-                <label id="ticket-card-day1" class="cursor-pointer border-2 border-slate-700 bg-slate-900/50 hover:border-slate-500 rounded-2xl p-5 flex items-center justify-between transition-all">
+                <label id="ticket-card-day1" class="cursor-pointer border-2 border-slate-200 bg-slate-50 hover:bg-slate-100 hover:border-slate-300 rounded-2xl p-5 flex items-center justify-between transition-all">
                     <div class="flex items-center gap-4">
-                        <input type="radio" name="ticket_type" value="day1" class="w-5 h-5 accent-brand-orange" {{ old('ticket_type', 'day1') === 'day1' ? 'checked' : '' }} onchange="selectTicketOption('day1')">
+                        <input type="radio" name="ticket_type" value="day1" class="w-5 h-5 accent-[#752738]" {{ old('ticket_type', 'day1') === 'day1' ? 'checked' : '' }} onchange="selectTicketOption('day1')">
                         <div>
-                            <span class="font-heading font-extrabold text-base text-white block">Day 1 Ticket</span>
-                            <span class="text-xs text-slate-400 block mt-0.5">Access to Day 1 Exhibition & Judging competitions</span>
+                            <span class="font-heading font-extrabold text-base text-slate-900 block">Day 1 Ticket</span>
+                            <span class="text-xs text-slate-500 block mt-0.5">Access to Day 1 Exhibition & Judging competitions</span>
                         </div>
                     </div>
                     <div class="text-right">
-                        <span id="price-display-day1" class="font-heading text-2xl font-black text-brand-orange">₱120</span>
-                        <span class="text-[10px] text-slate-400 block font-semibold">per ticket</span>
+                        <span id="price-display-day1" class="font-heading text-2xl font-black text-[#752738]">₱120</span>
+                        <span class="text-[10px] text-slate-500 block font-semibold">per ticket</span>
                     </div>
                 </label>
 
                 <!-- Day 2 Option -->
-                <label id="ticket-card-day2" class="cursor-pointer border-2 border-slate-700 bg-slate-900/50 hover:border-slate-500 rounded-2xl p-5 flex items-center justify-between transition-all">
+                <label id="ticket-card-day2" class="cursor-pointer border-2 border-slate-200 bg-slate-50 hover:bg-slate-100 hover:border-slate-300 rounded-2xl p-5 flex items-center justify-between transition-all">
                     <div class="flex items-center gap-4">
-                        <input type="radio" name="ticket_type" value="day2" class="w-5 h-5 accent-brand-orange" {{ old('ticket_type') === 'day2' ? 'checked' : '' }} onchange="selectTicketOption('day2')">
+                        <input type="radio" name="ticket_type" value="day2" class="w-5 h-5 accent-[#752738]" {{ old('ticket_type') === 'day2' ? 'checked' : '' }} onchange="selectTicketOption('day2')">
                         <div>
-                            <span class="font-heading font-extrabold text-base text-white block">Day 2 Ticket</span>
-                            <span class="text-xs text-slate-400 block mt-0.5">Access to Day 2 Finals Showdown & Awarding Ceremony</span>
+                            <span class="font-heading font-extrabold text-base text-slate-900 block">Day 2 Ticket</span>
+                            <span class="text-xs text-slate-500 block mt-0.5">Access to Day 2 Finals Showdown & Awarding Ceremony</span>
                         </div>
                     </div>
                     <div class="text-right">
-                        <span id="price-display-day2" class="font-heading text-2xl font-black text-brand-cyan">₱120</span>
-                        <span class="text-[10px] text-slate-400 block font-semibold">per ticket</span>
+                        <span id="price-display-day2" class="font-heading text-2xl font-black text-[#752738]">₱120</span>
+                        <span class="text-[10px] text-slate-500 block font-semibold">per ticket</span>
                     </div>
                 </label>
 
                 <!-- Both Days Option (Best Value) -->
-                <label id="ticket-card-both" class="cursor-pointer border-2 border-brand-amber bg-brand-amber/10 rounded-2xl p-5 flex items-center justify-between transition-all relative">
-                    <span class="absolute -top-3 right-6 bg-brand-amber text-slate-950 font-extrabold text-[9px] uppercase px-3 py-0.5 rounded-full shadow">BEST VALUE</span>
+                <label id="ticket-card-both" class="cursor-pointer border-2 border-[#752738] bg-[#752738]/5 rounded-2xl p-5 flex items-center justify-between transition-all relative shadow-sm">
+                    <span class="absolute -top-3 right-6 bg-gradient-to-r from-[#752738] to-[#5A1E2C] text-white font-extrabold text-[9px] uppercase px-3 py-0.5 rounded-full shadow">BEST VALUE</span>
                     <div class="flex items-center gap-4">
-                        <input type="radio" name="ticket_type" value="both" class="w-5 h-5 accent-brand-orange" {{ old('ticket_type') === 'both' ? 'checked' : '' }} onchange="selectTicketOption('both')">
+                        <input type="radio" name="ticket_type" value="both" class="w-5 h-5 accent-[#752738]" {{ old('ticket_type') === 'both' ? 'checked' : '' }} onchange="selectTicketOption('both')">
                         <div>
-                            <span class="font-heading font-extrabold text-base text-white block">Both Day 1 and Day 2 Pass</span>
-                            <span class="text-xs text-slate-300 block mt-0.5">Full 2-Day Event Access Pass</span>
+                            <span class="font-heading font-extrabold text-base text-slate-900 block">Both Day 1 and Day 2 Pass</span>
+                            <span class="text-xs text-slate-600 block mt-0.5">Full 2-Day Event Access Pass</span>
                         </div>
                     </div>
                     <div class="text-right">
-                        <span id="price-display-both" class="font-heading text-3xl font-black text-emerald-400">₱170</span>
-                        <span class="text-[10px] text-slate-300 block font-semibold">total 2 days</span>
+                        <span id="price-display-both" class="font-heading text-3xl font-black text-[#752738]">₱170</span>
+                        <span class="text-[10px] text-slate-500 block font-semibold">total 2 days</span>
                     </div>
                 </label>
             </div>
 
             <!-- Stepper Actions -->
             <div class="flex items-center justify-between pt-4">
-                <button type="button" onclick="goToStep(1)" class="px-6 py-3 text-xs font-bold text-slate-300 bg-slate-800 hover:bg-slate-700 rounded-xl transition-all">
+                <button type="button" onclick="goToStep(1)" class="px-6 py-3 text-xs font-bold text-slate-700 bg-slate-100 hover:bg-slate-200 border border-slate-300 rounded-xl transition-all">
                     &larr; Back to Details
                 </button>
-                <button type="button" onclick="goToStep(3)" class="px-8 py-3.5 text-xs font-extrabold uppercase tracking-wider text-white bg-gradient-to-r from-brand-orange to-brand-fire hover:from-amber-500 hover:to-brand-orange rounded-xl shadow-lg transition-all flex items-center gap-2">
+                <button type="button" onclick="goToStep(3)" class="px-8 py-3.5 text-xs font-extrabold uppercase tracking-wider text-white bg-gradient-to-r from-[#752738] to-[#5A1E2C] hover:from-[#912B40] hover:to-[#752738] border border-[#FEC452]/40 rounded-xl shadow-md shadow-[#752738]/20 transition-all flex items-center gap-2">
                     PROCEED TO PAYMENT
                     <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
                 </button>
@@ -291,40 +291,70 @@
 
         <!-- ==================== STEP 3: PAYMENT ==================== -->
         <div id="step-3" class="step-container space-y-8 hidden">
-            <div class="border-b border-white/10 pb-4">
-                <h2 class="font-heading text-xl font-extrabold text-white flex items-center gap-2">
-                    <span class="w-2 h-6 bg-emerald-500 rounded-full"></span>
-                    Step 3: GCash Payment Confirmation
+            <div class="border-b border-slate-200 pb-4">
+                <h2 class="font-heading text-xl font-extrabold text-slate-900 flex items-center gap-2">
+                    <span class="w-2 h-6 bg-[#752738] rounded-full"></span>
+                    Step 3: Bank Transfer Payment Confirmation
                 </h2>
-                <p class="text-xs text-slate-400 mt-1">Scan the QR code below and input your transaction details.</p>
+                <p class="text-xs text-slate-500 mt-1">Scan the QR code below or transfer directly to the official bank account, then upload your deposit slip or transaction receipt.</p>
             </div>
 
-            <!-- GCash QR Code Display Box -->
-            <div class="grid grid-cols-1 md:grid-cols-12 gap-8 items-center bg-slate-900/90 border border-slate-700 rounded-2xl p-6">
-                <!-- QR Image -->
-                <div class="md:col-span-5 text-center">
-                    <div class="bg-white p-3 rounded-2xl inline-block shadow-xl border-4 border-blue-600 group relative cursor-pointer" onclick="openImageLightbox('{{ asset('images/gcash-qr.svg') }}', 'Official GCash QR Code')">
-                        <img src="{{ asset('images/gcash-qr.svg') }}" alt="GCash QR Code" class="w-56 h-auto mx-auto rounded-lg transition-transform group-hover:scale-105">
-                        <div class="mt-2 text-[10px] font-extrabold text-blue-600 flex items-center justify-center gap-1">
-                            <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+            <!-- Bank Transfer Details & QR Code Display Box -->
+            <div class="grid grid-cols-1 md:grid-cols-12 gap-8 items-center bg-slate-50 border border-slate-200 rounded-2xl p-6 sm:p-7 shadow-sm">
+                <!-- Left: Official UnionBank QR Code -->
+                <div class="md:col-span-5 text-center flex flex-col items-center justify-center">
+                    <div class="bg-white p-3.5 rounded-2xl inline-block shadow-md border-2 border-slate-200 group relative cursor-pointer hover:border-[#752738] transition-all" onclick="openImageLightbox('{{ asset('images/bank-qr.png') }}', 'Official UnionBank QR Code')">
+                        <img src="{{ asset('images/bank-qr.png') }}" alt="UnionBank QR Code" class="w-48 sm:w-52 h-auto mx-auto rounded-xl transition-transform group-hover:scale-[1.02]">
+                        <div class="mt-2 text-[10px] font-extrabold text-[#752738] flex items-center justify-center gap-1">
+                            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
                             Click to View Enlarged QR
                         </div>
                     </div>
+                    <p class="text-[11px] text-slate-500 mt-2.5 font-medium">Scan via UnionBank or any QRPh banking app</p>
                 </div>
 
-                <!-- Payment Details -->
-                <div class="md:col-span-7 space-y-3 text-xs">
-                    <div class="inline-block px-3 py-1 bg-blue-600/30 text-blue-400 border border-blue-500/50 rounded-lg font-extrabold uppercase tracking-widest text-[10px]">
-                        OFFICIAL GCASH PAYMENT
+                <!-- Right: Detailed Bank Information & Payable Amount -->
+                <div class="md:col-span-7 space-y-4">
+                    <div class="flex items-center justify-between">
+                        <div class="inline-flex items-center gap-2 px-3 py-1 bg-[#752738]/10 text-[#752738] border border-[#752738]/30 rounded-lg font-extrabold uppercase tracking-wider text-[10px]">
+                            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"/></svg>
+                            OFFICIAL UNIONBANK ACCOUNT
+                        </div>
+                        <img src="{{ asset('images/ub-logo-plain.png') }}" alt="University of Batangas Logo" class="h-8 w-auto object-contain bg-white p-1 rounded-lg border border-slate-200">
                     </div>
-                    <div class="text-sm font-bold text-white">National Food Showdown Committee</div>
-                    <div class="text-slate-300">GCash Account Number: <span class="font-mono text-brand-orange font-bold text-sm">0917 123 4567</span></div>
-                    <div class="text-slate-300">Account Name: <span class="font-mono text-white font-bold">NFS COMMITTEE</span></div>
-                    
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
+                        <div class="p-3 bg-white rounded-xl border border-slate-200">
+                            <span class="text-slate-500 block text-[10px] uppercase font-bold tracking-wider">Bank</span>
+                            <span class="font-bold text-slate-900 text-sm">UnionBank</span>
+                        </div>
+
+                        <div class="p-3 bg-white rounded-xl border border-slate-200">
+                            <span class="text-slate-500 block text-[10px] uppercase font-bold tracking-wider">Branch</span>
+                            <span class="font-bold text-slate-900 text-sm">UnionBank Batangas Branch</span>
+                        </div>
+
+                        <div class="p-3 bg-white rounded-xl border border-slate-200 sm:col-span-2">
+                            <span class="text-slate-500 block text-[10px] uppercase font-bold tracking-wider">Account Name</span>
+                            <span class="font-bold text-slate-900 text-sm">University of Batangas, Inc.</span>
+                        </div>
+
+                        <div class="p-3 bg-white rounded-xl border border-[#752738]/40 sm:col-span-2 flex items-center justify-between">
+                            <div>
+                                <span class="text-slate-500 block text-[10px] uppercase font-bold tracking-wider">Account Number</span>
+                                <span id="bank-acc-no" class="font-mono font-bold text-[#752738] text-base select-all">CA# 0027 2000 9538</span>
+                            </div>
+                            <button type="button" onclick="copyAccountNumber()" class="px-3 py-1.5 text-[11px] font-bold bg-slate-100 hover:bg-[#752738] text-slate-700 hover:text-white rounded-lg border border-slate-300 transition-all flex items-center gap-1.5 cursor-pointer" title="Copy Account Number">
+                                <svg class="w-3.5 h-3.5 text-[#752738]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"/></svg>
+                                <span id="copy-btn-label">Copy</span>
+                            </button>
+                        </div>
+                    </div>
+
                     <!-- Selected Ticket Summary -->
-                    <div class="mt-4 pt-4 border-t border-slate-800 flex items-center justify-between">
-                        <span class="text-slate-400">Total Payable Amount:</span>
-                        <span id="final-payable-price" class="font-heading text-2xl font-black text-emerald-400">₱120.00</span>
+                    <div class="pt-3 border-t border-slate-200 flex items-center justify-between">
+                        <span class="text-slate-600 text-xs">Total Payable Amount:</span>
+                        <span id="final-payable-price" class="font-heading text-2xl font-black text-[#752738]">₱120.00</span>
                     </div>
                 </div>
             </div>
@@ -333,70 +363,70 @@
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
                 <!-- Email (Required) -->
                 <div>
-                    <label for="email" class="block text-xs font-bold uppercase tracking-wider text-slate-300 mb-2">Email Address * (required)</label>
-                    <input type="email" id="email" name="email" value="{{ old('email') }}" placeholder="your-email@gmail.com" required class="w-full bg-slate-900/90 border border-slate-700 rounded-xl px-4 py-3.5 text-sm text-white placeholder-slate-500 focus:outline-none focus:border-brand-orange transition-all">
+                    <label for="email" class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-2">Email Address * (required)</label>
+                    <input type="email" id="email" name="email" value="{{ old('email') }}" placeholder="your-email@gmail.com" required class="w-full bg-white border border-slate-300 rounded-xl px-4 py-3.5 text-sm text-slate-900 placeholder-slate-400 focus:outline-none focus:border-[#752738] focus:ring-2 focus:ring-[#752738]/10 transition-all">
                 </div>
 
-                <!-- GCash Name (Required) -->
+                <!-- Account / Depositor Name (Required) -->
                 <div>
-                    <label for="gcash_name" class="block text-xs font-bold uppercase tracking-wider text-slate-300 mb-2">GCash Account Name * (required)</label>
-                    <input type="text" id="gcash_name" name="gcash_name" value="{{ old('gcash_name') }}" placeholder="e.g. Juan D." required class="w-full bg-slate-900/90 border border-slate-700 rounded-xl px-4 py-3.5 text-sm text-white placeholder-slate-500 focus:outline-none focus:border-brand-orange transition-all">
+                    <label for="gcash_name" class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-2">Account Name / Depositor Name * (required)</label>
+                    <input type="text" id="gcash_name" name="gcash_name" value="{{ old('gcash_name') }}" placeholder="e.g. Juan Dela Cruz" required class="w-full bg-white border border-slate-300 rounded-xl px-4 py-3.5 text-sm text-slate-900 placeholder-slate-400 focus:outline-none focus:border-[#752738] focus:ring-2 focus:ring-[#752738]/10 transition-all">
                 </div>
 
-                <!-- GCash Number (Required) -->
+                <!-- Account / Contact Number (Required) -->
                 <div>
-                    <label for="gcash_number" class="block text-xs font-bold uppercase tracking-wider text-slate-300 mb-2">GCash Mobile Number * (required)</label>
-                    <input type="text" id="gcash_number" name="gcash_number" value="{{ old('gcash_number') }}" placeholder="e.g. 09171234567" required class="w-full bg-slate-900/90 border border-slate-700 rounded-xl px-4 py-3.5 text-sm text-white placeholder-slate-500 focus:outline-none focus:border-brand-orange transition-all">
+                    <label for="gcash_number" class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-2">Sender Account No. / Contact No. * (required)</label>
+                    <input type="text" id="gcash_number" name="gcash_number" value="{{ old('gcash_number') }}" placeholder="e.g. Account Number or Contact Number" required class="w-full bg-white border border-slate-300 rounded-xl px-4 py-3.5 text-sm text-slate-900 placeholder-slate-400 focus:outline-none focus:border-[#752738] focus:ring-2 focus:ring-[#752738]/10 transition-all">
                 </div>
 
                 <!-- Reference Number (Required) -->
                 <div>
-                    <label for="reference_number" class="block text-xs font-bold uppercase tracking-wider text-slate-300 mb-2">GCash Reference Number * (required)</label>
-                    <input type="text" id="reference_number" name="reference_number" value="{{ old('reference_number') }}" placeholder="e.g. 100234567891" required class="w-full bg-slate-900/90 border border-slate-700 rounded-xl px-4 py-3.5 text-sm text-white placeholder-slate-500 focus:outline-none focus:border-brand-orange transition-all">
+                    <label for="reference_number" class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-2">Bank Reference / Transaction Number * (required)</label>
+                    <input type="text" id="reference_number" name="reference_number" value="{{ old('reference_number') }}" placeholder="e.g. Ref # / Transaction ID" required class="w-full bg-white border border-slate-300 rounded-xl px-4 py-3.5 text-sm text-slate-900 placeholder-slate-400 focus:outline-none focus:border-[#752738] focus:ring-2 focus:ring-[#752738]/10 transition-all">
                 </div>
 
                 <!-- Payment Screenshot Upload with Preview & X Clear Button -->
                 <div class="sm:col-span-2">
-                    <label class="block text-xs font-bold uppercase tracking-wider text-slate-300 mb-2">Payment Screenshot * (required)</label>
+                    <label class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-2">Proof of Payment (Deposit Slip / Transfer Receipt) * (required)</label>
                     
                     <!-- File Input Box -->
-                    <div id="file-dropzone" class="border-2 border-dashed border-slate-700 hover:border-brand-orange rounded-2xl p-6 text-center bg-slate-900/60 transition-all relative">
+                    <div id="file-dropzone" class="border-2 border-dashed border-slate-300 hover:border-[#752738] rounded-2xl p-6 text-center bg-slate-50 transition-all relative">
                         <input type="file" id="payment_screenshot" name="payment_screenshot" accept="image/*" required onchange="handleFilePreview(this)" class="absolute inset-0 w-full h-full opacity-0 cursor-pointer z-10">
                         
                         <div id="upload-prompt" class="space-y-2">
-                            <svg class="w-10 h-10 text-slate-400 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
-                            <div class="text-sm font-semibold text-slate-200">Click or Drag to Upload Payment Screenshot</div>
-                            <div class="text-xs text-slate-400">Supported formats: JPG, PNG, WEBP (Max 5MB)</div>
+                            <svg class="w-10 h-10 text-slate-400 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2z"/></svg>
+                            <div class="text-sm font-semibold text-slate-700">Click or Drag to Upload Proof of Payment</div>
+                            <div class="text-xs text-slate-500">Deposit slip, online bank transfer screenshot, etc. (JPG, PNG, WEBP - Max 5MB)</div>
                         </div>
 
-                        <!-- Image Preview Container (Clickable to enlarge & clickable 'X' button to remove) -->
+                        <!-- Image Preview Container -->
                         <div id="image-preview-container" class="hidden relative inline-block max-w-xs mx-auto mt-2 z-20 pointer-events-auto">
                             <div class="relative group">
-                                <img id="image-preview" src="" alt="Screenshot Preview" onclick="openImageLightbox(this.src, 'GCash Payment Screenshot')" class="max-h-64 rounded-xl border border-slate-600 shadow-2xl object-contain cursor-pointer transition-all hover:scale-[1.02] hover:border-brand-orange" title="Click to view enlarged image">
-                                <div onclick="openImageLightbox(document.getElementById('image-preview').src, 'GCash Payment Screenshot')" class="absolute bottom-2 left-1/2 -translate-x-1/2 px-3 py-1 bg-slate-950/85 backdrop-blur-md rounded-full text-[10px] font-bold text-slate-200 border border-white/20 flex items-center gap-1.5 cursor-pointer hover:bg-brand-orange hover:text-white transition-all shadow-lg shrink-0 whitespace-nowrap">
+                                <img id="image-preview" src="" alt="Proof of Payment Preview" onclick="openImageLightbox(this.src, 'Proof of Payment')" class="max-h-64 rounded-xl border border-slate-300 shadow-md object-contain cursor-pointer transition-all hover:scale-[1.02] hover:border-[#752738]" title="Click to view enlarged image">
+                                <div onclick="openImageLightbox(document.getElementById('image-preview').src, 'Proof of Payment')" class="absolute bottom-2 left-1/2 -translate-x-1/2 px-3 py-1 bg-slate-900/85 backdrop-blur-md rounded-full text-[10px] font-bold text-white border border-slate-700 flex items-center gap-1.5 cursor-pointer hover:bg-[#752738] transition-all shadow-lg shrink-0 whitespace-nowrap">
                                     <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
                                     <span>Click to View Enlarged</span>
                                 </div>
                             </div>
 
                             <!-- Clickable X button -->
-                            <button type="button" onclick="clearFilePreview(event)" class="absolute -top-3 -right-3 w-8 h-8 rounded-full bg-rose-600 hover:bg-rose-500 text-white font-extrabold flex items-center justify-center shadow-lg cursor-pointer transition-all hover:scale-110 z-30" title="Remove Screenshot">
+                            <button type="button" onclick="clearFilePreview(event)" class="absolute -top-3 -right-3 w-8 h-8 rounded-full bg-rose-600 hover:bg-rose-500 text-white font-extrabold flex items-center justify-center shadow-md cursor-pointer transition-all hover:scale-110 z-30" title="Remove Screenshot">
                                 &times;
                             </button>
-                            <div id="file-name-label" class="text-xs text-slate-300 font-mono mt-2 truncate max-w-xs"></div>
+                            <div id="file-name-label" class="text-xs text-slate-600 font-mono mt-2 truncate max-w-xs"></div>
                         </div>
                     </div>
                 </div>
             </div>
 
             <!-- Form Submit Buttons -->
-            <div class="flex items-center justify-between pt-6 border-t border-white/10">
-                <button type="button" onclick="goToStep(2)" class="px-6 py-3 text-xs font-bold text-slate-300 bg-slate-800 hover:bg-slate-700 rounded-xl transition-all">
+            <div class="flex items-center justify-between pt-6 border-t border-slate-200">
+                <button type="button" onclick="goToStep(2)" class="px-6 py-3 text-xs font-bold text-slate-700 bg-slate-100 hover:bg-slate-200 border border-slate-300 rounded-xl transition-all">
                     &larr; Back to Ticket Selection
                 </button>
 
-                <button type="submit" id="btn-submit-registration" class="px-10 py-4 text-sm font-black uppercase tracking-wider text-white bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-400 hover:to-teal-500 rounded-2xl shadow-xl shadow-emerald-500/20 transition-all hover:scale-105 active:scale-95 flex items-center gap-2">
-                    <svg id="submit-icon-check" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                <button type="submit" id="btn-submit-registration" class="px-10 py-4 text-sm font-black uppercase tracking-wider text-white bg-gradient-to-r from-[#752738] to-[#5A1E2C] hover:from-[#912B40] hover:to-[#752738] rounded-2xl shadow-lg shadow-[#752738]/30 transition-all hover:scale-105 active:scale-95 flex items-center gap-2">
+                    <svg id="submit-icon-check" class="w-5 h-5 text-[#FEC452]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg>
                     <svg id="submit-spinner-icon" class="w-5 h-5 animate-spin hidden" fill="none" viewBox="0 0 24 24">
                         <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
                         <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
@@ -409,30 +439,30 @@
 </div>
 
 <!-- SUBMISSION LOADING OVERLAY MODAL -->
-<div id="submission-loading-overlay" class="fixed inset-0 z-[999999] hidden bg-slate-950/90 backdrop-blur-md flex flex-col items-center justify-center p-4 select-none">
-    <div class="glass-card rounded-3xl p-8 sm:p-10 max-w-md w-full text-center border border-brand-orange/30 shadow-2xl space-y-6">
+<div id="submission-loading-overlay" class="fixed inset-0 z-[999999] hidden bg-slate-900/80 backdrop-blur-md flex flex-col items-center justify-center p-4 select-none">
+    <div class="glass-card rounded-3xl p-8 sm:p-10 max-w-md w-full text-center border border-slate-200 shadow-2xl space-y-6">
         <!-- Glowing Spinner Container -->
         <div class="relative w-24 h-24 mx-auto flex items-center justify-center">
-            <div class="absolute inset-0 rounded-full border-4 border-brand-orange/20 animate-pulse"></div>
-            <div class="absolute inset-0 rounded-full border-4 border-brand-orange border-t-transparent animate-spin"></div>
-            <img src="{{ asset('images/logo-top-left.jpg') }}" alt="Logo" class="w-12 h-12 rounded-xl object-cover shadow-lg border border-white/20">
+            <div class="absolute inset-0 rounded-full border-4 border-[#752738]/20 animate-pulse"></div>
+            <div class="absolute inset-0 rounded-full border-4 border-[#752738] border-t-transparent animate-spin"></div>
+            <img src="{{ asset('images/logo-top-left.jpg') }}" alt="Logo" class="w-12 h-12 rounded-xl object-cover shadow-md border border-slate-200">
         </div>
 
         <div class="space-y-2">
-            <h3 class="font-heading text-xl font-black text-white tracking-wide">Submitting Your Ticket...</h3>
-            <p class="text-xs text-slate-300 leading-relaxed">We are uploading your proof of payment and generating your official ticket number.</p>
+            <h3 class="font-heading text-xl font-black text-slate-900 tracking-wide">Submitting Your Ticket...</h3>
+            <p class="text-xs text-slate-600 leading-relaxed">We are uploading your proof of payment and generating your official ticket number.</p>
         </div>
 
         <!-- Prominent Warning Badge -->
-        <div class="p-3.5 rounded-2xl bg-amber-500/10 border border-amber-500/30 text-amber-300 text-xs font-bold flex items-center justify-center gap-2 shadow-inner">
-            <svg class="w-4 h-4 text-amber-400 shrink-0 animate-bounce" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <div class="p-3.5 rounded-2xl bg-amber-50 border border-amber-200 text-amber-800 text-xs font-bold flex items-center justify-center gap-2 shadow-inner">
+            <svg class="w-4 h-4 text-amber-600 shrink-0 animate-bounce" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/>
             </svg>
             <span>Please wait. Do not close or refresh this tab.</span>
         </div>
 
-        <div class="inline-flex items-center gap-2 px-4 py-2 bg-brand-orange/15 text-brand-orange text-xs font-extrabold rounded-full border border-brand-orange/30">
-            <svg class="w-4 h-4 animate-spin text-brand-orange" fill="none" viewBox="0 0 24 24">
+        <div class="inline-flex items-center gap-2 px-4 py-2 bg-[#752738]/10 text-[#752738] text-xs font-extrabold rounded-full border border-[#752738]/30">
+            <svg class="w-4 h-4 animate-spin text-[#752738]" fill="none" viewBox="0 0 24 24">
                 <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
                 <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
             </svg>
@@ -442,22 +472,22 @@
 </div>
 
 <!-- ENLARGED IMAGE LIGHTBOX MODAL -->
-<div id="image-lightbox-modal" class="fixed inset-0 z-[99999] hidden bg-black/90 backdrop-blur-md flex flex-col items-center justify-center p-4" onclick="closeImageLightbox()">
+<div id="image-lightbox-modal" class="fixed inset-0 z-[99999] hidden bg-black/85 backdrop-blur-md flex flex-col items-center justify-center p-4" onclick="closeImageLightbox()">
     <div class="relative max-w-4xl w-full max-h-[90vh] flex flex-col items-center justify-center p-2" onclick="event.stopPropagation()">
         <!-- Close Button -->
         <button type="button" onclick="closeImageLightbox()" class="absolute -top-12 right-0 text-white/80 hover:text-white font-extrabold text-3xl leading-none transition-colors" title="Close">
             &times;
         </button>
-        <div id="lightbox-title" class="text-xs font-extrabold text-brand-orange mb-3 uppercase tracking-wider">Enlarged Image Preview</div>
-        <div class="bg-slate-950 rounded-2xl p-2 border border-slate-700 shadow-2xl max-h-[80vh] overflow-auto flex items-center justify-center">
-            <img id="lightbox-img" src="" alt="Enlarged Image" class="max-w-full max-h-[75vh] object-contain rounded-xl shadow-2xl">
+        <div id="lightbox-title" class="text-xs font-extrabold text-[#FEC452] mb-3 uppercase tracking-wider">Enlarged Image Preview</div>
+        <div class="bg-white rounded-2xl p-2 border border-slate-300 shadow-2xl max-h-[80vh] overflow-auto flex items-center justify-center">
+            <img id="lightbox-img" src="" alt="Enlarged Image" class="max-w-full max-h-[75vh] object-contain rounded-xl">
         </div>
         <div class="mt-4 flex items-center gap-3">
-            <a id="lightbox-download-link" href="#" target="_blank" download class="px-5 py-2 text-xs font-bold text-white bg-brand-orange hover:bg-amber-500 rounded-xl transition-all flex items-center gap-2 shadow-lg">
+            <a id="lightbox-download-link" href="#" target="_blank" download class="px-5 py-2 text-xs font-bold text-white bg-[#752738] hover:bg-[#5A1E2C] rounded-xl transition-all flex items-center gap-2 shadow-md">
                 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
                 Open Full Image
             </a>
-            <button type="button" onclick="closeImageLightbox()" class="px-6 py-2 text-xs font-bold text-slate-300 bg-slate-800 hover:bg-slate-700 rounded-xl transition-all">
+            <button type="button" onclick="closeImageLightbox()" class="px-6 py-2 text-xs font-bold text-slate-700 bg-white hover:bg-slate-100 rounded-xl transition-all border border-slate-300">
                 Close Preview
             </button>
         </div>
@@ -613,11 +643,11 @@
             const text = document.getElementById(`step-text-${i}`);
 
             if (i <= step) {
-                badge.className = "relative z-10 w-10 h-10 rounded-full bg-brand-orange text-white font-extrabold flex items-center justify-center text-sm shadow-lg ring-4 ring-brand-dark transition-all";
-                text.className = "text-brand-orange font-extrabold";
+                badge.className = "relative z-10 w-10 h-10 rounded-full bg-[#752738] text-white border-2 border-[#FEC452] font-extrabold flex items-center justify-center text-sm shadow-md ring-4 ring-white transition-all";
+                text.className = "text-[#752738] font-extrabold";
             } else {
-                badge.className = "relative z-10 w-10 h-10 rounded-full bg-slate-800 text-slate-400 font-extrabold flex items-center justify-center text-sm ring-4 ring-brand-dark transition-all";
-                text.className = "text-slate-400 font-normal";
+                badge.className = "relative z-10 w-10 h-10 rounded-full bg-slate-200 text-slate-500 font-extrabold flex items-center justify-center text-sm ring-4 ring-white transition-all";
+                text.className = "text-slate-500 font-normal";
             }
         }
 
@@ -634,16 +664,16 @@
         const ublcStatusBanner = document.getElementById('ublc-status-banner');
 
         if (type === 'contestant') {
-            contestantCard.className = "cursor-pointer border-2 border-brand-orange bg-brand-orange/10 rounded-2xl p-5 flex items-start gap-4 transition-all";
-            guestCard.className = "cursor-pointer border-2 border-slate-700 bg-slate-900/50 rounded-2xl p-5 flex items-start gap-4 transition-all";
+            contestantCard.className = "cursor-pointer border-2 border-[#752738] bg-[#752738]/5 rounded-2xl p-5 flex items-start gap-4 transition-all shadow-sm";
+            guestCard.className = "cursor-pointer border-2 border-slate-200 bg-slate-50 rounded-2xl p-5 flex items-start gap-4 transition-all";
             contestantField.classList.remove('hidden');
             guestField.classList.add('hidden');
             if (contestantTicketCard) contestantTicketCard.classList.remove('hidden');
             if (guestTicketOptions) guestTicketOptions.classList.add('hidden');
             if (ublcStatusBanner) ublcStatusBanner.classList.add('hidden');
         } else {
-            guestCard.className = "cursor-pointer border-2 border-brand-orange bg-brand-orange/10 rounded-2xl p-5 flex items-start gap-4 transition-all";
-            contestantCard.className = "cursor-pointer border-2 border-slate-700 bg-slate-900/50 rounded-2xl p-5 flex items-start gap-4 transition-all";
+            guestCard.className = "cursor-pointer border-2 border-[#752738] bg-[#752738]/5 rounded-2xl p-5 flex items-start gap-4 transition-all shadow-sm";
+            contestantCard.className = "cursor-pointer border-2 border-slate-200 bg-slate-50 rounded-2xl p-5 flex items-start gap-4 transition-all";
             guestField.classList.remove('hidden');
             contestantField.classList.add('hidden');
             if (contestantTicketCard) contestantTicketCard.classList.add('hidden');
@@ -664,11 +694,11 @@
         if (isUblcCheckbox.checked) {
             schoolInput.value = UBLC_SCHOOL_NAME;
             schoolInput.readOnly = true;
-            schoolInput.classList.add('bg-slate-950/90', 'border-emerald-500/50', 'text-slate-300', 'cursor-not-allowed', 'pr-32');
+            schoolInput.classList.add('bg-slate-100', 'border-emerald-500/50', 'text-slate-700', 'cursor-not-allowed', 'pr-32');
             if (ublcBadge) ublcBadge.classList.remove('hidden');
         } else {
             schoolInput.readOnly = false;
-            schoolInput.classList.remove('bg-slate-950/90', 'border-emerald-500/50', 'text-slate-300', 'cursor-not-allowed', 'pr-32');
+            schoolInput.classList.remove('bg-slate-100', 'border-emerald-500/50', 'text-slate-700', 'cursor-not-allowed', 'pr-32');
             if (ublcBadge) ublcBadge.classList.add('hidden');
             if (schoolInput.value === UBLC_SCHOOL_NAME) {
                 schoolInput.value = "";
@@ -686,13 +716,13 @@
 
         if (isUblc) {
             if (bannerText) bannerText.textContent = "University of Batangas Lipa City (UBLC) Rate";
-            if (bannerText) bannerText.className = "font-extrabold text-emerald-400 uppercase";
+            if (bannerText) bannerText.className = "font-extrabold text-emerald-600 uppercase";
             document.getElementById('price-display-day1').textContent = "₱100";
             document.getElementById('price-display-day2').textContent = "₱100";
             document.getElementById('price-display-both').textContent = "₱150";
         } else {
             if (bannerText) bannerText.textContent = "Standard Rate";
-            if (bannerText) bannerText.className = "font-extrabold text-brand-cyan uppercase";
+            if (bannerText) bannerText.className = "font-extrabold text-[#752738] uppercase";
             document.getElementById('price-display-day1').textContent = "₱120";
             document.getElementById('price-display-day2').textContent = "₱120";
             document.getElementById('price-display-both').textContent = "₱170";
@@ -748,6 +778,36 @@
         }
 
         document.getElementById('final-payable-price').textContent = `₱${price}.00`;
+    }
+
+    // Copy Account Number Helper
+    function copyAccountNumber() {
+        const textToCopy = "0027 2000 9538";
+        navigator.clipboard.writeText(textToCopy).then(() => {
+            const btnLabel = document.getElementById('copy-btn-label');
+            if (btnLabel) {
+                const originalText = btnLabel.textContent;
+                btnLabel.textContent = "Copied!";
+                setTimeout(() => {
+                    btnLabel.textContent = originalText;
+                }, 2000);
+            }
+        }).catch(() => {
+            // Fallback for older browsers
+            const tempInput = document.createElement('input');
+            tempInput.value = textToCopy;
+            document.body.appendChild(tempInput);
+            tempInput.select();
+            document.execCommand('copy');
+            document.body.removeChild(tempInput);
+            const btnLabel = document.getElementById('copy-btn-label');
+            if (btnLabel) {
+                btnLabel.textContent = "Copied!";
+                setTimeout(() => {
+                    btnLabel.textContent = "Copy";
+                }, 2000);
+            }
+        });
     }
 
     // Handle File Preview

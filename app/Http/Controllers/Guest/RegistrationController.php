@@ -53,7 +53,7 @@ class RegistrationController extends Controller
         ], [
             'contest_category.required_if' => 'Please select the competition category you wish to join.',
             'contact_number.required_if' => 'Please enter your contact number.',
-            'payment_screenshot.required' => 'Please upload your GCash payment screenshot.',
+            'payment_screenshot.required' => 'Please upload your proof of payment (deposit slip / transfer receipt).',
         ]);
 
         $isUblc = $request->boolean('is_ublc');
@@ -116,11 +116,11 @@ class RegistrationController extends Controller
             $file = $request->file('payment_screenshot');
             $filename = 'nfs_payment_' . time() . '_' . uniqid() . '.' . $file->getClientOriginalExtension();
             $destinationPath = public_path('uploads/screenshots');
-            
+
             if (!file_exists($destinationPath)) {
                 mkdir($destinationPath, 0755, true);
             }
-            
+
             $file->move($destinationPath, $filename);
             $screenshotPath = 'uploads/screenshots/' . $filename;
         }
