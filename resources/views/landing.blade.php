@@ -106,8 +106,10 @@
 
                 <!-- Logo 1: UB 80th Anniversary -->
                 <div class="reveal-item reveal-scale delay-100 flex flex-col items-center text-center group">
-                    <img src="{{ asset('images/ub-2-logo.jpg') }}" alt="UB 80th Anniversary Logo"
-                        class="w-32 h-32 sm:w-40 sm:h-40 md:w-44 md:h-44 object-cover rounded-3xl border border-slate-200 shadow-md bg-white group-hover:scale-105 group-hover:border-[#752738] group-hover:shadow-[#752738]/20 transition-all duration-300">
+                    <div class="w-32 h-32 sm:w-40 sm:h-40 md:w-44 md:h-44 p-4 rounded-3xl border border-slate-200 shadow-sm bg-white flex items-center justify-center group-hover:scale-105 group-hover:border-[#752738] group-hover:shadow-md transition-all duration-300">
+                        <img src="{{ asset('images/80th-plain.png') }}" alt="UB 80th Anniversary Logo"
+                            class="max-w-full max-h-full object-contain filter drop-shadow-sm">
+                    </div>
                     <h3
                         class="font-heading font-extrabold text-sm sm:text-base text-slate-800 mt-3.5 group-hover:text-[#752738] transition-colors">
                         UB 80th Anniversary
@@ -116,8 +118,10 @@
 
                 <!-- Logo 2: University of Batangas Official -->
                 <div class="reveal-item reveal-scale delay-200 flex flex-col items-center text-center group">
-                    <img src="{{ asset('images/ub-logo.jpg') }}" alt="University of Batangas Official Logo"
-                        class="w-32 h-32 sm:w-40 sm:h-40 md:w-44 md:h-44 object-cover rounded-3xl border border-slate-200 shadow-md bg-white group-hover:scale-105 group-hover:border-[#752738] group-hover:shadow-[#752738]/20 transition-all duration-300">
+                    <div class="w-32 h-32 sm:w-40 sm:h-40 md:w-44 md:h-44 p-4 rounded-3xl border border-slate-200 shadow-sm bg-white flex items-center justify-center group-hover:scale-105 group-hover:border-[#752738] group-hover:shadow-md transition-all duration-300">
+                        <img src="{{ asset('images/ub-logo-plain.png') }}" alt="University of Batangas Official Logo"
+                            class="max-w-full max-h-full object-contain filter drop-shadow-sm">
+                    </div>
                     <h3
                         class="font-heading font-extrabold text-sm sm:text-base text-slate-800 mt-3.5 group-hover:text-[#752738] transition-colors">
                         University of Batangas
@@ -126,8 +130,10 @@
 
                 <!-- Logo 3: College of Management & Tourism (CMT) -->
                 <div class="reveal-item reveal-scale delay-300 flex flex-col items-center text-center group">
-                    <img src="{{ asset('images/cmt-logo-about.jpg') }}" alt="CMT College Logo"
-                        class="w-32 h-32 sm:w-40 sm:h-40 md:w-44 md:h-44 object-cover rounded-3xl border border-slate-200 shadow-md bg-white group-hover:scale-105 group-hover:border-[#752738] group-hover:shadow-[#752738]/20 transition-all duration-300">
+                    <div class="w-32 h-32 sm:w-40 sm:h-40 md:w-44 md:h-44 p-4 rounded-3xl border border-slate-200 shadow-sm bg-white flex items-center justify-center group-hover:scale-105 group-hover:border-[#752738] group-hover:shadow-md transition-all duration-300">
+                        <img src="{{ asset('images/cmt-plain.png') }}" alt="CMT College Logo"
+                            class="max-w-full max-h-full object-contain filter drop-shadow-sm">
+                    </div>
                     <h3
                         class="font-heading font-extrabold text-sm sm:text-base text-slate-800 mt-3.5 group-hover:text-[#752738] transition-colors">
                         UBLC CMT
@@ -136,8 +142,10 @@
 
                 <!-- Logo 4: Daluyab & NFS -->
                 <div class="reveal-item reveal-scale delay-400 flex flex-col items-center text-center group">
-                    <img src="{{ asset('images/nfs-logo-about.jpg') }}" alt="DALUYAB NFS Logo"
-                        class="w-32 h-32 sm:w-40 sm:h-40 md:w-44 md:h-44 object-cover rounded-3xl border border-slate-200 shadow-md bg-white group-hover:scale-105 group-hover:border-[#752738] group-hover:shadow-[#752738]/20 transition-all duration-300">
+                    <div class="w-32 h-32 sm:w-40 sm:h-40 md:w-44 md:h-44 p-4 rounded-3xl border border-slate-200 shadow-sm bg-white flex items-center justify-center group-hover:scale-105 group-hover:border-[#752738] group-hover:shadow-md transition-all duration-300">
+                        <img src="{{ asset('images/daluyab-plain.png') }}" alt="DALUYAB Events Class Logo"
+                            class="max-w-full max-h-full object-contain filter drop-shadow-sm">
+                    </div>
                     <h3
                         class="font-heading font-extrabold text-sm sm:text-base text-slate-800 mt-3.5 group-hover:text-[#752738] transition-colors">
                         DALUYAB Events Class

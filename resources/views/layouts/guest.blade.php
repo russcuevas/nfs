@@ -282,35 +282,35 @@
                 
                 <!-- 4 Partner Logos Row with Floating Animation Wave -->
                 <div class="relative z-10 flex items-center justify-center gap-2.5 sm:gap-4 md:gap-5 mb-3">
-                    <!-- Logo 1: UB 80th Anniversary -->
+                    <!-- Logo 1: University of Batangas Official -->
                     <div class="socia-logo-float-1 flex flex-col items-center">
-                        <div class="w-14 h-14 sm:w-20 sm:h-20 md:w-24 md:h-24 rounded-2xl sm:rounded-3xl bg-white p-1 border-2 border-slate-200 shadow-xl shadow-[#752738]/10 overflow-hidden flex items-center justify-center">
-                            <img src="{{ asset('images/ub-2-logo.jpg') }}" alt="UB 80th Anniversary"
-                                class="w-full h-full object-cover rounded-xl sm:rounded-2xl">
+                        <div class="w-14 h-14 sm:w-20 sm:h-20 md:w-24 md:h-24 rounded-2xl sm:rounded-3xl bg-white p-2 sm:p-2.5 border-2 border-slate-200 shadow-xl shadow-[#752738]/10 flex items-center justify-center">
+                            <img src="{{ asset('images/ub-logo-plain.png') }}" alt="University of Batangas"
+                                class="max-w-full max-h-full object-contain filter drop-shadow-sm">
                         </div>
                     </div>
 
-                    <!-- Logo 2: University of Batangas Official -->
+                    <!-- Logo 2: Daluyab Events Class -->
                     <div class="socia-logo-float-2 flex flex-col items-center">
-                        <div class="w-14 h-14 sm:w-20 sm:h-20 md:w-24 md:h-24 rounded-2xl sm:rounded-3xl bg-white p-1 border-2 border-slate-200 shadow-xl shadow-[#752738]/10 overflow-hidden flex items-center justify-center">
-                            <img src="{{ asset('images/ub-logo.jpg') }}" alt="University of Batangas"
-                                class="w-full h-full object-cover rounded-xl sm:rounded-2xl">
+                        <div class="w-14 h-14 sm:w-20 sm:h-20 md:w-24 md:h-24 rounded-2xl sm:rounded-3xl bg-white p-2 sm:p-2.5 border-2 border-slate-200 shadow-xl shadow-[#752738]/10 flex items-center justify-center">
+                            <img src="{{ asset('images/daluyab-plain.png') }}" alt="DALUYAB Events Class"
+                                class="max-w-full max-h-full object-contain filter drop-shadow-sm">
                         </div>
                     </div>
 
                     <!-- Logo 3: College of Management and Tourism (CMT) -->
                     <div class="socia-logo-float-3 flex flex-col items-center">
-                        <div class="w-14 h-14 sm:w-20 sm:h-20 md:w-24 md:h-24 rounded-2xl sm:rounded-3xl bg-white p-1 border-2 border-slate-200 shadow-xl shadow-[#752738]/10 overflow-hidden flex items-center justify-center">
-                            <img src="{{ asset('images/cmt-logo-about.jpg') }}" alt="UBLC CMT"
-                                class="w-full h-full object-cover rounded-xl sm:rounded-2xl">
+                        <div class="w-14 h-14 sm:w-20 sm:h-20 md:w-24 md:h-24 rounded-2xl sm:rounded-3xl bg-white p-2 sm:p-2.5 border-2 border-slate-200 shadow-xl shadow-[#752738]/10 flex items-center justify-center">
+                            <img src="{{ asset('images/cmt-plain.png') }}" alt="UBLC CMT"
+                                class="max-w-full max-h-full object-contain filter drop-shadow-sm">
                         </div>
                     </div>
 
-                    <!-- Logo 4: Daluyab / 17th NFS -->
+                    <!-- Logo 4: UB 80th Anniversary -->
                     <div class="socia-logo-float-4 flex flex-col items-center">
-                        <div class="w-14 h-14 sm:w-20 sm:h-20 md:w-24 md:h-24 rounded-2xl sm:rounded-3xl bg-white p-1 border-2 border-[#752738]/60 shadow-xl shadow-[#752738]/20 overflow-hidden flex items-center justify-center">
-                            <img src="{{ asset('images/nfs-logo-about.jpg') }}" alt="DALUYAB NFS"
-                                class="w-full h-full object-cover rounded-xl sm:rounded-2xl">
+                        <div class="w-14 h-14 sm:w-20 sm:h-20 md:w-24 md:h-24 rounded-2xl sm:rounded-3xl bg-white p-2 sm:p-2.5 border-2 border-slate-200 shadow-xl shadow-[#752738]/10 flex items-center justify-center">
+                            <img src="{{ asset('images/80th-plain.png') }}" alt="UB 80th Anniversary"
+                                class="max-w-full max-h-full object-contain filter drop-shadow-sm">
                         </div>
                     </div>
                 </div>

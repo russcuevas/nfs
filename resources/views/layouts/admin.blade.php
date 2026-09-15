@@ -25,12 +25,18 @@
                     },
                     colors: {
                         brand: {
-                            orange: '#FF6B00',
-                            amber: '#F59E0B',
-                            dark: '#0B0F19',
-                            card: '#151C2C',
-                            border: '#1E293B',
-                            cyan: '#00B4D8'
+                            maroon: '#752738',
+                            'maroon-dark': '#5A1E2C',
+                            'maroon-light': '#912B40',
+                            gold: '#FEC452',
+                            'gold-dark': '#D97706',
+                            'gold-light': '#FFE59E',
+                            orange: '#752738',
+                            amber: '#D97706',
+                            cyan: '#752738',
+                            dark: '#FFFFFF',
+                            card: '#FFFFFF',
+                            border: '#E2E8F0'
                         }
                     }
                 }
@@ -39,15 +45,14 @@
     </script>
     <style>
         body {
-            background-color: #090D16;
-            color: #F8FAFC;
+            background-color: #F8FAFC;
+            color: #0F172A;
             font-family: 'Inter', sans-serif;
         }
 
         .glass-panel {
-            background: rgba(21, 28, 44, 0.85);
-            backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.08);
+            background: #FFFFFF;
+            border: 1px solid #E2E8F0;
         }
     </style>
     <!-- SweetAlert2 -->
@@ -56,25 +61,25 @@
 </head>
 
 <body
-    class="min-h-screen bg-[#090D16] text-slate-100 font-sans antialiased selection:bg-brand-orange selection:text-white">
+    class="min-h-screen bg-slate-50 text-slate-800 font-sans antialiased selection:bg-[#752738] selection:text-white">
 
     <!-- Mobile Overlay Backdrop -->
     <div id="sidebar-backdrop"
-        class="fixed inset-0 bg-slate-950/80 backdrop-blur-sm z-40 hidden md:hidden transition-opacity"></div>
+        class="fixed inset-0 bg-slate-900/50 backdrop-blur-sm z-40 hidden md:hidden transition-opacity"></div>
 
     <!-- LEFT SIDEBAR -->
     <aside id="admin-sidebar"
-        class="fixed top-0 left-0 bottom-0 w-64 bg-[#0D1322] border-r border-slate-800/80 z-50 flex flex-col justify-between transform -translate-x-full md:translate-x-0 transition-transform duration-300 shadow-2xl">
+        class="fixed top-0 left-0 bottom-0 w-64 bg-white border-r border-slate-200 z-50 flex flex-col justify-between transform -translate-x-full md:translate-x-0 transition-transform duration-300 shadow-xl md:shadow-sm">
         <!-- Top Section: Brand Header -->
-        <div class="p-5 border-b border-slate-800/80">
+        <div class="p-5 border-b border-slate-200">
             <a href="{{ route('admin.dashboard') }}" class="flex items-center gap-3 group">
-                <img src="{{ asset('images/logo-top-left.jpg') }}" alt="NFS Logo"
-                    class="h-10 w-auto rounded-xl border border-white/10 object-contain shadow-md group-hover:scale-105 transition-transform duration-300">
+                <img src="{{ asset('images/ub-logo-plain.png') }}" alt="UB Logo"
+                    class="h-10 w-auto object-contain drop-shadow-sm group-hover:scale-105 transition-transform duration-300">
                 <div class="min-w-0">
                     <span
-                        class="font-heading font-extrabold text-sm text-white tracking-wider block leading-tight truncate">NFS
+                        class="font-heading font-extrabold text-sm text-slate-900 tracking-wider block leading-tight truncate">NFS
                         2026</span>
-                    <span class="text-[10px] text-brand-orange font-bold uppercase tracking-widest block mt-0.5">Admin
+                    <span class="text-[10px] text-[#752738] font-black uppercase tracking-widest block mt-0.5">Admin
                         Portal</span>
                 </div>
             </a>
@@ -84,11 +89,11 @@
         <div class="flex-grow py-6 px-4 space-y-6 overflow-y-auto">
             <!-- Main Navigation -->
             <div>
-                <div class="px-3 text-[10px] font-extrabold uppercase tracking-widest text-slate-500 mb-3">Main Menu</div>
+                <div class="px-3 text-[10px] font-extrabold uppercase tracking-widest text-slate-400 mb-3">Main Menu</div>
                 <nav class="space-y-1">
                     <a href="{{ route('admin.dashboard') }}"
-                        class="flex items-center gap-3 px-3.5 py-2.5 text-xs font-bold rounded-xl transition-all bg-gradient-to-r from-brand-orange/20 to-amber-500/10 text-brand-orange border border-brand-orange/30 shadow-lg shadow-brand-orange/5">
-                        <svg class="w-4 h-4 text-brand-orange" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        class="flex items-center gap-3 px-3.5 py-2.5 text-xs font-bold rounded-xl transition-all bg-[#752738]/10 text-[#752738] border border-[#752738]/30 shadow-sm">
+                        <svg class="w-4 h-4 text-[#752738]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                 d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z" />
                         </svg>
@@ -99,17 +104,17 @@
         </div>
 
         <!-- Bottom User Card & Logout -->
-        <div class="p-4 border-t border-slate-800/80 bg-slate-900/40">
+        <div class="p-4 border-t border-slate-200 bg-slate-50/80">
             <div class="flex items-center justify-between gap-3 mb-3">
                 <div class="flex items-center gap-3 min-w-0">
                     <div
-                        class="w-9 h-9 rounded-xl bg-gradient-to-tr from-brand-orange to-amber-500 text-white font-extrabold flex items-center justify-center text-xs shrink-0 shadow-lg">
+                        class="w-9 h-9 rounded-xl bg-gradient-to-tr from-[#752738] to-[#912B40] text-white font-extrabold flex items-center justify-center text-xs shrink-0 shadow-md">
                         {{ strtoupper(substr(auth()->user()->name ?? 'A', 0, 2)) }}
                     </div>
                     <div class="min-w-0">
-                        <div class="text-xs font-bold text-slate-200 truncate">
+                        <div class="text-xs font-bold text-slate-800 truncate">
                             {{ auth()->user()->name ?? 'Admin User' }}</div>
-                        <div class="text-[10px] text-slate-400 truncate">
+                        <div class="text-[10px] text-slate-500 truncate">
                             {{ auth()->user()->email ?? 'admin@ublc.edu.ph' }}</div>
                     </div>
                 </div>
@@ -117,7 +122,7 @@
             <form action="{{ route('admin.logout') }}" method="POST">
                 @csrf
                 <button type="submit"
-                    class="w-full py-2 px-3 text-xs font-extrabold text-rose-400 hover:text-white bg-rose-950/40 hover:bg-rose-900/80 border border-rose-800/50 rounded-xl transition-all flex items-center justify-center gap-2">
+                    class="w-full py-2 px-3 text-xs font-extrabold text-rose-700 hover:text-white bg-rose-50 hover:bg-rose-600 border border-rose-200 rounded-xl transition-all flex items-center justify-center gap-2 shadow-sm">
                     <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                             d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
@@ -133,11 +138,11 @@
 
         <!-- Top Header for Main Area -->
         <header
-            class="sticky top-0 z-30 bg-[#090D16]/90 backdrop-blur-xl border-b border-slate-800/80 px-4 sm:px-8 py-4 flex items-center justify-between">
+            class="sticky top-0 z-30 bg-white/95 backdrop-blur-xl border-b border-slate-200 px-4 sm:px-8 py-4 flex items-center justify-between shadow-xs">
             <div class="flex items-center gap-4">
                 <!-- Mobile Sidebar Toggle -->
                 <button id="sidebar-toggle-btn" type="button"
-                    class="md:hidden p-2 text-slate-400 hover:text-white bg-slate-800/80 rounded-xl border border-slate-700/60 transition-colors focus:outline-none">
+                    class="md:hidden p-2 text-slate-600 hover:text-slate-900 bg-slate-100 rounded-xl border border-slate-200 transition-colors focus:outline-none">
                     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                             d="M4 6h16M4 12h16M4 18h16" />
@@ -145,8 +150,8 @@
                 </button>
 
                 <div>
-                    <h2 class="font-heading font-extrabold text-lg text-white leading-tight">Admin Control Panel</h2>
-                    <span class="text-[11px] text-slate-400 hidden sm:inline">17th National Food Showdown • DALUYAB
+                    <h2 class="font-heading font-extrabold text-lg text-slate-900 leading-tight">Admin Control Panel</h2>
+                    <span class="text-[11px] text-slate-500 hidden sm:inline">17th National Food Showdown • DALUYAB
                         2026</span>
                 </div>
             </div>
@@ -154,8 +159,8 @@
             <!-- Right Status Badge -->
             <div class="flex items-center gap-3">
                 <div
-                    class="hidden sm:flex items-center gap-2 px-3 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs font-bold">
-                    <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+                    class="hidden sm:flex items-center gap-2 px-3 py-1.5 rounded-full bg-emerald-50 border border-emerald-200 text-emerald-700 text-xs font-bold">
+                    <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
                     <span>System Active</span>
                 </div>
             </div>
@@ -166,67 +171,67 @@
             class="fixed top-5 right-5 z-[9999] flex flex-col gap-3 max-w-sm w-full pointer-events-none px-4 sm:px-0">
             @if (session('success'))
                 <div
-                    class="toast-item pointer-events-auto bg-slate-900/95 border-l-4 border-emerald-500 text-white p-4 rounded-2xl shadow-2xl backdrop-blur-xl border border-slate-700/80 transform transition-all duration-500 translate-x-0 flex items-start justify-between gap-3">
+                    class="toast-item pointer-events-auto bg-white border-l-4 border-emerald-500 text-slate-800 p-4 rounded-2xl shadow-2xl border border-slate-200 transform transition-all duration-500 translate-x-0 flex items-start justify-between gap-3">
                     <div class="flex items-start gap-3">
                         <div
-                            class="w-8 h-8 rounded-full bg-emerald-500/20 text-emerald-400 flex items-center justify-center shrink-0 mt-0.5">
+                            class="w-8 h-8 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center shrink-0 mt-0.5">
                             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"
                                     d="M5 13l4 4L19 7" />
                             </svg>
                         </div>
                         <div>
-                            <div class="text-xs font-bold text-emerald-400 uppercase tracking-wider">Success</div>
-                            <div class="text-xs text-slate-200 mt-0.5 leading-relaxed font-medium">
+                            <div class="text-xs font-bold text-emerald-700 uppercase tracking-wider">Success</div>
+                            <div class="text-xs text-slate-600 mt-0.5 leading-relaxed font-medium">
                                 {{ session('success') }}</div>
                         </div>
                     </div>
                     <button onclick="dismissToast(this.parentElement)"
-                        class="text-slate-400 hover:text-white text-lg font-bold shrink-0 leading-none">&times;</button>
+                        class="text-slate-400 hover:text-slate-600 text-lg font-bold shrink-0 leading-none">&times;</button>
                 </div>
             @endif
 
             @if (session('error'))
                 <div
-                    class="toast-item pointer-events-auto bg-slate-900/95 border-l-4 border-rose-500 text-white p-4 rounded-2xl shadow-2xl backdrop-blur-xl border border-slate-700/80 transform transition-all duration-500 translate-x-0 flex items-start justify-between gap-3">
+                    class="toast-item pointer-events-auto bg-white border-l-4 border-rose-500 text-slate-800 p-4 rounded-2xl shadow-2xl border border-slate-200 transform transition-all duration-500 translate-x-0 flex items-start justify-between gap-3">
                     <div class="flex items-start gap-3">
                         <div
-                            class="w-8 h-8 rounded-full bg-rose-500/20 text-rose-400 flex items-center justify-center shrink-0 mt-0.5">
+                            class="w-8 h-8 rounded-full bg-rose-100 text-rose-600 flex items-center justify-center shrink-0 mt-0.5">
                             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"
                                     d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                             </svg>
                         </div>
                         <div>
-                            <div class="text-xs font-bold text-rose-400 uppercase tracking-wider">Error</div>
-                            <div class="text-xs text-slate-200 mt-0.5 leading-relaxed font-medium">
+                            <div class="text-xs font-bold text-rose-700 uppercase tracking-wider">Error</div>
+                            <div class="text-xs text-slate-600 mt-0.5 leading-relaxed font-medium">
                                 {{ session('error') }}</div>
                         </div>
                     </div>
                     <button onclick="dismissToast(this.parentElement)"
-                        class="text-slate-400 hover:text-white text-lg font-bold shrink-0 leading-none">&times;</button>
+                        class="text-slate-400 hover:text-slate-600 text-lg font-bold shrink-0 leading-none">&times;</button>
                 </div>
             @endif
 
             @if (session('info'))
                 <div
-                    class="toast-item pointer-events-auto bg-slate-900/95 border-l-4 border-brand-orange text-white p-4 rounded-2xl shadow-2xl backdrop-blur-xl border border-slate-700/80 transform transition-all duration-500 translate-x-0 flex items-start justify-between gap-3">
+                    class="toast-item pointer-events-auto bg-white border-l-4 border-[#752738] text-slate-800 p-4 rounded-2xl shadow-2xl border border-slate-200 transform transition-all duration-500 translate-x-0 flex items-start justify-between gap-3">
                     <div class="flex items-start gap-3">
                         <div
-                            class="w-8 h-8 rounded-full bg-brand-orange/20 text-brand-orange flex items-center justify-center shrink-0 mt-0.5">
+                            class="w-8 h-8 rounded-full bg-[#752738]/10 text-[#752738] flex items-center justify-center shrink-0 mt-0.5">
                             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"
                                     d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                             </svg>
                         </div>
                         <div>
-                            <div class="text-xs font-bold text-brand-orange uppercase tracking-wider">Notice</div>
-                            <div class="text-xs text-slate-200 mt-0.5 leading-relaxed font-medium">
+                            <div class="text-xs font-bold text-[#752738] uppercase tracking-wider">Notice</div>
+                            <div class="text-xs text-slate-600 mt-0.5 leading-relaxed font-medium">
                                 {{ session('info') }}</div>
                         </div>
                     </div>
                     <button onclick="dismissToast(this.parentElement)"
-                        class="text-slate-400 hover:text-white text-lg font-bold shrink-0 leading-none">&times;</button>
+                        class="text-slate-400 hover:text-slate-600 text-lg font-bold shrink-0 leading-none">&times;</button>
                 </div>
             @endif
         </div>
@@ -237,7 +242,7 @@
         </main>
 
         <!-- Footer -->
-        <footer class="border-t border-slate-800/60 py-5 px-8 text-center text-xs text-slate-500">
+        <footer class="border-t border-slate-200 py-5 px-8 text-center text-xs text-slate-500 bg-white/50">
             &copy; 2026 National Food Showdown Admin System. Built for UBLC.
         </footer>
     </div>
