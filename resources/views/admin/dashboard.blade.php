@@ -153,12 +153,31 @@
                             </td>
 
                             <!-- Category -->
-                            <td class="py-4 px-5">
-                                <span class="inline-block px-2.5 py-1 rounded-lg text-[10px] font-extrabold uppercase tracking-wider {{ $reg->registration_type === 'contestant' ? 'bg-[#FEC452]/20 text-[#752738] border border-[#FEC452]/50' : 'bg-slate-100 text-slate-700 border border-slate-200' }}">
-                                    {{ $reg->registration_type }}
-                                </span>
-                                @if($reg->contest_category)
-                                    <div class="text-[11px] text-slate-700 font-semibold mt-1">{{ $reg->contest_category }}</div>
+                            <td class="py-4 px-5 max-w-[280px]">
+                                <div class="flex items-center gap-1.5 mb-1">
+                                    <span class="inline-block px-2.5 py-0.5 rounded-lg text-[10px] font-black uppercase tracking-wider {{ $reg->registration_type === 'contestant' ? 'bg-[#752738] text-[#FEC452]' : 'bg-slate-100 text-slate-700 border border-slate-200' }}">
+                                        {{ $reg->registration_type }}
+                                    </span>
+                                    @if($reg->registration_type === 'contestant' && count($reg->categories_list) > 1)
+                                        <span class="text-[10px] font-bold text-slate-500">({{ count($reg->categories_list) }} items)</span>
+                                    @endif
+                                </div>
+                                @if($reg->registration_type === 'contestant')
+                                    <div class="space-y-1 mt-1.5">
+                                        @foreach($reg->categories_list as $catItem)
+                                            <div class="text-[11px] bg-slate-50 rounded-lg p-1.5 border border-slate-200">
+                                                <div class="font-extrabold text-slate-900 leading-tight">
+                                                    @if(!empty($catItem['code']))
+                                                        <span class="text-[#752738] font-black">[{{ $catItem['code'] }}]</span>
+                                                    @endif
+                                                    {{ $catItem['name'] }}
+                                                </div>
+                                                @if(!empty($catItem['division']))
+                                                    <div class="text-[10px] text-[#752738] font-bold mt-0.5">{{ $catItem['division'] }}</div>
+                                                @endif
+                                            </div>
+                                        @endforeach
+                                    </div>
                                 @endif
                             </td>
 

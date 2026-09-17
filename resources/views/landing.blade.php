@@ -6,24 +6,18 @@
     <div class="space-y-20 sm:space-y-28 pb-16">
 
         <!-- 1. PURE FULL-WIDTH CINEMATIC VIDEO BANNER HERO -->
-        <section id="hero" class="relative w-full overflow-hidden bg-slate-950 shadow-md">
-            <div
-                class="relative w-full aspect-video min-h-[280px] sm:min-h-[420px] md:min-h-[540px] lg:min-h-[700px] max-h-[92vh] overflow-hidden flex items-center justify-center">
-                <!-- Raw, Crisp & High-Definition Video Player -->
-                <video id="hero-banner-video" autoplay loop muted playsinline class="w-full h-full object-cover">
-                    <source src="{{ asset('banner.mp4') }}" type="video/mp4">
+        <section id="hero" class="relative w-full bg-slate-950 shadow-md overflow-hidden">
+            <div class="relative w-full aspect-video flex items-center justify-center bg-black">
+                <!-- Raw, Crisp & High-Definition Video Player - Full View (No Cropping) -->
+                <video id="hero-banner-video" autoplay loop muted playsinline class="w-full h-full object-contain">
+                    <source src="{{ asset('banner-updated.mp4') }}" type="video/mp4">
                     Your browser does not support the video tag.
                 </video>
-
-                <!-- Subtle bottom gradient fade to white background -->
-                <div
-                    class="absolute inset-x-0 bottom-0 h-20 sm:h-28 bg-gradient-to-t from-white via-white/50 to-transparent pointer-events-none">
-                </div>
 
                 <!-- Floating Video Controls (Mute / Sound Toggle) -->
                 <div class="absolute bottom-4 right-4 sm:bottom-6 sm:right-6 z-20 flex items-center gap-2">
                     <button id="video-sound-toggle" type="button" title="Toggle Sound"
-                        class="p-2.5 sm:p-3 rounded-2xl bg-[#FEC452] hover:bg-[#F59E0B] text-[#5A1E2C] font-black shadow-2xl backdrop-blur-md transition-all duration-300 hover:scale-110 active:scale-95 flex items-center justify-center">
+                        class="p-2.5 sm:p-3 rounded-2xl bg-[#FEC452] hover:bg-[#F59E0B] text-[#5A1E2C] font-black shadow-2xl backdrop-blur-md transition-all duration-300 hover:scale-110 active:scale-95 flex items-center justify-center cursor-pointer">
                         <svg id="sound-off-icon" class="w-4 h-4 sm:w-5 sm:h-5" fill="none" stroke="currentColor"
                             viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -65,7 +59,8 @@
                             clip-rule="evenodd" />
                     </svg>
                     <span>Official Theme: <span
-                            class="text-[#752738] italic font-serif normal-case text-sm sm:text-base font-bold">"Kulinarya Rehiyones:
+                            class="text-[#752738] italic font-serif normal-case text-sm sm:text-base font-bold">"Kulinarya
+                            Rehiyones:
                             Lasap Pilipino"</span></span>
                 </div>
             </div>
@@ -106,7 +101,8 @@
 
                 <!-- Logo 1: UB 80th Anniversary -->
                 <div class="reveal-item reveal-scale delay-100 flex flex-col items-center text-center group">
-                    <div class="w-32 h-32 sm:w-40 sm:h-40 md:w-44 md:h-44 p-4 rounded-3xl border border-slate-200 shadow-sm bg-white flex items-center justify-center group-hover:scale-105 group-hover:border-[#752738] group-hover:shadow-md transition-all duration-300">
+                    <div
+                        class="w-32 h-32 sm:w-40 sm:h-40 md:w-44 md:h-44 p-4 rounded-3xl border border-slate-200 shadow-sm bg-white flex items-center justify-center group-hover:scale-105 group-hover:border-[#752738] group-hover:shadow-md transition-all duration-300">
                         <img src="{{ asset('images/80th-plain.png') }}" alt="UB 80th Anniversary Logo"
                             class="max-w-full max-h-full object-contain filter drop-shadow-sm">
                     </div>
@@ -118,7 +114,8 @@
 
                 <!-- Logo 2: University of Batangas Official -->
                 <div class="reveal-item reveal-scale delay-200 flex flex-col items-center text-center group">
-                    <div class="w-32 h-32 sm:w-40 sm:h-40 md:w-44 md:h-44 p-4 rounded-3xl border border-slate-200 shadow-sm bg-white flex items-center justify-center group-hover:scale-105 group-hover:border-[#752738] group-hover:shadow-md transition-all duration-300">
+                    <div
+                        class="w-32 h-32 sm:w-40 sm:h-40 md:w-44 md:h-44 p-4 rounded-3xl border border-slate-200 shadow-sm bg-white flex items-center justify-center group-hover:scale-105 group-hover:border-[#752738] group-hover:shadow-md transition-all duration-300">
                         <img src="{{ asset('images/ub-logo-plain.png') }}" alt="University of Batangas Official Logo"
                             class="max-w-full max-h-full object-contain filter drop-shadow-sm">
                     </div>
@@ -130,7 +127,8 @@
 
                 <!-- Logo 3: College of Management & Tourism (CMT) -->
                 <div class="reveal-item reveal-scale delay-300 flex flex-col items-center text-center group">
-                    <div class="w-32 h-32 sm:w-40 sm:h-40 md:w-44 md:h-44 p-4 rounded-3xl border border-slate-200 shadow-sm bg-white flex items-center justify-center group-hover:scale-105 group-hover:border-[#752738] group-hover:shadow-md transition-all duration-300">
+                    <div
+                        class="w-32 h-32 sm:w-40 sm:h-40 md:w-44 md:h-44 p-4 rounded-3xl border border-slate-200 shadow-sm bg-white flex items-center justify-center group-hover:scale-105 group-hover:border-[#752738] group-hover:shadow-md transition-all duration-300">
                         <img src="{{ asset('images/cmt-plain.png') }}" alt="CMT College Logo"
                             class="max-w-full max-h-full object-contain filter drop-shadow-sm">
                     </div>
@@ -142,7 +140,8 @@
 
                 <!-- Logo 4: Daluyab & NFS -->
                 <div class="reveal-item reveal-scale delay-400 flex flex-col items-center text-center group">
-                    <div class="w-32 h-32 sm:w-40 sm:h-40 md:w-44 md:h-44 p-4 rounded-3xl border border-slate-200 shadow-sm bg-white flex items-center justify-center group-hover:scale-105 group-hover:border-[#752738] group-hover:shadow-md transition-all duration-300">
+                    <div
+                        class="w-32 h-32 sm:w-40 sm:h-40 md:w-44 md:h-44 p-4 rounded-3xl border border-slate-200 shadow-sm bg-white flex items-center justify-center group-hover:scale-105 group-hover:border-[#752738] group-hover:shadow-md transition-all duration-300">
                         <img src="{{ asset('images/daluyab-plain.png') }}" alt="DALUYAB Events Class Logo"
                             class="max-w-full max-h-full object-contain filter drop-shadow-sm">
                     </div>
@@ -195,7 +194,8 @@
                                 01 • 80 Years of Legacy (1946–2026)
                             </span>
                             <div class="flex items-center justify-between gap-3 w-full">
-                                <h3 class="font-heading text-xl sm:text-2xl lg:text-3xl font-extrabold text-slate-900 leading-tight">
+                                <h3
+                                    class="font-heading text-xl sm:text-2xl lg:text-3xl font-extrabold text-slate-900 leading-tight">
                                     UNIVERSITY OF BATANGAS
                                 </h3>
                                 <img src="{{ asset('images/ub-logo-plain.png') }}" alt="University of Batangas Logo"
@@ -227,15 +227,18 @@
                             <div class="flex flex-wrap gap-2.5 mt-2 pt-2">
                                 <span
                                     class="px-3 py-1 rounded-xl bg-slate-100 border border-slate-200 text-slate-700 text-xs font-semibold flex items-center gap-1.5">
-                                    <span class="w-1.5 h-1.5 rounded-full bg-[#FEC452]"></span> 80 Years of Academic Excellence
+                                    <span class="w-1.5 h-1.5 rounded-full bg-[#FEC452]"></span> 80 Years of Academic
+                                    Excellence
                                 </span>
                                 <span
                                     class="px-3 py-1 rounded-xl bg-slate-100 border border-slate-200 text-slate-700 text-xs font-semibold flex items-center gap-1.5">
-                                    <span class="w-1.5 h-1.5 rounded-full bg-[#752738]"></span> Autonomous University Status
+                                    <span class="w-1.5 h-1.5 rounded-full bg-[#752738]"></span> Autonomous University
+                                    Status
                                 </span>
                                 <span
                                     class="px-3 py-1 rounded-xl bg-slate-100 border border-slate-200 text-slate-700 text-xs font-semibold flex items-center gap-1.5">
-                                    <span class="w-1.5 h-1.5 rounded-full bg-[#FEC452]"></span> Calabarzon Education Pioneer
+                                    <span class="w-1.5 h-1.5 rounded-full bg-[#FEC452]"></span> Calabarzon Education
+                                    Pioneer
                                 </span>
                             </div>
                         </div>
@@ -257,7 +260,8 @@
                                 02 • Premier Culinary Competition
                             </span>
                             <div class="flex items-center justify-between gap-3 w-full">
-                                <h3 class="font-heading text-xl sm:text-2xl lg:text-3xl font-extrabold text-slate-900 leading-tight">
+                                <h3
+                                    class="font-heading text-xl sm:text-2xl lg:text-3xl font-extrabold text-slate-900 leading-tight">
                                     17th NATIONAL FOOD SHOWDOWN
                                 </h3>
                                 <img src="{{ asset('images/17th-plain.png') }}" alt="17th National Food Showdown Logo"
@@ -275,7 +279,8 @@
                         <!-- Right Column: Description & Features -->
                         <div class="lg:col-span-8 space-y-3">
                             <p class="text-slate-600 text-sm sm:text-base leading-relaxed">
-                                The <strong class="text-slate-900 font-semibold">University of Batangas Lipa City</strong>, in
+                                The <strong class="text-slate-900 font-semibold">University of Batangas Lipa City</strong>,
+                                in
                                 partnership with the <strong class="text-[#752738] font-semibold">UBLC College of
                                     Management and Tourism (CMT)</strong> and <strong
                                     class="text-[#752738] font-semibold">Daluyab Events Class</strong>, is finally back
@@ -290,7 +295,8 @@
                             <div class="flex flex-wrap gap-2.5 mt-2 pt-2">
                                 <span
                                     class="px-3 py-1 rounded-xl bg-slate-100 border border-slate-200 text-slate-700 text-xs font-semibold flex items-center gap-1.5">
-                                    <span class="w-1.5 h-1.5 rounded-full bg-[#FEC452]"></span> Regional Gastronomy Showcases
+                                    <span class="w-1.5 h-1.5 rounded-full bg-[#FEC452]"></span> Regional Gastronomy
+                                    Showcases
                                 </span>
                                 <span
                                     class="px-3 py-1 rounded-xl bg-slate-100 border border-slate-200 text-slate-700 text-xs font-semibold flex items-center gap-1.5">
@@ -320,7 +326,8 @@
                                 03 • Events Management Body
                             </span>
                             <div class="flex items-center justify-between gap-3 w-full">
-                                <h3 class="font-heading text-2xl sm:text-3xl lg:text-4xl font-extrabold text-slate-900 leading-tight">
+                                <h3
+                                    class="font-heading text-2xl sm:text-3xl lg:text-4xl font-extrabold text-slate-900 leading-tight">
                                     DALUYAB
                                 </h3>
                                 <img src="{{ asset('images/daluyab-plain.png') }}" alt="DALUYAB Logo"
@@ -336,7 +343,8 @@
                         <!-- Right Column: Description & Features -->
                         <div class="lg:col-span-8">
                             <p class="text-slate-600 text-sm sm:text-base leading-relaxed">
-                                <strong class="text-slate-900 font-semibold">DALUYAB</strong> represents more than an events
+                                <strong class="text-slate-900 font-semibold">DALUYAB</strong> represents more than an
+                                events
                                 class—it is a symbol of unity, innovation, and service. We aspire to create meaningful
                                 experiences that honor our culinary heritage while inspiring future leaders in hospitality,
                                 tourism, and the culinary arts.
@@ -349,7 +357,8 @@
                                 </span>
                                 <span
                                     class="px-3 py-1 rounded-xl bg-slate-100 border border-slate-200 text-slate-700 text-xs font-semibold flex items-center gap-1.5">
-                                    <span class="w-1.5 h-1.5 rounded-full bg-[#FEC452]"></span> Hospitality & Tourism Mastery
+                                    <span class="w-1.5 h-1.5 rounded-full bg-[#FEC452]"></span> Hospitality & Tourism
+                                    Mastery
                                 </span>
                                 <span
                                     class="px-3 py-1 rounded-xl bg-slate-100 border border-slate-200 text-slate-700 text-xs font-semibold flex items-center gap-1.5">
@@ -370,7 +379,8 @@
                     class="text-xs font-extrabold uppercase tracking-widest text-[#752738] bg-[#752738]/10 border border-[#752738]/30 px-4 py-1.5 rounded-full">
                     What To Expect
                 </span>
-                <h2 class="font-heading text-3xl sm:text-4xl font-extrabold text-slate-900 mt-3">Event Highlights & Experience
+                <h2 class="font-heading text-3xl sm:text-4xl font-extrabold text-slate-900 mt-3">Event Highlights &
+                    Experience
                 </h2>
             </div>
 
@@ -522,9 +532,11 @@
 
         <!-- 6. QUICK STATUS TRACKING SECTION -->
         <section class="max-w-4xl mx-auto px-4 reveal-item">
-            <div class="glass-card rounded-3xl p-8 sm:p-12 relative overflow-hidden text-center border border-slate-200 shadow-sm">
+            <div
+                class="glass-card rounded-3xl p-8 sm:p-12 relative overflow-hidden text-center border border-slate-200 shadow-sm">
                 <div class="relative z-10">
-                    <h2 class="font-heading text-2xl sm:text-3xl font-extrabold text-slate-900 mb-3">Already Registered?</h2>
+                    <h2 class="font-heading text-2xl sm:text-3xl font-extrabold text-slate-900 mb-3">Already Registered?
+                    </h2>
                     <p class="text-sm text-slate-600 mb-8 max-w-xl mx-auto">
                         Track your ticket reservation and payment verification using your unique ticket code <br>
                         (e.g. <span class="font-mono text-[#752738] font-bold">#NFS_2026_001</span>) or GCash Reference

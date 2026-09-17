@@ -56,9 +56,28 @@
                 </div>
 
                 @if ($registration->registration_type === 'contestant')
-                    <div class="flex justify-between py-1 border-b border-slate-200/80">
-                        <span class="text-slate-500">Contest Category:</span>
-                        <span class="font-bold text-slate-800">{{ $registration->contest_category }}</span>
+                    <div class="py-2 border-b border-slate-200/80">
+                        <span class="text-slate-500 block mb-1.5 font-bold uppercase text-[10px] tracking-wider">Availed Competition Entries ({{ count($registration->categories_list) }}):</span>
+                        <div class="space-y-1.5">
+                            @foreach($registration->categories_list as $item)
+                                <div class="flex items-center justify-between p-2.5 bg-white rounded-xl border border-slate-200 shadow-2xs">
+                                    <div>
+                                        <div class="font-extrabold text-slate-900 text-xs flex items-center gap-1.5">
+                                            @if(!empty($item['code']))
+                                                <span class="px-1.5 py-0.5 rounded bg-[#752738]/10 text-[#752738] font-black text-[10px]">{{ $item['code'] }}</span>
+                                            @endif
+                                            <span>{{ $item['name'] }}</span>
+                                        </div>
+                                        @if(!empty($item['division']))
+                                            <span class="text-[10px] text-[#752738] font-extrabold block mt-0.5">{{ $item['division'] }}</span>
+                                        @endif
+                                    </div>
+                                    @if(!empty($item['fee']))
+                                        <span class="font-heading font-black text-emerald-700 text-xs">₱{{ number_format($item['fee'], 2) }}</span>
+                                    @endif
+                                </div>
+                            @endforeach
+                        </div>
                     </div>
                 @endif
 

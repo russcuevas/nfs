@@ -30,18 +30,46 @@
             </tr>
             @if($registration->registration_type === 'contestant')
             <tr style="border-bottom: 1px solid #f3f4f6;">
-                <td style="color: #4b5563; padding-left: 0;">Availed Competition:</td>
-                <td style="color: #ea580c; font-weight: bold;">{{ $registration->contest_category }}</td>
+                <td style="color: #4b5563; padding-left: 0; vertical-align: top; width: 35%;">Availed Competitions:</td>
+                <td style="color: #111827; padding-right: 0;">
+                    @php $catList = $registration->categories_list; @endphp
+                    @if(count($catList) > 0)
+                        <div style="background-color: #fafaf9; border: 1px solid #e7e5e4; border-radius: 8px; padding: 10px 12px; margin: 4px 0;">
+                            @foreach($catList as $idx => $item)
+                                <div style="margin-bottom: {{ !$loop->last ? '8px' : '0' }}; {{ !$loop->last ? 'padding-bottom: 8px; border-bottom: 1px dashed #e2e8f0;' : '' }}">
+                                    <div style="font-weight: 800; color: #752738; font-size: 13px;">
+                                        @if(!empty($item['code']))
+                                            <span style="background-color: #752738; color: #ffffff; padding: 1px 5px; border-radius: 4px; font-size: 10px; margin-right: 4px; font-weight: 800; display: inline-block;">{{ $item['code'] }}</span>
+                                        @endif
+                                        <strong style="font-weight: 800; color: #111827;">{{ $item['name'] }}</strong>
+                                    </div>
+                                    <table width="100%" cellspacing="0" cellpadding="0" style="font-size: 12px; margin-top: 3px;">
+                                        <tr>
+                                            <td style="color: #752738; font-weight: 700;">
+                                                {{ !empty($item['division']) ? $item['division'] : 'Fixed Entry Fee' }}
+                                            </td>
+                                            <td align="right" style="color: #15803d; font-weight: 800;">
+                                                {{ !empty($item['fee']) ? '₱' . number_format($item['fee'], 2) : '' }}
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            @endforeach
+                        </div>
+                    @else
+                        <strong style="color: #752738; font-weight: 800;">{{ $registration->contest_category }}</strong>
+                    @endif
+                </td>
             </tr>
             @else
             <tr style="border-bottom: 1px solid #f3f4f6;">
                 <td style="color: #4b5563; padding-left: 0;">Availed Ticket Pass:</td>
-                <td style="color: #0284c7; font-weight: bold;">{{ $registration->ticket_type_label }}</td>
+                <td style="color: #752738; font-weight: 800;">{{ $registration->ticket_type_label }}</td>
             </tr>
             @if($registration->contact_number)
             <tr style="border-bottom: 1px solid #f3f4f6;">
                 <td style="color: #4b5563; padding-left: 0;">Contact Number:</td>
-                <td style="color: #111827; font-weight: bold;">{{ $registration->contact_number }}</td>
+                <td style="color: #111827; font-weight: 800;">{{ $registration->contact_number }}</td>
             </tr>
             @endif
             @endif

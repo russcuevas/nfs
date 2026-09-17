@@ -16,6 +16,7 @@ class Registration extends Model
         'is_ublc',
         'school',
         'contest_category',
+        'contest_categories',
         'contact_number',
         'ticket_type',
         'ticket_price',
@@ -30,6 +31,7 @@ class Registration extends Model
     protected $casts = [
         'is_ublc' => 'boolean',
         'ticket_price' => 'integer',
+        'contest_categories' => 'array',
     ];
 
     /**
@@ -68,11 +70,45 @@ class Registration extends Model
     }
 
     /**
+     * Get structured categories list
+     * @return array
+     */
+    public function getCategoriesListAttribute(): array
+    {
+        if (!empty($this->contest_categories) && is_array($this->contest_categories)) {
+            return $this->contest_categories;
+        }
+
+        if (!empty($this->contest_category)) {
+            // Check if it contains commas or newlines from legacy records
+            $items = preg_split('/[\n\r,]+/', $this->contest_category);
+            $result = [];
+            foreach ($items as $item) {
+                $trimmed = trim($item);
+                if ($trimmed !== '') {
+                    $result[] = [
+                        'name' => $trimmed,
+                        'division' => null,
+                        'fee' => null,
+                    ];
+                }
+            }
+            return !empty($result) ? $result : [['name' => $this->contest_category, 'division' => null, 'fee' => $this->ticket_price]];
+        }
+
+        return [];
+    }
+
+    /**
      * Availed Pass / Competition Summary Attribute
      */
     public function getAvailedSummaryAttribute(): string
     {
         if ($this->registration_type === 'contestant') {
+            $list = $this->categories_list;
+            if (count($list) > 1) {
+                return count($list) . ' Competition Categories';
+            }
             return $this->contest_category ?? 'Contestant Competition Entry';
         }
         return $this->ticket_type_label;

@@ -63,9 +63,31 @@
                     </div>
 
                     @if($registration->registration_type === 'contestant')
-                    <div class="bg-slate-50 p-4 rounded-2xl border border-slate-200 space-y-1 sm:col-span-2">
-                        <span class="text-slate-500 uppercase text-[10px] font-bold block">Contest Category</span>
-                        <span class="text-sm font-bold text-slate-800 block">{{ $registration->contest_category }}</span>
+                    <div class="bg-slate-50 p-4 rounded-2xl border border-slate-200 space-y-2 sm:col-span-2">
+                        <div class="flex items-center justify-between">
+                            <span class="text-slate-500 uppercase text-[10px] font-bold block">Availed Competition Entries ({{ count($registration->categories_list) }})</span>
+                            <span class="text-[10px] font-black text-[#752738] uppercase">Contestant Pass</span>
+                        </div>
+                        <div class="space-y-1.5 pt-1">
+                            @foreach($registration->categories_list as $item)
+                                <div class="flex items-center justify-between p-2.5 bg-white rounded-xl border border-slate-200 shadow-2xs">
+                                    <div>
+                                        <div class="font-extrabold text-slate-900 text-xs flex items-center gap-1.5">
+                                            @if(!empty($item['code']))
+                                                <span class="px-1.5 py-0.5 rounded bg-[#752738]/10 text-[#752738] font-black text-[10px]">{{ $item['code'] }}</span>
+                                            @endif
+                                            <span>{{ $item['name'] }}</span>
+                                        </div>
+                                        @if(!empty($item['division']))
+                                            <span class="text-[10px] text-[#752738] font-extrabold block mt-0.5">{{ $item['division'] }}</span>
+                                        @endif
+                                    </div>
+                                    @if(!empty($item['fee']))
+                                        <span class="font-heading font-black text-emerald-700 text-xs">₱{{ number_format($item['fee'], 2) }}</span>
+                                    @endif
+                                </div>
+                            @endforeach
+                        </div>
                     </div>
                     @endif
 

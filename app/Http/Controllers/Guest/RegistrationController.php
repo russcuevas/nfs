@@ -41,7 +41,10 @@ class RegistrationController extends Controller
             'name' => 'required|string|max:255',
             'is_ublc' => 'nullable|boolean',
             'school' => 'required|string|max:255',
-            'contest_category' => 'required_if:registration_type,contestant|nullable|string|max:255',
+            'contest_categories' => 'required_if:registration_type,contestant|nullable|array',
+            'contest_categories.*' => 'string|max:255',
+            'contest_category' => 'nullable|string|max:255',
+            'contest_divisions' => 'nullable|array',
             'contest_division' => 'nullable|string|max:255',
             'contact_number' => 'required_if:registration_type,guest|nullable|string|max:255',
             'ticket_type' => 'nullable|in:day1,day2,both',
@@ -51,7 +54,7 @@ class RegistrationController extends Controller
             'reference_number' => 'required|string|max:255',
             'payment_screenshot' => 'required|image|mimes:jpeg,png,jpg,webp|max:5120',
         ], [
-            'contest_category.required_if' => 'Please select the competition category you wish to join.',
+            'contest_categories.required_if' => 'Please select at least one competition category to participate in.',
             'contact_number.required_if' => 'Please enter your contact number.',
             'payment_screenshot.required' => 'Please upload your proof of payment (deposit slip / transfer receipt).',
         ]);
@@ -81,26 +84,66 @@ class RegistrationController extends Controller
             'T.3' => ['name' => 'TOURISM POSTER MAKING', 'has_div' => false, 'fee' => 700],
         ];
 
-        if ($regType === 'contestant') {
-            $catCode = $validated['contest_category'];
-            $division = $request->input('contest_division');
-            $ticketType = 'both';
+        $savedCategory = null;
+        $savedCategoriesData = null;
 
-            if (isset($competitions[$catCode])) {
-                $comp = $competitions[$catCode];
-                if ($comp['has_div']) {
-                    $divKey = ($division === 'professional') ? 'professional' : 'student';
-                    $price = $comp['fees'][$divKey];
-                    $divLabel = ($divKey === 'professional') ? 'Professional' : 'Student';
-                    $savedCategory = "{$comp['name']} ({$divLabel})";
-                } else {
-                    $price = $comp['fee'];
-                    $savedCategory = $comp['name'];
-                }
-            } else {
-                $price = 1000;
-                $savedCategory = $catCode;
+        if ($regType === 'contestant') {
+            $ticketType = 'both';
+            $selectedCodes = $validated['contest_categories'] ?? [];
+            if (empty($selectedCodes) && !empty($validated['contest_category'])) {
+                $selectedCodes = [$validated['contest_category']];
             }
+
+            if (empty($selectedCodes)) {
+                return back()->withInput()->withErrors(['contest_categories' => 'Please select at least one competition category.']);
+            }
+
+            $divisionsInput = $request->input('contest_divisions', []);
+            $globalDiv = $request->input('contest_division', 'student');
+
+            $totalPrice = 0;
+            $categoryNames = [];
+            $categoriesList = [];
+
+            foreach ($selectedCodes as $catCode) {
+                if (isset($competitions[$catCode])) {
+                    $comp = $competitions[$catCode];
+                    if ($comp['has_div']) {
+                        $itemDiv = $divisionsInput[$catCode] ?? $globalDiv;
+                        $divKey = ($itemDiv === 'professional') ? 'professional' : 'student';
+                        $itemPrice = $comp['fees'][$divKey] ?? 1000;
+                        $divLabel = ($divKey === 'professional') ? 'Professional' : 'College and SHS';
+                        $displayName = "{$comp['name']} ({$divLabel})";
+                    } else {
+                        $itemPrice = $comp['fee'];
+                        $divLabel = null;
+                        $displayName = $comp['name'];
+                    }
+
+                    $totalPrice += $itemPrice;
+                    $categoryNames[] = $displayName;
+                    $categoriesList[] = [
+                        'code' => $catCode,
+                        'name' => $comp['name'],
+                        'division' => $divLabel,
+                        'fee' => $itemPrice,
+                    ];
+                } else {
+                    // Fallback for custom code
+                    $totalPrice += 1000;
+                    $categoryNames[] = $catCode;
+                    $categoriesList[] = [
+                        'code' => $catCode,
+                        'name' => $catCode,
+                        'division' => null,
+                        'fee' => 1000,
+                    ];
+                }
+            }
+
+            $price = $totalPrice;
+            $savedCategory = implode(', ', $categoryNames);
+            $savedCategoriesData = $categoriesList;
         } else {
             $price = match ($ticketType) {
                 'day1', 'day2' => $isUblc ? 100 : 120,
@@ -108,6 +151,7 @@ class RegistrationController extends Controller
                 default => 120,
             };
             $savedCategory = null;
+            $savedCategoriesData = null;
         }
 
         // Handle Payment Screenshot Upload directly to public/uploads/screenshots/
@@ -136,6 +180,7 @@ class RegistrationController extends Controller
             'is_ublc' => $isUblc,
             'school' => $validated['school'],
             'contest_category' => $savedCategory,
+            'contest_categories' => $savedCategoriesData,
             'contact_number' => $regType === 'guest' ? $validated['contact_number'] : null,
             'ticket_type' => $ticketType,
             'ticket_price' => $price,

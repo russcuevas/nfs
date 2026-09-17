@@ -178,35 +178,40 @@
             visibility: hidden;
         }
 
-        /* 4-Logo Float Animations (Gentle Wave) */
-        .socia-logo-float-1 { animation: sociaFloat 2.8s ease-in-out infinite 0s; }
-        .socia-logo-float-2 { animation: sociaFloat 2.8s ease-in-out infinite 0.15s; }
-        .socia-logo-float-3 { animation: sociaFloat 2.8s ease-in-out infinite 0.3s; }
-        .socia-logo-float-4 { animation: sociaFloat 2.8s ease-in-out infinite 0.45s; }
+        /* Central Rotating Logo Card Float Animation */
+        .preloader-card-float {
+            animation: preloaderCardFloat 2.8s ease-in-out infinite;
+        }
 
-        @keyframes sociaFloat {
+        @keyframes preloaderCardFloat {
             0%, 100% {
                 transform: translateY(0px);
             }
             50% {
-                transform: translateY(-14px);
+                transform: translateY(-12px);
             }
         }
 
-        /* Pulsing Ground Shadow */
-        .socia-shadow-pulse {
-            animation: sociaShadow 2.8s ease-in-out infinite;
+        /* Pulsing Ground Shadow underneath central logo */
+        .preloader-shadow-pulse {
+            animation: preloaderShadow 2.8s ease-in-out infinite;
         }
 
-        @keyframes sociaShadow {
+        @keyframes preloaderShadow {
             0%, 100% {
                 transform: scaleX(1) scaleY(1);
                 opacity: 0.25;
             }
             50% {
-                transform: scaleX(0.7) scaleY(0.45);
+                transform: scaleX(0.75) scaleY(0.45);
                 opacity: 0.08;
             }
+        }
+
+        /* Smooth Rotating Logo Transitions */
+        .preloader-rotating-logo {
+            transition: opacity 0.45s cubic-bezier(0.16, 1, 0.3, 1), transform 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+            will-change: opacity, transform;
         }
 
         /* Animated Loading Bar */
@@ -275,48 +280,34 @@
         class="fixed top-0 left-0 h-[3.5px] bg-gradient-to-r from-[#752738] via-[#FEC452] to-[#752738] z-[99990] transition-all duration-150 shadow-[0_0_12px_rgba(254,196,82,0.6)]"
         style="width: 0%;"></div>
 
-    <!-- 4-LOGO INSTITUTIONAL DALUYAB PRELOADER -->
+    <!-- SINGLE SWITCHING LOGO INSTITUTIONAL DALUYAB PRELOADER -->
     <div id="site-preloader">
-        <div class="flex flex-col items-center justify-center w-full h-full min-h-[320px] px-4 py-8">
-            <div class="relative flex flex-col items-center max-w-xl w-full">
+        <div class="flex flex-col items-center justify-center w-full h-full min-h-[340px] px-4 py-8">
+            <div class="relative flex flex-col items-center max-w-sm w-full">
                 
-                <!-- 4 Partner Logos Row with Floating Animation Wave -->
-                <div class="relative z-10 flex items-center justify-center gap-2.5 sm:gap-4 md:gap-5 mb-3">
-                    <!-- Logo 1: University of Batangas Official -->
-                    <div class="socia-logo-float-1 flex flex-col items-center">
-                        <div class="w-14 h-14 sm:w-20 sm:h-20 md:w-24 md:h-24 rounded-2xl sm:rounded-3xl bg-white p-2 sm:p-2.5 border-2 border-slate-200 shadow-xl shadow-[#752738]/10 flex items-center justify-center">
-                            <img src="{{ asset('images/ub-logo-plain.png') }}" alt="University of Batangas"
-                                class="max-w-full max-h-full object-contain filter drop-shadow-sm">
-                        </div>
-                    </div>
+                <!-- Central Floating Alone Plain Logo (No Background, No Border) -->
+                <div class="relative preloader-card-float mb-2">
+                    <div class="relative w-32 h-32 sm:w-40 sm:h-40 md:w-48 md:h-48 flex items-center justify-center">
+                        <!-- Logo 1: UB 80th Anniversary (Initial visible) -->
+                        <img src="{{ asset('images/80th-plain.png') }}" alt="UB 80th Anniversary"
+                            class="preloader-rotating-logo absolute inset-0 w-full h-full object-contain filter drop-shadow-md opacity-100 scale-100">
 
-                    <!-- Logo 2: Daluyab Events Class -->
-                    <div class="socia-logo-float-2 flex flex-col items-center">
-                        <div class="w-14 h-14 sm:w-20 sm:h-20 md:w-24 md:h-24 rounded-2xl sm:rounded-3xl bg-white p-2 sm:p-2.5 border-2 border-slate-200 shadow-xl shadow-[#752738]/10 flex items-center justify-center">
-                            <img src="{{ asset('images/daluyab-plain.png') }}" alt="DALUYAB Events Class"
-                                class="max-w-full max-h-full object-contain filter drop-shadow-sm">
-                        </div>
-                    </div>
+                        <!-- Logo 2: University of Batangas Official -->
+                        <img src="{{ asset('images/ub-logo-plain.png') }}" alt="University of Batangas"
+                            class="preloader-rotating-logo absolute inset-0 w-full h-full object-contain filter drop-shadow-md opacity-0 scale-90">
 
-                    <!-- Logo 3: College of Management and Tourism (CMT) -->
-                    <div class="socia-logo-float-3 flex flex-col items-center">
-                        <div class="w-14 h-14 sm:w-20 sm:h-20 md:w-24 md:h-24 rounded-2xl sm:rounded-3xl bg-white p-2 sm:p-2.5 border-2 border-slate-200 shadow-xl shadow-[#752738]/10 flex items-center justify-center">
-                            <img src="{{ asset('images/cmt-plain.png') }}" alt="UBLC CMT"
-                                class="max-w-full max-h-full object-contain filter drop-shadow-sm">
-                        </div>
-                    </div>
+                        <!-- Logo 3: Daluyab Events Class -->
+                        <img src="{{ asset('images/daluyab-plain.png') }}" alt="DALUYAB Events Class"
+                            class="preloader-rotating-logo absolute inset-0 w-full h-full object-contain filter drop-shadow-md opacity-0 scale-90">
 
-                    <!-- Logo 4: UB 80th Anniversary -->
-                    <div class="socia-logo-float-4 flex flex-col items-center">
-                        <div class="w-14 h-14 sm:w-20 sm:h-20 md:w-24 md:h-24 rounded-2xl sm:rounded-3xl bg-white p-2 sm:p-2.5 border-2 border-slate-200 shadow-xl shadow-[#752738]/10 flex items-center justify-center">
-                            <img src="{{ asset('images/80th-plain.png') }}" alt="UB 80th Anniversary"
-                                class="max-w-full max-h-full object-contain filter drop-shadow-sm">
-                        </div>
+                        <!-- Logo 4: College of Management and Tourism (CMT) -->
+                        <img src="{{ asset('images/cmt-plain.png') }}" alt="UBLC CMT"
+                            class="preloader-rotating-logo absolute inset-0 w-full h-full object-contain filter drop-shadow-md opacity-0 scale-90">
                     </div>
                 </div>
 
-                <!-- Ground Shadow Pulse underneath the 4 logos -->
-                <div class="socia-shadow-pulse h-4 w-60 sm:w-80 md:w-96 rounded-[100%] blur-md bg-[#752738]/20 mb-6"></div>
+                <!-- Ground Shadow Pulse underneath central logo -->
+                <div class="preloader-shadow-pulse h-4 w-28 sm:w-36 rounded-[100%] blur-md bg-[#752738]/15 mb-6"></div>
 
                 <!-- Title & Event Branding -->
                 <div class="text-center space-y-1 mb-5">
@@ -679,11 +670,30 @@
             }
 
             // =========================================
-            // 4-LOGO PRELOADER CONTROLLER
+            // ROTATING SINGLE-LOGO PRELOADER CONTROLLER
             // =========================================
             const preloader = document.getElementById('site-preloader');
             if (preloader) {
-                const minDisplayTime = 1800; // Guaranteed minimum display time for smooth experience
+                const rotatingLogos = preloader.querySelectorAll('.preloader-rotating-logo');
+                let currentLogoIdx = 0;
+                let logoSwitcherInterval = null;
+
+                if (rotatingLogos.length > 1) {
+                    logoSwitcherInterval = setInterval(() => {
+                        // Fade & scale out current logo
+                        rotatingLogos[currentLogoIdx].classList.remove('opacity-100', 'scale-100');
+                        rotatingLogos[currentLogoIdx].classList.add('opacity-0', 'scale-90');
+
+                        // Advance index to next logo
+                        currentLogoIdx = (currentLogoIdx + 1) % rotatingLogos.length;
+
+                        // Fade & scale in next logo
+                        rotatingLogos[currentLogoIdx].classList.remove('opacity-0', 'scale-90');
+                        rotatingLogos[currentLogoIdx].classList.add('opacity-100', 'scale-100');
+                    }, 650);
+                }
+
+                const minDisplayTime = 2200; // Guaranteed minimum display time so visitor enjoys logo cycle
                 const startTime = Date.now();
 
                 function hidePreloader() {
@@ -693,6 +703,7 @@
                     setTimeout(() => {
                         preloader.classList.add('preloader-hidden');
                         setTimeout(() => {
+                            if (logoSwitcherInterval) clearInterval(logoSwitcherInterval);
                             if (preloader.parentNode) preloader.parentNode.removeChild(preloader);
                         }, 700);
                     }, remaining);
@@ -703,7 +714,7 @@
                 } else {
                     window.addEventListener('load', hidePreloader);
                     // Guaranteed fallback timeout
-                    setTimeout(hidePreloader, 3500);
+                    setTimeout(hidePreloader, 4000);
                 }
             }
 
