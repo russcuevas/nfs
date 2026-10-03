@@ -96,59 +96,78 @@
                 </h2>
             </div>
 
-            <!-- 4-Logo Clean Display Grid -->
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-6 sm:gap-8 items-center justify-items-center">
+            <!-- Partner Logos: 1 Single Row on Desktop (lg+), 2 Columns Top & 3 Columns Under on Mobile -->
+            <div class="flex flex-col lg:grid lg:grid-cols-5 items-center justify-items-center gap-6 sm:gap-8 lg:gap-4 xl:gap-6 max-w-7xl mx-auto">
 
-                <!-- Logo 1: UB 80th Anniversary -->
-                <div class="reveal-item reveal-scale delay-100 flex flex-col items-center text-center group">
-                    <div
-                        class="w-32 h-32 sm:w-40 sm:h-40 md:w-44 md:h-44 p-4 rounded-3xl border border-slate-200 shadow-sm bg-white flex items-center justify-center group-hover:scale-105 group-hover:border-[#752738] group-hover:shadow-md transition-all duration-300">
-                        <img src="{{ asset('images/80th-plain.png') }}" alt="UB 80th Anniversary Logo"
-                            class="max-w-full max-h-full object-contain filter drop-shadow-sm">
+                <!-- Responsive Top Row: 2 Major Logos (lg:contents renders direct children into 1-row desktop grid) -->
+                <div class="grid grid-cols-2 gap-4 sm:gap-8 items-center justify-items-center w-full max-w-xs sm:max-w-md lg:contents">
+                    <!-- Logo 1: UB 80th Anniversary -->
+                    <div class="reveal-item reveal-scale delay-100 flex flex-col items-center text-center group w-full">
+                        <div
+                            class="w-28 h-28 sm:w-36 sm:h-36 md:w-40 md:h-40 lg:w-36 lg:h-36 xl:w-44 xl:h-44 p-3 sm:p-4 rounded-3xl border border-slate-200 shadow-sm bg-white flex items-center justify-center group-hover:scale-105 group-hover:border-[#752738] group-hover:shadow-md transition-all duration-300 mx-auto">
+                            <img src="{{ asset('images/80th-plain.png') }}" alt="UB 80th Anniversary Logo"
+                                class="max-w-full max-h-full object-contain filter drop-shadow-sm">
+                        </div>
+                        <h3
+                            class="font-heading font-extrabold text-xs sm:text-sm lg:text-sm xl:text-base text-slate-800 mt-2.5 sm:mt-3.5 group-hover:text-[#752738] transition-colors leading-tight">
+                            UB 80th Anniversary
+                        </h3>
                     </div>
-                    <h3
-                        class="font-heading font-extrabold text-sm sm:text-base text-slate-800 mt-3.5 group-hover:text-[#752738] transition-colors">
-                        UB 80th Anniversary
-                    </h3>
+
+                    <!-- Logo 2: 17th National Food Showdown -->
+                    <div class="reveal-item reveal-scale delay-200 flex flex-col items-center text-center group w-full">
+                        <div
+                            class="w-28 h-28 sm:w-36 sm:h-36 md:w-40 md:h-40 lg:w-36 lg:h-36 xl:w-44 xl:h-44 p-3 sm:p-4 rounded-3xl border border-slate-200 shadow-sm bg-white flex items-center justify-center group-hover:scale-105 group-hover:border-[#752738] group-hover:shadow-md transition-all duration-300 mx-auto">
+                            <img src="{{ asset('images/17th-plain.png') }}" alt="17th National Food Showdown Logo"
+                                class="max-w-full max-h-full object-contain filter drop-shadow-sm">
+                        </div>
+                        <h3
+                            class="font-heading font-extrabold text-xs sm:text-sm lg:text-sm xl:text-base text-slate-800 mt-2.5 sm:mt-3.5 group-hover:text-[#752738] transition-colors leading-tight">
+                            17th National Food Showdown
+                        </h3>
+                    </div>
                 </div>
 
-                <!-- Logo 2: University of Batangas Official -->
-                <div class="reveal-item reveal-scale delay-200 flex flex-col items-center text-center group">
-                    <div
-                        class="w-32 h-32 sm:w-40 sm:h-40 md:w-44 md:h-44 p-4 rounded-3xl border border-slate-200 shadow-sm bg-white flex items-center justify-center group-hover:scale-105 group-hover:border-[#752738] group-hover:shadow-md transition-all duration-300">
-                        <img src="{{ asset('images/ub-logo-plain.png') }}" alt="University of Batangas Official Logo"
-                            class="max-w-full max-h-full object-contain filter drop-shadow-sm">
+                <!-- Responsive Bottom Row: 3 Partner Logos (lg:contents renders direct children into 1-row desktop grid) -->
+                <div class="grid grid-cols-3 gap-3 sm:gap-6 md:gap-8 items-center justify-items-center w-full max-w-sm sm:max-w-xl lg:contents">
+                    <!-- Logo 3: University of Batangas Official -->
+                    <div class="reveal-item reveal-scale delay-300 flex flex-col items-center text-center group w-full">
+                        <div
+                            class="w-24 h-24 sm:w-32 sm:h-32 md:w-36 md:h-36 lg:w-36 lg:h-36 xl:w-44 xl:h-44 p-2.5 sm:p-4 rounded-3xl border border-slate-200 shadow-sm bg-white flex items-center justify-center group-hover:scale-105 group-hover:border-[#752738] group-hover:shadow-md transition-all duration-300 mx-auto">
+                            <img src="{{ asset('images/ub-logo-plain.png') }}" alt="University of Batangas Official Logo"
+                                class="max-w-full max-h-full object-contain filter drop-shadow-sm">
+                        </div>
+                        <h3
+                            class="font-heading font-extrabold text-xs sm:text-sm lg:text-sm xl:text-base text-slate-800 mt-2.5 sm:mt-3.5 group-hover:text-[#752738] transition-colors leading-tight">
+                            University of Batangas
+                        </h3>
                     </div>
-                    <h3
-                        class="font-heading font-extrabold text-sm sm:text-base text-slate-800 mt-3.5 group-hover:text-[#752738] transition-colors">
-                        University of Batangas
-                    </h3>
-                </div>
 
-                <!-- Logo 3: College of Management & Tourism (CMT) -->
-                <div class="reveal-item reveal-scale delay-300 flex flex-col items-center text-center group">
-                    <div
-                        class="w-32 h-32 sm:w-40 sm:h-40 md:w-44 md:h-44 p-4 rounded-3xl border border-slate-200 shadow-sm bg-white flex items-center justify-center group-hover:scale-105 group-hover:border-[#752738] group-hover:shadow-md transition-all duration-300">
-                        <img src="{{ asset('images/cmt-plain.png') }}" alt="CMT College Logo"
-                            class="max-w-full max-h-full object-contain filter drop-shadow-sm">
+                    <!-- Logo 4: College of Management & Tourism (CMT) -->
+                    <div class="reveal-item reveal-scale delay-400 flex flex-col items-center text-center group w-full">
+                        <div
+                            class="w-24 h-24 sm:w-32 sm:h-32 md:w-36 md:h-36 lg:w-36 lg:h-36 xl:w-44 xl:h-44 p-2.5 sm:p-4 rounded-3xl border border-slate-200 shadow-sm bg-white flex items-center justify-center group-hover:scale-105 group-hover:border-[#752738] group-hover:shadow-md transition-all duration-300 mx-auto">
+                            <img src="{{ asset('images/cmt-plain.png') }}" alt="CMT College Logo"
+                                class="max-w-full max-h-full object-contain filter drop-shadow-sm">
+                        </div>
+                        <h3
+                            class="font-heading font-extrabold text-xs sm:text-sm lg:text-sm xl:text-base text-slate-800 mt-2.5 sm:mt-3.5 group-hover:text-[#752738] transition-colors leading-tight">
+                            UBLC CMT
+                        </h3>
                     </div>
-                    <h3
-                        class="font-heading font-extrabold text-sm sm:text-base text-slate-800 mt-3.5 group-hover:text-[#752738] transition-colors">
-                        UBLC CMT
-                    </h3>
-                </div>
 
-                <!-- Logo 4: Daluyab & NFS -->
-                <div class="reveal-item reveal-scale delay-400 flex flex-col items-center text-center group">
-                    <div
-                        class="w-32 h-32 sm:w-40 sm:h-40 md:w-44 md:h-44 p-4 rounded-3xl border border-slate-200 shadow-sm bg-white flex items-center justify-center group-hover:scale-105 group-hover:border-[#752738] group-hover:shadow-md transition-all duration-300">
-                        <img src="{{ asset('images/daluyab-plain.png') }}" alt="DALUYAB Events Class Logo"
-                            class="max-w-full max-h-full object-contain filter drop-shadow-sm">
+                    <!-- Logo 5: Daluyab Events Class -->
+                    <div class="reveal-item reveal-scale delay-500 flex flex-col items-center text-center group w-full">
+                        <div
+                            class="w-24 h-24 sm:w-32 sm:h-32 md:w-36 md:h-36 lg:w-36 lg:h-36 xl:w-44 xl:h-44 p-2.5 sm:p-4 rounded-3xl border border-slate-200 shadow-sm bg-white flex items-center justify-center group-hover:scale-105 group-hover:border-[#752738] group-hover:shadow-md transition-all duration-300 mx-auto">
+                            <img src="{{ asset('images/daluyab-plain.png') }}" alt="DALUYAB Events Class Logo"
+                                class="max-w-full max-h-full object-contain filter drop-shadow-sm">
+                        </div>
+                        <h3
+                            class="font-heading font-extrabold text-xs sm:text-sm lg:text-sm xl:text-base text-slate-800 mt-2.5 sm:mt-3.5 group-hover:text-[#752738] transition-colors leading-tight">
+                            DALUYAB Events Class
+                        </h3>
                     </div>
-                    <h3
-                        class="font-heading font-extrabold text-sm sm:text-base text-slate-800 mt-3.5 group-hover:text-[#752738] transition-colors">
-                        DALUYAB Events Class
-                    </h3>
                 </div>
 
             </div>
@@ -568,16 +587,28 @@
                     <span class="w-2 h-2 rounded-full bg-[#FEC452]"></span>
                 </h2>
 
-                <!-- Circular Social Media Icons Row -->
-                <div class="flex items-center justify-center gap-3 sm:gap-4">
-                    <!-- Facebook -->
+                <!-- Social Media Links Row -->
+                <div class="flex flex-wrap items-center justify-center gap-3 sm:gap-4">
+                    <!-- Daluyab Facebook -->
                     <a href="https://web.facebook.com/people/Daluyab/61591879472076/?_rdc=1&_rdr#" target="_blank"
-                        rel="noopener noreferrer" title="Facebook"
-                        class="w-11 h-11 sm:w-12 sm:h-12 rounded-full bg-slate-100 hover:bg-[#752738] text-slate-700 hover:text-[#FEC452] border border-slate-200 hover:border-[#752738] flex items-center justify-center shadow-md hover:shadow-[#752738]/30 transition-all duration-300 hover:scale-110 active:scale-95 group">
-                        <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24">
+                        rel="noopener noreferrer" title="Daluyab on Facebook"
+                        class="inline-flex items-center gap-2.5 px-5 py-2.5 rounded-full bg-slate-100 hover:bg-[#752738] text-slate-800 hover:text-white border border-slate-200 hover:border-[#752738] shadow-md hover:shadow-[#752738]/30 transition-all duration-300 hover:scale-105 active:scale-95 group font-semibold text-xs sm:text-sm">
+                        <svg class="w-4 h-4 sm:w-5 sm:h-5 fill-current text-[#752738] group-hover:text-[#FEC452] transition-colors" viewBox="0 0 24 24">
                             <path
                                 d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
                         </svg>
+                        <span>Daluyab</span>
+                    </a>
+
+                    <!-- NFS Facebook -->
+                    <a href="https://facebook.com/NFSatUBLC" target="_blank"
+                        rel="noopener noreferrer" title="NFS on Facebook"
+                        class="inline-flex items-center gap-2.5 px-5 py-2.5 rounded-full bg-slate-100 hover:bg-[#752738] text-slate-800 hover:text-white border border-slate-200 hover:border-[#752738] shadow-md hover:shadow-[#752738]/30 transition-all duration-300 hover:scale-105 active:scale-95 group font-semibold text-xs sm:text-sm">
+                        <svg class="w-4 h-4 sm:w-5 sm:h-5 fill-current text-[#752738] group-hover:text-[#FEC452] transition-colors" viewBox="0 0 24 24">
+                            <path
+                                d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
+                        </svg>
+                        <span>NFS</span>
                     </a>
                 </div>
             </div>

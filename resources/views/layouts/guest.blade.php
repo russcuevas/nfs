@@ -33,12 +33,12 @@
                             'gold-light': '#FFE59E',
                             // Mappings for UB Theme on White Background
                             orange: '#752738', // UB Maroon for prominent badges, borders, and accents
-                            amber: '#D97706',  // Warm Gold/Amber
-                            fire: '#5A1E2C',   // Deep UB Maroon
-                            cyan: '#752738',   // Mapped to UB Maroon
-                            blue: '#752738',   // Mapped to UB Maroon
-                            dark: '#FFFFFF',   // Clean White Background
-                            card: '#FFFFFF',   // White Cards
+                            amber: '#D97706', // Warm Gold/Amber
+                            fire: '#5A1E2C', // Deep UB Maroon
+                            cyan: '#752738', // Mapped to UB Maroon
+                            blue: '#752738', // Mapped to UB Maroon
+                            dark: '#FFFFFF', // Clean White Background
+                            card: '#FFFFFF', // White Cards
                         }
                     }
                 }
@@ -90,8 +90,15 @@
         }
 
         @keyframes pulseGlow {
-            0% { transform: scale(0.95) translate(0, 0); opacity: 0.8; }
-            100% { transform: scale(1.1) translate(20px, 20px); opacity: 1; }
+            0% {
+                transform: scale(0.95) translate(0, 0);
+                opacity: 0.8;
+            }
+
+            100% {
+                transform: scale(1.1) translate(20px, 20px);
+                opacity: 1;
+            }
         }
 
         /* Glassmorphism Card on White */
@@ -184,9 +191,12 @@
         }
 
         @keyframes preloaderCardFloat {
-            0%, 100% {
+
+            0%,
+            100% {
                 transform: translateY(0px);
             }
+
             50% {
                 transform: translateY(-12px);
             }
@@ -198,10 +208,13 @@
         }
 
         @keyframes preloaderShadow {
-            0%, 100% {
+
+            0%,
+            100% {
                 transform: scaleX(1) scaleY(1);
                 opacity: 0.25;
             }
+
             50% {
                 transform: scaleX(0.75) scaleY(0.45);
                 opacity: 0.08;
@@ -221,17 +234,40 @@
         }
 
         @keyframes preloaderBarSlide {
-            0% { transform: translateX(-100%); width: 25%; }
-            50% { transform: translateX(100%); width: 55%; }
-            100% { transform: translateX(280%); width: 25%; }
+            0% {
+                transform: translateX(-100%);
+                width: 25%;
+            }
+
+            50% {
+                transform: translateX(100%);
+                width: 55%;
+            }
+
+            100% {
+                transform: translateX(280%);
+                width: 25%;
+            }
         }
 
         /* Loading Dots Animation */
         @keyframes dotsPulse {
-            0%, 20% { opacity: 0; }
-            40% { opacity: 0.5; }
-            60%, 100% { opacity: 1; }
+
+            0%,
+            20% {
+                opacity: 0;
+            }
+
+            40% {
+                opacity: 0.5;
+            }
+
+            60%,
+            100% {
+                opacity: 1;
+            }
         }
+
         .loading-dots {
             display: inline-block;
             animation: dotsPulse 1.4s infinite;
@@ -265,11 +301,25 @@
         }
 
         /* Stagger delays */
-        .delay-100 { transition-delay: 100ms; }
-        .delay-200 { transition-delay: 200ms; }
-        .delay-300 { transition-delay: 300ms; }
-        .delay-400 { transition-delay: 400ms; }
-        .delay-500 { transition-delay: 500ms; }
+        .delay-100 {
+            transition-delay: 100ms;
+        }
+
+        .delay-200 {
+            transition-delay: 200ms;
+        }
+
+        .delay-300 {
+            transition-delay: 300ms;
+        }
+
+        .delay-400 {
+            transition-delay: 400ms;
+        }
+
+        .delay-500 {
+            transition-delay: 500ms;
+        }
     </style>
     @yield('styles')
 </head>
@@ -284,7 +334,7 @@
     <div id="site-preloader">
         <div class="flex flex-col items-center justify-center w-full h-full min-h-[340px] px-4 py-8">
             <div class="relative flex flex-col items-center max-w-sm w-full">
-                
+
                 <!-- Central Floating Alone Plain Logo (No Background, No Border) -->
                 <div class="relative preloader-card-float mb-2">
                     <div class="relative w-32 h-32 sm:w-40 sm:h-40 md:w-48 md:h-48 flex items-center justify-center">
@@ -311,7 +361,8 @@
 
                 <!-- Title & Event Branding -->
                 <div class="text-center space-y-1 mb-5">
-                    <div class="font-heading font-extrabold text-xs sm:text-sm md:text-base tracking-wider text-slate-900 uppercase">
+                    <div
+                        class="font-heading font-extrabold text-xs sm:text-sm md:text-base tracking-wider text-slate-900 uppercase">
                         17th National Food Showdown
                     </div>
                     <div class="text-[10px] sm:text-xs font-bold text-[#752738] tracking-widest uppercase">
@@ -323,14 +374,18 @@
                 <div class="flex flex-col items-center gap-2.5">
                     <div class="flex items-center gap-2">
                         <span class="w-2.5 h-2.5 rounded-full bg-[#752738] animate-ping"></span>
-                        <span class="text-xs sm:text-sm font-black tracking-[0.25em] uppercase text-[#752738] font-mono">
+                        <span
+                            class="text-xs sm:text-sm font-black tracking-[0.25em] uppercase text-[#752738] font-mono">
                             LOADING<span class="loading-dots">...</span>
                         </span>
                     </div>
 
                     <!-- Animated Loading Bar in UB Maroon & Gold -->
-                    <div class="w-44 sm:w-60 h-2 bg-slate-100 rounded-full overflow-hidden border border-slate-200 shadow-inner">
-                        <div class="h-full bg-gradient-to-r from-[#752738] via-[#FEC452] to-[#752738] rounded-full preloader-bar-anim"></div>
+                    <div
+                        class="w-44 sm:w-60 h-2 bg-slate-100 rounded-full overflow-hidden border border-slate-200 shadow-inner">
+                        <div
+                            class="h-full bg-gradient-to-r from-[#752738] via-[#FEC452] to-[#752738] rounded-full preloader-bar-anim">
+                        </div>
                     </div>
                 </div>
 
@@ -350,8 +405,8 @@
             <div class="flex items-center justify-between h-20 gap-2 sm:gap-4">
                 <!-- Logo & Brand -->
                 <a href="{{ route('landing') }}" class="flex items-center gap-2.5 sm:gap-3 group shrink min-w-0">
-                    <img src="{{ asset('images/logo-top-left.jpg') }}" alt="NFS 2026 Logo"
-                        class="h-10 sm:h-12 w-auto max-h-12 rounded-xl shadow-sm border border-slate-200 object-contain shrink-0 group-hover:scale-105 transition-transform duration-300">
+                    <img src="{{ asset('images/17th-plain.png') }}" alt="NFS 2026 Logo"
+                        class="h-14 sm:h-16 w-auto object-contain shrink-0 group-hover:scale-105 transition-transform duration-300">
                     <div class="min-w-0 flex flex-col justify-center">
                         <span
                             class="font-heading font-extrabold text-xs min-[400px]:text-sm sm:text-base md:text-lg tracking-wider text-slate-900 leading-tight truncate">17th
@@ -539,8 +594,12 @@
             <div class="flex flex-col md:flex-row items-center justify-between gap-8 text-center md:text-left">
                 <!-- Brand & Subtitle -->
                 <div class="flex flex-col sm:flex-row items-center justify-center md:justify-start gap-4">
-                    <img src="{{ asset('images/logo-top-left.jpg') }}" alt="NFS Logo"
-                        class="h-12 w-auto max-h-12 rounded-xl border border-slate-200 object-contain shadow-sm">
+                    <div class="flex items-center gap-3 shrink-0">
+                        <img src="{{ asset('images/17th-plain.png') }}" alt="17th National Food Showdown Logo"
+                            class="h-12 sm:h-14 w-auto object-contain">
+                        <img src="{{ asset('images/logo-top-left.jpg') }}" alt="DALUYAB Logo"
+                            class="h-11 sm:h-12 w-auto max-h-12 rounded-xl border border-slate-200 object-contain shadow-sm">
+                    </div>
                     <div>
                         <div class="font-heading font-extrabold text-sm sm:text-base text-slate-900 tracking-wide">
                             17th NATIONAL FOOD SHOWDOWN 2026
@@ -722,6 +781,7 @@
             // SCROLL PROGRESS BAR
             // =========================================
             const scrollProgressBar = document.getElementById('scroll-progress-bar');
+
             function updateScrollProgress() {
                 if (!scrollProgressBar) return;
                 const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
@@ -729,7 +789,9 @@
                 const scrolled = (winScroll / height) * 100;
                 scrollProgressBar.style.width = (scrolled || 0) + '%';
             }
-            window.addEventListener('scroll', updateScrollProgress, { passive: true });
+            window.addEventListener('scroll', updateScrollProgress, {
+                passive: true
+            });
 
             // =========================================
             // INTERSECTION OBSERVER (SCROLL REVEALS)
