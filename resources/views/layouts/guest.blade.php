@@ -402,11 +402,11 @@
     <!-- Navigation Header -->
     <header class="sticky top-0 z-50 bg-white/95 backdrop-blur-xl border-b border-slate-200 shadow-sm">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex items-center justify-between h-20 gap-2 sm:gap-4">
+            <div class="flex items-center justify-between h-20 sm:h-24 gap-2 sm:gap-4">
                 <!-- Logo & Brand -->
                 <a href="{{ route('landing') }}" class="flex items-center gap-2.5 sm:gap-3 group shrink min-w-0">
-                    <img src="{{ asset('images/17th-plain.png') }}" alt="NFS 2026 Logo"
-                        class="h-14 sm:h-16 w-auto object-contain shrink-0 group-hover:scale-105 transition-transform duration-300">
+                    <img src="{{ asset('images/new-17th-plain.png') }}" alt="NFS 2026 Logo"
+                        class="h-16 sm:h-20 md:h-20 w-auto object-contain shrink-0 group-hover:scale-105 transition-transform duration-300">
                     <div class="min-w-0 flex flex-col justify-center">
                         <span
                             class="font-heading font-extrabold text-xs min-[400px]:text-sm sm:text-base md:text-lg tracking-wider text-slate-900 leading-tight truncate">17th
@@ -422,6 +422,8 @@
                     class="hidden lg:flex items-center gap-7 text-xs font-bold tracking-wider uppercase">
                     <a href="{{ route('landing') }}#hero" data-section="hero"
                         class="nav-link text-slate-600 hover:text-[#752738] transition-all py-1.5 border-b-2 border-transparent">Home</a>
+                    <a href="{{ route('landing') }}#competitions" data-section="competitions"
+                        class="nav-link text-slate-600 hover:text-[#752738] transition-all py-1.5 border-b-2 border-transparent">Competitions</a>
                     <a href="{{ route('landing') }}#partners" data-section="partners"
                         class="nav-link text-slate-600 hover:text-[#752738] transition-all py-1.5 border-b-2 border-transparent">Partners</a>
                     <a href="{{ route('landing') }}#about" data-section="about"
@@ -473,6 +475,11 @@
                 <a href="{{ route('landing') }}#hero" data-section="hero"
                     class="mobile-nav-link flex items-center justify-between px-4 py-3 rounded-2xl text-xs font-bold uppercase tracking-wider text-slate-700 hover:text-[#752738] hover:bg-slate-50 transition-all">
                     <span>Home</span>
+                    <span class="active-dot w-2 h-2 rounded-full bg-[#752738] hidden"></span>
+                </a>
+                <a href="{{ route('landing') }}#competitions" data-section="competitions"
+                    class="mobile-nav-link flex items-center justify-between px-4 py-3 rounded-2xl text-xs font-bold uppercase tracking-wider text-slate-700 hover:text-[#752738] hover:bg-slate-50 transition-all">
+                    <span>Competitions</span>
                     <span class="active-dot w-2 h-2 rounded-full bg-[#752738] hidden"></span>
                 </a>
                 <a href="{{ route('landing') }}#partners" data-section="partners"
@@ -593,12 +600,12 @@
         <div class="max-w-7xl mx-auto px-4 py-12 sm:px-6 lg:px-8">
             <div class="flex flex-col md:flex-row items-center justify-between gap-8 text-center md:text-left">
                 <!-- Brand & Subtitle -->
-                <div class="flex flex-col sm:flex-row items-center justify-center md:justify-start gap-4">
-                    <div class="flex items-center gap-3 shrink-0">
-                        <img src="{{ asset('images/17th-plain.png') }}" alt="17th National Food Showdown Logo"
-                            class="h-12 sm:h-14 w-auto object-contain">
-                        <img src="{{ asset('images/logo-top-left.jpg') }}" alt="DALUYAB Logo"
-                            class="h-11 sm:h-12 w-auto max-h-12 rounded-xl border border-slate-200 object-contain shadow-sm">
+                <div class="flex flex-col sm:flex-row items-center justify-center md:justify-start gap-4 sm:gap-6">
+                    <div class="flex items-center gap-4 sm:gap-5 shrink-0">
+                        <img src="{{ asset('images/new-17th-plain.png') }}" alt="17th National Food Showdown Logo"
+                            class="h-20 sm:h-24 w-auto object-contain">
+                        <img src="{{ asset('images/daluyab-plain.png') }}" alt="DALUYAB Logo"
+                            class="h-20 sm:h-24 w-auto object-contain">
                     </div>
                     <div>
                         <div class="font-heading font-extrabold text-sm sm:text-base text-slate-900 tracking-wide">

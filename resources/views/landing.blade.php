@@ -84,7 +84,425 @@
 
         </section>
 
-        <!-- 2. PARTNERS & AFFILIATED LOGOS STRIP -->
+        <!-- 2. OFFICIAL COMPETITIONS DIRECTORY TABLE -->
+        <section id="competitions" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 scroll-mt-24">
+            <div class="text-center max-w-3xl mx-auto mb-8 reveal-item">
+                <span
+                    class="text-[11px] sm:text-xs font-extrabold uppercase tracking-widest text-[#752738] bg-[#752738]/10 border border-[#752738]/30 px-4 py-1.5 rounded-full shadow-sm">
+                    17th NFS Official Lineup
+                </span>
+                <h2 class="font-heading text-3xl sm:text-4xl md:text-5xl font-black text-slate-900 tracking-tight mt-3">
+                    Competition Categories & <span class="text-gradient-fire">Divisions</span>
+                </h2>
+                <p class="text-slate-600 text-sm sm:text-base mt-3 leading-relaxed">
+                    Explore the complete list of national showdown events open for College, Senior High School (SHS), and Professional competitors.
+                </p>
+            </div>
+
+            <!-- Interactive Search & Category Filter Pills -->
+            <div class="reveal-item mb-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+                <!-- Search Input -->
+                <div class="relative w-full sm:w-80">
+                    <input type="text" id="competition-search" placeholder="Search competition or category..."
+                        class="w-full pl-10 pr-4 py-2.5 text-xs sm:text-sm bg-white border border-slate-300 rounded-2xl placeholder-slate-400 focus:outline-none focus:border-[#752738] focus:ring-2 focus:ring-[#752738]/10 transition-all shadow-sm">
+                    <svg class="w-4 h-4 text-slate-400 absolute left-3.5 top-1/2 -translate-y-1/2 pointer-events-none" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                    </svg>
+                </div>
+
+                <!-- Division Quick Filter Tabs -->
+                <div class="flex items-center gap-1.5 overflow-x-auto max-w-full pb-1 sm:pb-0 scrollbar-none">
+                    <button type="button" onclick="filterCompetitionCategory('all', this)"
+                        class="comp-filter-btn px-3.5 py-1.5 rounded-xl text-xs font-bold transition-all bg-[#752738] text-white shadow-sm border border-[#752738] shrink-0">
+                        All Competitions (18)
+                    </button>
+                    <button type="button" onclick="filterCompetitionCategory('college-shs', this)"
+                        class="comp-filter-btn px-3.5 py-1.5 rounded-xl text-xs font-bold transition-all bg-white text-slate-600 hover:text-[#752738] hover:bg-slate-50 border border-slate-200 shrink-0">
+                        College & SHS (16)
+                    </button>
+                    <button type="button" onclick="filterCompetitionCategory('college-only', this)"
+                        class="comp-filter-btn px-3.5 py-1.5 rounded-xl text-xs font-bold transition-all bg-white text-slate-600 hover:text-[#752738] hover:bg-slate-50 border border-slate-200 shrink-0">
+                        College Only (2)
+                    </button>
+                </div>
+            </div>
+
+            <!-- Table Container -->
+            <div class="reveal-item glass-card rounded-3xl border border-slate-200 shadow-md overflow-hidden bg-white">
+                <div class="overflow-x-auto">
+                    <table class="w-full text-left border-collapse min-w-[650px]">
+                        <thead>
+                            <tr class="bg-gradient-to-r from-slate-50 via-slate-100/80 to-slate-50 border-b border-slate-200 text-[11px] font-black uppercase tracking-wider text-slate-700">
+                                <th class="py-4 px-5 text-center w-24">Code</th>
+                                <th class="py-4 px-6">Competition Name</th>
+                                <th class="py-4 px-6">Category Group</th>
+                                <th class="py-4 px-6 text-center">Eligible Participants / Division</th>
+                            </tr>
+                        </thead>
+                        <tbody id="competition-table-body" class="divide-y divide-slate-100 text-xs sm:text-sm">
+                            <!-- A.1 -->
+                            <tr class="comp-row hover:bg-[#752738]/[0.02] transition-colors" data-division="college-shs" data-name="klasika moderna kulinarya a.1 kulinarya cooking">
+                                <td class="py-4 px-5 text-center font-mono font-black text-xs text-[#752738]">
+                                    <span class="px-2.5 py-1 rounded-lg bg-[#752738]/10 border border-[#752738]/20">A.1</span>
+                                </td>
+                                <td class="py-4 px-6">
+                                    <div class="font-heading font-extrabold text-slate-900">KLASIKA MODERNA KULINARYA</div>
+                                    <div class="text-[11px] text-slate-500 mt-0.5">Modern Philippine culinary showdown</div>
+                                </td>
+                                <td class="py-4 px-6 text-slate-600 font-medium">
+                                    Category A: Kulinarya & Cooking Showdowns
+                                </td>
+                                <td class="py-4 px-6 text-center">
+                                    <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-amber-50 text-amber-900 border border-amber-200 shadow-xs">
+                                        <span class="w-1.5 h-1.5 rounded-full bg-amber-500"></span>
+                                        College & SHS
+                                    </span>
+                                </td>
+                            </tr>
+
+                            <!-- A.2 -->
+                            <tr class="comp-row hover:bg-[#752738]/[0.02] transition-colors" data-division="college-shs" data-name="best regional ingredient a.2 kulinarya cooking">
+                                <td class="py-4 px-5 text-center font-mono font-black text-xs text-[#752738]">
+                                    <span class="px-2.5 py-1 rounded-lg bg-[#752738]/10 border border-[#752738]/20">A.2</span>
+                                </td>
+                                <td class="py-4 px-6 font-heading font-extrabold text-slate-900">
+                                    BEST REGIONAL INGREDIENT
+                                </td>
+                                <td class="py-4 px-6 text-slate-600 font-medium">
+                                    Category A: Kulinarya & Cooking Showdowns
+                                </td>
+                                <td class="py-4 px-6 text-center">
+                                    <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-amber-50 text-amber-900 border border-amber-200 shadow-xs">
+                                        <span class="w-1.5 h-1.5 rounded-full bg-amber-500"></span>
+                                        College & SHS
+                                    </span>
+                                </td>
+                            </tr>
+
+                            <!-- A.3 -->
+                            <tr class="comp-row hover:bg-[#752738]/[0.02] transition-colors" data-division="college-shs" data-name="best traditional modern recipe and cooking technique a.3 kulinarya cooking">
+                                <td class="py-4 px-5 text-center font-mono font-black text-xs text-[#752738]">
+                                    <span class="px-2.5 py-1 rounded-lg bg-[#752738]/10 border border-[#752738]/20">A.3</span>
+                                </td>
+                                <td class="py-4 px-6 font-heading font-extrabold text-slate-900">
+                                    BEST TRADITIONAL / MODERN RECIPE AND COOKING TECHNIQUE
+                                </td>
+                                <td class="py-4 px-6 text-slate-600 font-medium">
+                                    Category A: Kulinarya & Cooking Showdowns
+                                </td>
+                                <td class="py-4 px-6 text-center">
+                                    <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-amber-50 text-amber-900 border border-amber-200 shadow-xs">
+                                        <span class="w-1.5 h-1.5 rounded-full bg-amber-500"></span>
+                                        College & SHS
+                                    </span>
+                                </td>
+                            </tr>
+
+                            <!-- A.4 -->
+                            <tr class="comp-row hover:bg-[#752738]/[0.02] transition-colors" data-division="college-shs" data-name="regional pica-pica a.4 kulinarya cooking">
+                                <td class="py-4 px-5 text-center font-mono font-black text-xs text-[#752738]">
+                                    <span class="px-2.5 py-1 rounded-lg bg-[#752738]/10 border border-[#752738]/20">A.4</span>
+                                </td>
+                                <td class="py-4 px-6 font-heading font-extrabold text-slate-900">
+                                    REGIONAL PICA-PICA
+                                </td>
+                                <td class="py-4 px-6 text-slate-600 font-medium">
+                                    Category A: Kulinarya & Cooking Showdowns
+                                </td>
+                                <td class="py-4 px-6 text-center">
+                                    <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-amber-50 text-amber-900 border border-amber-200 shadow-xs">
+                                        <span class="w-1.5 h-1.5 rounded-full bg-amber-500"></span>
+                                        College & SHS
+                                    </span>
+                                </td>
+                            </tr>
+
+                            <!-- B.1 -->
+                            <tr class="comp-row hover:bg-[#752738]/[0.02] transition-colors" data-division="college-shs" data-name="regional bartending flairtending competition b.1 beverage bartending">
+                                <td class="py-4 px-5 text-center font-mono font-black text-xs text-[#752738]">
+                                    <span class="px-2.5 py-1 rounded-lg bg-[#752738]/10 border border-[#752738]/20">B.1</span>
+                                </td>
+                                <td class="py-4 px-6 font-heading font-extrabold text-slate-900">
+                                    REGIONAL BARTENDING / FLAIRTENDING COMPETITION
+                                </td>
+                                <td class="py-4 px-6 text-slate-600 font-medium">
+                                    Category B: Beverage & Bartending
+                                </td>
+                                <td class="py-4 px-6 text-center">
+                                    <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-amber-50 text-amber-900 border border-amber-200 shadow-xs">
+                                        <span class="w-1.5 h-1.5 rounded-full bg-amber-500"></span>
+                                        College & SHS
+                                    </span>
+                                </td>
+                            </tr>
+
+                            <!-- B.2 -->
+                            <tr class="comp-row hover:bg-[#752738]/[0.02] transition-colors" data-division="college-shs" data-name="regional coffee concoction b.2 beverage bartending barista">
+                                <td class="py-4 px-5 text-center font-mono font-black text-xs text-[#752738]">
+                                    <span class="px-2.5 py-1 rounded-lg bg-[#752738]/10 border border-[#752738]/20">B.2</span>
+                                </td>
+                                <td class="py-4 px-6 font-heading font-extrabold text-slate-900">
+                                    REGIONAL COFFEE CONCOCTION
+                                </td>
+                                <td class="py-4 px-6 text-slate-600 font-medium">
+                                    Category B: Beverage & Bartending
+                                </td>
+                                <td class="py-4 px-6 text-center">
+                                    <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-amber-50 text-amber-900 border border-amber-200 shadow-xs">
+                                        <span class="w-1.5 h-1.5 rounded-full bg-amber-500"></span>
+                                        College & SHS
+                                    </span>
+                                </td>
+                            </tr>
+
+                            <!-- C.1 -->
+                            <tr class="comp-row hover:bg-[#752738]/[0.02] transition-colors" data-division="college-shs" data-name="regional jams and preserves c.1 jams preserves flambe">
+                                <td class="py-4 px-5 text-center font-mono font-black text-xs text-[#752738]">
+                                    <span class="px-2.5 py-1 rounded-lg bg-[#752738]/10 border border-[#752738]/20">C.1</span>
+                                </td>
+                                <td class="py-4 px-6 font-heading font-extrabold text-slate-900">
+                                    REGIONAL JAMS AND PRESERVES
+                                </td>
+                                <td class="py-4 px-6 text-slate-600 font-medium">
+                                    Category C: Jams, Preserves & Flambé
+                                </td>
+                                <td class="py-4 px-6 text-center">
+                                    <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-amber-50 text-amber-900 border border-amber-200 shadow-xs">
+                                        <span class="w-1.5 h-1.5 rounded-full bg-amber-500"></span>
+                                        College & SHS
+                                    </span>
+                                </td>
+                            </tr>
+
+                            <!-- C.2 -->
+                            <tr class="comp-row hover:bg-[#752738]/[0.02] transition-colors" data-division="college-shs" data-name="regional fruit flambe c.2 jams preserves flambe">
+                                <td class="py-4 px-5 text-center font-mono font-black text-xs text-[#752738]">
+                                    <span class="px-2.5 py-1 rounded-lg bg-[#752738]/10 border border-[#752738]/20">C.2</span>
+                                </td>
+                                <td class="py-4 px-6 font-heading font-extrabold text-slate-900">
+                                    REGIONAL FRUIT FLAMBÉ
+                                </td>
+                                <td class="py-4 px-6 text-slate-600 font-medium">
+                                    Category C: Jams, Preserves & Flambé
+                                </td>
+                                <td class="py-4 px-6 text-center">
+                                    <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-amber-50 text-amber-900 border border-amber-200 shadow-xs">
+                                        <span class="w-1.5 h-1.5 rounded-full bg-amber-500"></span>
+                                        College & SHS
+                                    </span>
+                                </td>
+                            </tr>
+
+                            <!-- D.1 -->
+                            <tr class="comp-row hover:bg-[#752738]/[0.02] transition-colors" data-division="college-shs" data-name="regional dessert kakanin d.1 pastry cakes table presentation">
+                                <td class="py-4 px-5 text-center font-mono font-black text-xs text-[#752738]">
+                                    <span class="px-2.5 py-1 rounded-lg bg-[#752738]/10 border border-[#752738]/20">D.1</span>
+                                </td>
+                                <td class="py-4 px-6 font-heading font-extrabold text-slate-900">
+                                    REGIONAL DESSERT / KAKANIN
+                                </td>
+                                <td class="py-4 px-6 text-slate-600 font-medium">
+                                    Category D: Pastry, Cakes & Table Presentation
+                                </td>
+                                <td class="py-4 px-6 text-center">
+                                    <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-amber-50 text-amber-900 border border-amber-200 shadow-xs">
+                                        <span class="w-1.5 h-1.5 rounded-full bg-amber-500"></span>
+                                        College & SHS
+                                    </span>
+                                </td>
+                            </tr>
+
+                            <!-- D.2 -->
+                            <tr class="comp-row hover:bg-[#752738]/[0.02] transition-colors" data-division="college-only" data-name="regional table setting with centerpiece d.2 pastry cakes table presentation team of 3">
+                                <td class="py-4 px-5 text-center font-mono font-black text-xs text-[#752738]">
+                                    <span class="px-2.5 py-1 rounded-lg bg-[#752738]/10 border border-[#752738]/20">D.2</span>
+                                </td>
+                                <td class="py-4 px-6 font-heading font-extrabold text-slate-900">
+                                    REGIONAL TABLE SETTING WITH CENTERPIECE
+                                </td>
+                                <td class="py-4 px-6 text-slate-600 font-medium">
+                                    Category D: Pastry, Cakes & Table Presentation
+                                </td>
+                                <td class="py-4 px-6 text-center">
+                                    <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-blue-50 text-blue-800 border border-blue-200 shadow-xs">
+                                        <span class="w-1.5 h-1.5 rounded-full bg-blue-600"></span>
+                                        College Only • Team of 3
+                                    </span>
+                                </td>
+                            </tr>
+
+                            <!-- D.3 -->
+                            <tr class="comp-row hover:bg-[#752738]/[0.02] transition-colors" data-division="college-shs" data-name="wedding cake d.3 pastry cakes table presentation">
+                                <td class="py-4 px-5 text-center font-mono font-black text-xs text-[#752738]">
+                                    <span class="px-2.5 py-1 rounded-lg bg-[#752738]/10 border border-[#752738]/20">D.3</span>
+                                </td>
+                                <td class="py-4 px-6 font-heading font-extrabold text-slate-900">
+                                    WEDDING CAKE
+                                </td>
+                                <td class="py-4 px-6 text-slate-600 font-medium">
+                                    Category D: Pastry, Cakes & Table Presentation
+                                </td>
+                                <td class="py-4 px-6 text-center">
+                                    <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-amber-50 text-amber-900 border border-amber-200 shadow-xs">
+                                        <span class="w-1.5 h-1.5 rounded-full bg-amber-500"></span>
+                                        College & SHS
+                                    </span>
+                                </td>
+                            </tr>
+
+                            <!-- D.4 -->
+                            <tr class="comp-row hover:bg-[#752738]/[0.02] transition-colors" data-division="college-shs" data-name="regional creative cake display d.4 pastry cakes table presentation">
+                                <td class="py-4 px-5 text-center font-mono font-black text-xs text-[#752738]">
+                                    <span class="px-2.5 py-1 rounded-lg bg-[#752738]/10 border border-[#752738]/20">D.4</span>
+                                </td>
+                                <td class="py-4 px-6 font-heading font-extrabold text-slate-900">
+                                    REGIONAL CREATIVE CAKE DISPLAY
+                                </td>
+                                <td class="py-4 px-6 text-slate-600 font-medium">
+                                    Category D: Pastry, Cakes & Table Presentation
+                                </td>
+                                <td class="py-4 px-6 text-center">
+                                    <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-amber-50 text-amber-900 border border-amber-200 shadow-xs">
+                                        <span class="w-1.5 h-1.5 rounded-full bg-amber-500"></span>
+                                        College & SHS
+                                    </span>
+                                </td>
+                            </tr>
+
+                            <!-- F.1 -->
+                            <tr class="comp-row hover:bg-[#752738]/[0.02] transition-colors" data-division="college-shs" data-name="napkin folding f.1 hospitality mocktails individual">
+                                <td class="py-4 px-5 text-center font-mono font-black text-xs text-[#752738]">
+                                    <span class="px-2.5 py-1 rounded-lg bg-[#752738]/10 border border-[#752738]/20">F.1</span>
+                                </td>
+                                <td class="py-4 px-6 font-heading font-extrabold text-slate-900">
+                                    NAPKIN FOLDING
+                                </td>
+                                <td class="py-4 px-6 text-slate-600 font-medium">
+                                    Category F: Hospitality & Mocktails
+                                </td>
+                                <td class="py-4 px-6 text-center">
+                                    <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-blue-50 text-blue-800 border border-blue-200 shadow-xs">
+                                        <span class="w-1.5 h-1.5 rounded-full bg-blue-600"></span>
+                                        College & SHS • Individual
+                                    </span>
+                                </td>
+                            </tr>
+
+                            <!-- F.2 -->
+                            <tr class="comp-row hover:bg-[#752738]/[0.02] transition-colors" data-division="college-shs" data-name="mocktail concoctions f.2 hospitality mocktails individual">
+                                <td class="py-4 px-5 text-center font-mono font-black text-xs text-[#752738]">
+                                    <span class="px-2.5 py-1 rounded-lg bg-[#752738]/10 border border-[#752738]/20">F.2</span>
+                                </td>
+                                <td class="py-4 px-6 font-heading font-extrabold text-slate-900">
+                                    MOCKTAIL CONCOCTIONS
+                                </td>
+                                <td class="py-4 px-6 text-slate-600 font-medium">
+                                    Category F: Hospitality & Mocktails
+                                </td>
+                                <td class="py-4 px-6 text-center">
+                                    <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-blue-50 text-blue-800 border border-blue-200 shadow-xs">
+                                        <span class="w-1.5 h-1.5 rounded-full bg-blue-600"></span>
+                                        College & SHS • Individual
+                                    </span>
+                                </td>
+                            </tr>
+
+                            <!-- I.1 -->
+                            <tr class="comp-row hover:bg-[#752738]/[0.02] transition-colors" data-division="college-shs" data-name="quiz-bee quiz bee i.1 academic team of 3">
+                                <td class="py-4 px-5 text-center font-mono font-black text-xs text-[#752738]">
+                                    <span class="px-2.5 py-1 rounded-lg bg-[#752738]/10 border border-[#752738]/20">I.1</span>
+                                </td>
+                                <td class="py-4 px-6 font-heading font-extrabold text-slate-900">
+                                    QUIZ-BEE
+                                </td>
+                                <td class="py-4 px-6 text-slate-600 font-medium">
+                                    Category I: Academic
+                                </td>
+                                <td class="py-4 px-6 text-center">
+                                    <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-blue-50 text-blue-800 border border-blue-200 shadow-xs">
+                                        <span class="w-1.5 h-1.5 rounded-full bg-blue-600"></span>
+                                        College & SHS • Team of 3
+                                    </span>
+                                </td>
+                            </tr>
+
+                            <!-- T.1 -->
+                            <tr class="comp-row hover:bg-[#752738]/[0.02] transition-colors" data-division="college-only" data-name="inflight safety demonstration and emergency response t.1 tourism specialty team of 2">
+                                <td class="py-4 px-5 text-center font-mono font-black text-xs text-[#752738]">
+                                    <span class="px-2.5 py-1 rounded-lg bg-[#752738]/10 border border-[#752738]/20">T.1</span>
+                                </td>
+                                <td class="py-4 px-6 font-heading font-extrabold text-slate-900">
+                                    INFLIGHT SAFETY DEMONSTRATION AND EMERGENCY RESPONSE
+                                </td>
+                                <td class="py-4 px-6 text-slate-600 font-medium">
+                                    Category T: Tourism & Specialty
+                                </td>
+                                <td class="py-4 px-6 text-center">
+                                    <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-blue-50 text-blue-800 border border-blue-200 shadow-xs">
+                                        <span class="w-1.5 h-1.5 rounded-full bg-blue-600"></span>
+                                        College Only • Team of 2
+                                    </span>
+                                </td>
+                            </tr>
+
+                            <!-- T.2 -->
+                            <tr class="comp-row hover:bg-[#752738]/[0.02] transition-colors" data-division="college-shs" data-name="kasuotang rehiyones t.2 tourism specialty 1 male 1 female">
+                                <td class="py-4 px-5 text-center font-mono font-black text-xs text-[#752738]">
+                                    <span class="px-2.5 py-1 rounded-lg bg-[#752738]/10 border border-[#752738]/20">T.2</span>
+                                </td>
+                                <td class="py-4 px-6 font-heading font-extrabold text-slate-900">
+                                    KASUOTANG REHIYONES
+                                </td>
+                                <td class="py-4 px-6 text-slate-600 font-medium">
+                                    Category T: Tourism & Specialty
+                                </td>
+                                <td class="py-4 px-6 text-center">
+                                    <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-blue-50 text-blue-800 border border-blue-200 shadow-xs">
+                                        <span class="w-1.5 h-1.5 rounded-full bg-blue-600"></span>
+                                        College & SHS • 1 Male & 1 Female
+                                    </span>
+                                </td>
+                            </tr>
+
+                            <!-- T.3 -->
+                            <tr class="comp-row hover:bg-[#752738]/[0.02] transition-colors" data-division="college-shs" data-name="tourism poster making t.3 tourism specialty individual">
+                                <td class="py-4 px-5 text-center font-mono font-black text-xs text-[#752738]">
+                                    <span class="px-2.5 py-1 rounded-lg bg-[#752738]/10 border border-[#752738]/20">T.3</span>
+                                </td>
+                                <td class="py-4 px-6 font-heading font-extrabold text-slate-900">
+                                    TOURISM POSTER MAKING
+                                </td>
+                                <td class="py-4 px-6 text-slate-600 font-medium">
+                                    Category T: Tourism & Specialty
+                                </td>
+                                <td class="py-4 px-6 text-center">
+                                    <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-blue-50 text-blue-800 border border-blue-200 shadow-xs">
+                                        <span class="w-1.5 h-1.5 rounded-full bg-blue-600"></span>
+                                        College & SHS • Individual
+                                    </span>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- Footer Callout & Register CTA inside Card -->
+                <div class="p-4 sm:p-6 bg-gradient-to-r from-slate-50 via-white to-slate-50 border-t border-slate-200 flex flex-col sm:flex-row items-center justify-between gap-4">
+                    <div class="text-xs text-slate-600 text-center sm:text-left">
+                        <strong class="text-slate-900 font-bold">18 Official Showdown Competitions</strong> across 7 culinary, beverage, baking, and hospitality disciplines.
+                    </div>
+                    <a href="{{ route('register') }}"
+                        class="inline-flex items-center gap-2 px-6 py-2.5 text-xs font-extrabold uppercase tracking-wider text-white bg-gradient-to-r from-[#752738] to-[#5A1E2C] hover:from-[#912B40] hover:to-[#752738] border border-[#FEC452]/40 rounded-xl shadow-md shadow-[#752738]/20 transition-all hover:scale-105 active:scale-95 shrink-0">
+                        <span>Register as Contestant</span>
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. PARTNERS & AFFILIATED LOGOS STRIP -->
         <section id="partners" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-8 reveal-item">
                 <span
@@ -619,7 +1037,49 @@
 
 @section('scripts')
     <script>
+        // Competition Directory Filtering & Search
+        function filterCompetitionCategory(type, btn) {
+            document.querySelectorAll('.comp-filter-btn').forEach(b => {
+                b.className = 'comp-filter-btn px-3.5 py-1.5 rounded-xl text-xs font-bold transition-all bg-white text-slate-600 hover:text-[#752738] hover:bg-slate-50 border border-slate-200 shrink-0';
+            });
+            btn.className = 'comp-filter-btn px-3.5 py-1.5 rounded-xl text-xs font-bold transition-all bg-[#752738] text-white shadow-sm border border-[#752738] shrink-0';
+            btn.dataset.active = "true";
+
+            applyCompetitionFilters(type);
+        }
+
+        function applyCompetitionFilters(activeType = null) {
+            if (!activeType) {
+                const activeBtn = Array.from(document.querySelectorAll('.comp-filter-btn')).find(b => b.classList.contains('bg-[#752738]') || b.classList.contains('text-white'));
+                if (activeBtn && activeBtn.getAttribute('onclick')?.includes('college-only')) {
+                    activeType = 'college-only';
+                } else if (activeBtn && activeBtn.getAttribute('onclick')?.includes('college-shs')) {
+                    activeType = 'college-shs';
+                } else {
+                    activeType = 'all';
+                }
+            }
+
+            const term = (document.getElementById('competition-search')?.value || '').toLowerCase().trim();
+            const rows = document.querySelectorAll('.comp-row');
+
+            rows.forEach(row => {
+                const divMatch = (activeType === 'all') || (row.dataset.division === activeType);
+                const textMatch = !term || (row.dataset.name && row.dataset.name.toLowerCase().includes(term));
+                if (divMatch && textMatch) {
+                    row.style.display = '';
+                } else {
+                    row.style.display = 'none';
+                }
+            });
+        }
+
         document.addEventListener('DOMContentLoaded', () => {
+            const searchInput = document.getElementById('competition-search');
+            if (searchInput) {
+                searchInput.addEventListener('input', () => applyCompetitionFilters());
+            }
+
             const video = document.getElementById('hero-banner-video');
             const soundBtn = document.getElementById('video-sound-toggle');
             const soundOff = document.getElementById('sound-off-icon');
